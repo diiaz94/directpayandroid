@@ -1,4 +1,4 @@
-package com.berlinendeavours.iter.util;
+package com.btm.pagodirecto.util;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -19,8 +19,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.berlinendeavours.iter.R;
-import com.berlinendeavours.iter.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 
 import java.io.File;
 
@@ -165,6 +165,13 @@ public class Util {
         Intent intent = new Intent(getContext(), toActivity);
         getActivity().startActivity(intent.addFlags(intentsFlags));
         fromActivity.finish();
+    }
+
+    public static void goToActivitySlide(Activity fromActivity, Class toActivity, int intentsFlags) {
+        Intent intent = new Intent(getContext(), toActivity);
+        getActivity().startActivity(intent.addFlags(intentsFlags));
+        fromActivity.finish();
+        getActivity().overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
     }
 
     public static void goToActivityFade(Activity fromActivity, Class toActivity, int intentsFlags) {

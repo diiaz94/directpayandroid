@@ -1,6 +1,7 @@
-package com.berlinendeavours.iter.services;
+package com.btm.pagodirecto.services;
 
-import com.berlinendeavours.iter.interceptor.HttpInterceptor;
+
+import com.btm.pagodirecto.interceptor.HttpInterceptor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

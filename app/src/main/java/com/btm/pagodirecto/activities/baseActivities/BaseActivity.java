@@ -1,4 +1,4 @@
-package com.berlinendeavours.iter.activities.baseActivities;
+package com.btm.pagodirecto.activities.baseActivities;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;

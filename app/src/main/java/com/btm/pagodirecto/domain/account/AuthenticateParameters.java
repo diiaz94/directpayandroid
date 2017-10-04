@@ -1,4 +1,4 @@
-package com.berlinendeavours.iter.domain.account;
+package com.btm.pagodirecto.domain.account;
 
 /**
  * Created by diiaz94 on 04-06-2017.

@@ -1,7 +1,8 @@
-package com.berlinendeavours.iter.services;
+package com.btm.pagodirecto.services;
 
-import com.berlinendeavours.iter.domain.account.Authenticate;
-import com.berlinendeavours.iter.domain.account.AuthenticateParameters;
+
+import com.btm.pagodirecto.domain.account.Authenticate;
+import com.btm.pagodirecto.domain.account.AuthenticateParameters;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

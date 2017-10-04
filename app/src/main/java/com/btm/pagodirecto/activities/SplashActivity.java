@@ -1,13 +1,13 @@
-package com.berlinendeavours.iter.activities;
+package com.btm.pagodirecto.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 
-import com.berlinendeavours.iter.R;
-import com.berlinendeavours.iter.activities.baseActivities.BaseActivity;
-import com.berlinendeavours.iter.util.Util;
+import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.util.Util;
 
 import java.io.IOException;
 

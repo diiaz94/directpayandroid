@@ -1,6 +1,6 @@
-package com.berlinendeavours.iter.interceptor;
+package com.btm.pagodirecto.interceptor;
 
-import com.berlinendeavours.iter.util.Util;
+import com.btm.pagodirecto.util.Util;
 
 import java.io.IOException;
 
