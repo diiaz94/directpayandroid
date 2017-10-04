@@ -1,92 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.btm.pagodirecto.activities.SelectUserActivity"
     android:background="@drawable/background"
-    android:weightSum="100"
+    android:weightSum="1304"
     android:orientation="vertical">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="100"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="100">
+        android:weightSum="750">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="20"
-            android:gravity="center">
-            <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/back"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="60"
-            android:text="VENDER"
-            android:id="@+id/user_name"
+            android:layout_weight="690"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:textColor="@color/white"/>
+            android:orientation="vertical"
+            android:weightSum="100">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="20"
-            android:gravity="center">
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/add"
-                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="48"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/menu"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="594"
+                    android:text="VENDER"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/add"
+                    android:gravity="center" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_height="1dp"
         android:background="@color/whiteTransparent"/>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        android:padding="15dp"
-        android:orientation="vertical">
-        <EditText
-            android:layout_width="match_parent"
+        android:layout_weight="120"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:hint="Buscar"
-            android:background="@drawable/input_text"
+            android:layout_weight="720"
             android:gravity="center"
-            android:textColorHint="@color/opaque_blue"
-            android:textSize="14dp"/>
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="135dp"
-            android:src="@drawable/search"/>
-    </RelativeLayout>
+            android:orientation="vertical"
+            android:weightSum="120">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="56"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_text"
+                        android:gravity="center"
+                        android:hint="Buscar"
+                        android:textColorHint="@color/opaque_blue"
+                        android:textSize="14sp"
+                        android:width="10dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="750">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="600"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/search" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_height="1dp"
         android:background="@color/whiteTransparent"/>
 
+    <android.support.v7.widget.RecyclerView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1086"
+        app:layoutManager="GridLayoutManager"
+
+        tools:context="com.btm.pagodirecto.activities.SelectUserActivity"
+        tools:listitem="@layout/grid_item_user" />
 </LinearLayout>

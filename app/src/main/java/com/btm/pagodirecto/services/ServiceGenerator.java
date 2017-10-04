@@ -48,6 +48,7 @@ public class ServiceGenerator {
             .build();
 
     private static final AuthenticateService ACCOUNT_SERVICE =  retrofit.create(AuthenticateService.class);
+    private static final ApiService API_SERVICE =  retrofit.create(ApiService.class);
 
     public ServiceGenerator(){}
 
@@ -57,6 +58,11 @@ public class ServiceGenerator {
         if(serviceClass == AuthenticateService.class){
             return (S) ACCOUNT_SERVICE;
         }
+
+        if(serviceClass == ApiService.class){
+            return (S) API_SERVICE;
+        }
+
         return null;
     }
 
