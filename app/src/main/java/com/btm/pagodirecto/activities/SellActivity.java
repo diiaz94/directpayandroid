@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,14 +8,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.btm.pagodirecto.R;
-import com.btm.pagodirecto.fragments.MenuFragment;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.fragments.CalculatorFragment;
+import com.btm.pagodirecto.fragments.ListFragment;
+import com.btm.pagodirecto.util.Util;
 
-public class SellActivity extends AppCompatActivity {
+public class SellActivity extends BaseActivity implements CalculatorFragment.OnFragmentInteractionListener,
+                                                            ListFragment.OnFragmentInteractionListener {
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
@@ -25,7 +29,7 @@ public class SellActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell);
-
+        Util.setActivity(this);
         mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -51,28 +55,17 @@ public class SellActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    @Override
-    public void onBackPressed() {
-        MenuItem homeItem = mBottomNav.getMenu().getItem(0);
-        if (mSelectedItem != homeItem.getItemId()) {
-            // select home item
-            selectFragment(homeItem);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     private void selectFragment(MenuItem item) {
         Fragment frag = null;
         // init corresponding fragment
         switch (item.getItemId()) {
-            case R.id.menu_calculator:
-                frag = MenuFragment.newInstance(getString(R.string.text_calculator),
-                        getColorFromRes(R.color.color_calculator));
-                break;
             case R.id.menu_list:
-                frag = MenuFragment.newInstance(getString(R.string.text_list),
+                frag = ListFragment.newInstance(getString(R.string.text_list),
                         getColorFromRes(R.color.color_list));
+                break;
+            case R.id.menu_calculator:
+                frag = CalculatorFragment.newInstance(getString(R.string.text_calculator),
+                        getColorFromRes(R.color.color_calculator));
                 break;
         }
 
@@ -88,9 +81,11 @@ public class SellActivity extends AppCompatActivity {
         updateToolbarText(item.getTitle());
 
         if (frag != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.container, frag, frag.getTag());
-            ft.commit();
+            Util.replaceFragment(
+                    this.getSupportFragmentManager(),
+                    frag,
+                    R.id.container
+            );
         }
     }
 
@@ -103,5 +98,10 @@ public class SellActivity extends AppCompatActivity {
 
     private int getColorFromRes(@ColorRes int resId) {
         return ContextCompat.getColor(this, resId);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
