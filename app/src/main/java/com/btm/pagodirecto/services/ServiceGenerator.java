@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 
     //Test
-    private static final String API_BASE_URL = "http://54.153.111.182:3000";
+    private static final String API_BASE_URL = "https://pagodirectoapi.herokuapp.com";
 
     // Interceptor for logging
     private  static final HttpLoggingInterceptor logginInterceptor = new HttpLoggingInterceptor()
