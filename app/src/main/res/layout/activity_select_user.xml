@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/whiteTransparent"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -71,6 +73,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="750">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -94,21 +97,25 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:width="10dp"
                         android:background="@drawable/input_text"
                         android:gravity="center"
                         android:hint="Buscar"
                         android:textColorHint="@color/opaque_blue"
                         android:textSize="14sp"
-                        android:width="10dp"/>
+                        android:enabled="false"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:weightSum="750">
+
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="600"
                             android:gravity="center">
+
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
@@ -121,20 +128,19 @@
 
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/whiteTransparent"/>
 
     <android.support.v7.widget.RecyclerView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1086"
-        app:spanCount="2"
         app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
         tools:context="com.btm.pagodirecto.activities.SelectUserActivity"
         tools:listitem="@layout/grid_item_user" />
 </LinearLayout>

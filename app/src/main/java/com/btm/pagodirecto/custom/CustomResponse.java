@@ -1,4 +1,4 @@
-package com.btm.pagodirecto.activities.custom;
+package com.btm.pagodirecto.custom;
 
 import com.btm.pagodirecto.responses.ErrorResponse;
 

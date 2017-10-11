@@ -184,7 +184,6 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:gravity="center">
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="45dp"

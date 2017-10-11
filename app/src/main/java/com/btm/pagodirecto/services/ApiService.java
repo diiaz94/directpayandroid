@@ -1,10 +1,7 @@
 package com.btm.pagodirecto.services;
 
-import com.btm.pagodirecto.dto.User;
-import com.btm.pagodirecto.activities.custom.CustomResponse;
+import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.responses.ResponseUsers;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -9,15 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
-import com.btm.pagodirecto.activities.custom.CustomResponse;
-import com.btm.pagodirecto.activities.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.dto.User;
-import com.btm.pagodirecto.responses.ResponseUsers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Pedro on 4/10/2017.
@@ -76,7 +75,7 @@ public int getItemCount() {
 
 public class ViewHolder extends RecyclerView.ViewHolder {
     public final View mView;
-    public final ImageView userImage;
+    public final CircleImageView userImage;
     public final TextView userName;
 
     public User mItem;
@@ -84,7 +83,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View view) {
         super(view);
         mView = view;
-        userImage = (ImageView) view.findViewById(R.id.user_image);
+        userImage = (CircleImageView) view.findViewById(R.id.user_image);
         userName = (TextView) view.findViewById(R.id.user_name);
     }
 }

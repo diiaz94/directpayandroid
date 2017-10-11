@@ -1,15 +1,13 @@
 package com.btm.pagodirecto.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
-import com.btm.pagodirecto.activities.custom.CustomResponse;
-import com.btm.pagodirecto.activities.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.adapters.GridRecyclerViewAdapter;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.responses.ResponseUsers;
