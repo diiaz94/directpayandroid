@@ -316,7 +316,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         this.oper[0] = result.toString();
         this.oper[1] = "";
         this.oper[2] = "";
-        formatText(result.toString(),0,result.toString().length()-1,result.toString().length());
+        formatText(result.toString().concat("0"),0,result.toString().length()-1,result.toString().length());
     }
 
     public String getTextWithoutFormat(){

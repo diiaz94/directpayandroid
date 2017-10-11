@@ -20,6 +20,7 @@
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SelectUserActivity" />
         <activity android:name=".activities.SellActivity" />
+        <activity android:name=".activities.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

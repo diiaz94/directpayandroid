@@ -48,8 +48,8 @@
             android:layout_weight="20"
             android:gravity="center">
             <Button
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/send"
                 android:gravity="center"/>
         </LinearLayout>
