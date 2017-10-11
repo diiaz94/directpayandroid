@@ -1,6 +1,7 @@
 package com.btm.pagodirecto.services;
 
 import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.responses.ResponseUsers;
 
 import retrofit2.Call;
@@ -18,4 +19,8 @@ public interface ApiService {
     @Headers({"User-Agent: itertest/0.0.1", "Accept: application/json", "Content-Type: application/x-www-form-urlencoded"})
     @GET(BASE_URL+"/users")
     public Call<CustomResponse<ResponseUsers>> users();
+
+    @Headers({"User-Agent: itertest/0.0.1", "Accept: application/json", "Content-Type: application/x-www-form-urlencoded"})
+    @GET(BASE_URL+"/products")
+    public Call<CustomResponse<ResponseProducts>> products();
 }

@@ -4,11 +4,27 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.adapters.GridRecyclerViewAdapter;
+import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.responses.ResponseUsers;
+import com.btm.pagodirecto.services.ApiService;
+import com.btm.pagodirecto.services.ServiceGenerator;
+
+import java.util.ArrayList;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +39,8 @@ public class ListFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    @Bind(R.id.grid)
+    RecyclerView recyclerView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -65,9 +82,38 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragmen_list, container, false);
+        View v = inflater.inflate(R.layout.fragment_list, container, false);
+
+        ButterKnife.bind(this,v);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        loadProducts();
+        return v;
     }
 
+    private void loadProducts() {
+        ServiceGenerator.getService(ApiService.class)
+                .products()
+                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
+
+                    @Override
+                    public void handleSuccess(Object response) {
+                        ResponseUsers responseUsers = (ResponseUsers) response;
+                        ArrayList<User> users = responseUsers.getUsers();
+
+                        recyclerView.setAdapter(new GridRecyclerViewAdapter(getContext(),users));
+                    }
+
+                    @Override
+                    public void handleResponseError(Response response) {
+
+                    }
+
+                    @Override
+                    public void handleFailError(Call<CustomResponse<ResponseUsers>> call, Throwable t) {
+
+                    }
+                });
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
