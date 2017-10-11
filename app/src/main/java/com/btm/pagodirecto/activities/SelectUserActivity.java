@@ -3,6 +3,9 @@ package com.btm.pagodirecto.activities;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
@@ -34,7 +37,8 @@ public class SelectUserActivity extends BaseActivity {
         Util.setActivity(this);
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-    loadUsers();
+        loadUsers();
+        hideSoftKeyboard();
     }
 
     private void loadUsers() {
@@ -60,6 +64,26 @@ public class SelectUserActivity extends BaseActivity {
 
                     }
                 });
+    }
+
+    /**
+     * Hides the soft keyboard
+     */
+    public void hideSoftKeyboard() {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * Shows the soft keyboard
+     */
+    public void showSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
     }
 
 }
