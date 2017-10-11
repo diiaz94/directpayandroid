@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 
+import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Formatter;
 import java.util.Locale;
@@ -36,6 +38,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public double finalResult = 0.0;
+    public String[] oper = new String[3];
 
     @Bind(R.id.input_calculator)
     TextView inputResult;
@@ -122,6 +126,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         btnNine.setOnClickListener(this);
         btnZero.setOnClickListener(this);
 
+        this.clearOperators();
         return v;
     }
 
@@ -218,7 +223,14 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     @OnClick(R.id.btn_c)
     public void clearAll(){
+        this.clearOperators();
         inputResult.setText("Bs.0,00");
+    }
+
+    public void clearOperators(){
+        this.oper[0] = "";
+        this.oper[1] = "";
+        this.oper[2] = "";
     }
 
     private String current = "";
@@ -232,5 +244,91 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         }
     }
 
+    @OnClick(R.id.btn_plus)
+    public void sum(){
+        if (this.oper[0].isEmpty()){
+            this.oper[0] = this.getTextWithoutFormat();
+            this.oper[1] = "+"; // 10 +
+            inputResult.setText("Bs.0,00");
+        }else{
+            this.oper[1] = "+";
+            this.oper[2] = this.getTextWithoutFormat();
+            inputResult.setText("Bs.0,00");
+            this.doOperation(this.oper[0],this.oper[1],this.oper[2]); // 0 + 10
+        }
+    }
 
+    @OnClick(R.id.btn_sustract)
+    public void sustract(){
+        if (this.oper[0].isEmpty()){
+            this.oper[0] = inputResult.getText().toString();
+            this.oper[1] = "-";
+        }else{
+            this.oper[1] = "-";
+            this.oper[2] = this.getTextWithoutFormat();
+            this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
+        }
+    }
+
+    @OnClick(R.id.btn_mult)
+    public void mult(){
+        this.oper[1] = "*";
+        this.doOperation(this.oper[0],"*",inputResult.getText().toString());
+    }
+
+    @OnClick(R.id.btn_div)
+    public void div(){
+        this.oper[1] = "/";
+        this.doOperation(this.oper[0],"/",inputResult.getText().toString());
+    }
+
+    @OnClick(R.id.btn_equal)
+    public void equal(){
+        this.oper[2] = this.getTextWithoutFormat();
+        doOperation(this.oper[0],this.oper[1],this.oper[2]);
+    }
+
+    public void doOperation(String firstValue, String operator, String secondValue){ // 0 + 10
+        Double result = 0.0;
+        if (secondValue.isEmpty() || Double.parseDouble(secondValue) < 0) {
+            result = Double.valueOf(this.finalResult);
+        }else{
+            switch (operator){
+                case "+":
+                    result = Double.parseDouble(firstValue) + Double.parseDouble(secondValue);
+                break;
+                case "-":
+                    result = Double.parseDouble(firstValue) - Double.parseDouble(secondValue);
+                break;
+                case "*":
+                    result = Double.parseDouble(firstValue) * Double.parseDouble(secondValue);
+                break;
+                case "/":
+                    result = Double.parseDouble(firstValue) / Double.parseDouble(secondValue);
+                break;
+                default:
+                    result = Double.valueOf(this.finalResult);
+                    break;
+            }
+        }
+        result = roundTwoDecimals(result);
+        this.finalResult = result;
+        this.oper[0] = result.toString();
+        this.oper[1] = "";
+        this.oper[2] = "";
+        formatText(result.toString(),0,result.toString().length()-1,result.toString().length());
+    }
+
+    public String getTextWithoutFormat(){
+        String text = inputResult.getText().toString();
+        String cleanString = text.toString().replaceAll("[Bs.]","");
+        cleanString = cleanString.toString().replaceAll("[,]",".");
+        return  cleanString;
+    }
+
+    double roundTwoDecimals(double d) {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(d));
+    }
 }
+
