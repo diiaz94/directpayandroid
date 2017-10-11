@@ -24,4 +24,8 @@
     <color name="color_calculator">#009688</color>
     <color name="color_list">#9C27B0</color>
     <color name="gray">#c7c7c7</color>
+    <color name="blue_dark">#061b3d</color>
+    <color name="gray02">#dcdad9</color>
+    <color name="dark_gray">#444141</color>
+    <color name="orange">#f58025</color>
 </resources>

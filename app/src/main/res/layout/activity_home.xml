@@ -190,7 +190,7 @@
                 android:text="PAGAR"
                 android:textSize="15sp"
                 android:gravity="center"
-                android:id="@+id/btn_pagar"
+                android:id="@+id/btn_pay"
                 android:layout_gravity="top"
                 android:textColor="@color/white"
                 android:layout_marginBottom="30dp"
@@ -201,7 +201,7 @@
                 android:text="VENDER"
                 android:textSize="15sp"
                 android:gravity="center"
-                android:id="@+id/btn_vender"
+                android:id="@+id/btn_sell"
                 android:layout_gravity="bottom"
                 android:textColor="@color/white"
                 android:background="@drawable/main_button"/>
