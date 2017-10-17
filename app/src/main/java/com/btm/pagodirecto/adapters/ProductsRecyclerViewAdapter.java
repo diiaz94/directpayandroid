@@ -41,8 +41,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
                 .inflate(R.layout.list_item_product, parent, false);
 
 
-        Double height = (new Double(parent.getMeasuredHeight() / 2.5));
-        int width = parent.getMeasuredWidth() / 2;
+        Double height = (new Double(parent.getMeasuredHeight() / 5));
+        int width = parent.getMeasuredWidth() / 1;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));
         return new ViewHolder(view);
@@ -54,8 +54,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
-       // holder.userName.setText(items.get(position).getName());
-        Glide.with(ctx).load(glideUrl).into(holder.productimage);
+       holder.productName.setText(items.get(position).getName());
+        Glide.with(ctx).load(glideUrl).into(holder.productImage);
 
 
 
@@ -76,16 +76,16 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final ImageView productimage;
-       // public final TextView userName;
+        public final ImageView productImage;
+        public final TextView productName;
 
         public Product mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            productimage = (ImageView) view.findViewById(R.id.product_image);
-           //userName = (TextView) view.findViewById(R.id.user_name);
+            productImage = (ImageView) view.findViewById(R.id.product_image);
+            productName = (TextView) view.findViewById(R.id.product_name);
         }
     }
 }
