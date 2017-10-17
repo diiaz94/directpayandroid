@@ -28,7 +28,7 @@ public class HomeActivity extends BaseActivity {
     public void goToSell(){
         Util.goToActivitySlide(
             this,
-            SelectUserActivity.class,
+            SelectUserActivity_.class,
             Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
     }
