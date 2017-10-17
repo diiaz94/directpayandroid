@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
         Util.setActivity(this);
         Util.goToActivitySlide(
                 this,
-                SelectUserActivity.class,
+                HomeActivity.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
     }

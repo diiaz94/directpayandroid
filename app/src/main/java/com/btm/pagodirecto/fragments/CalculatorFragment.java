@@ -311,7 +311,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                     break;
             }
         }
-        result = roundTwoDecimals(result);
+        //result = roundTwoDecimals(result);
         this.finalResult = result;
         this.oper[0] = result.toString();
         this.oper[1] = "";
