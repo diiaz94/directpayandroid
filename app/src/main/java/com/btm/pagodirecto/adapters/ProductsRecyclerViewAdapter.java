@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
-import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.dto.Product;
+import com.btm.pagodirecto.dto.Product;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
@@ -22,22 +23,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Pedro on 4/10/2017.
  */
 
-public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerViewAdapter.ViewHolder> {
+public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRecyclerViewAdapter.ViewHolder> {
 
-private final Context ctx;
-private  ArrayList<User> items;
-private LayoutInflater inflater;
-public GridRecyclerViewAdapter(Context ctx, ArrayList<User> items) {
+    private final Context ctx;
+    private  ArrayList<Product> items;
+    private LayoutInflater inflater;
+    public ProductsRecyclerViewAdapter(Context ctx, ArrayList<Product> items) {
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
-        }
+    }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.grid_item_user, parent, false);
+                .inflate(R.layout.list_item_product, parent, false);
 
 
         Double height = (new Double(parent.getMeasuredHeight() / 2.5));
@@ -48,43 +49,43 @@ public GridRecyclerViewAdapter(Context ctx, ArrayList<User> items) {
     }
 
     @Override
-public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = items.get(position);
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
-        holder.userName.setText(items.get(position).getName());
-        Glide.with(ctx).load(glideUrl).into(holder.userImage);
+       // holder.userName.setText(items.get(position).getName());
+        Glide.with(ctx).load(glideUrl).into(holder.productimage);
 
 
 
-        holder.mView.setTag(items.get(position).getId());
+        //holder.mView.setTag(items.get(position).getId());
         holder.mView.setOnClickListener(new View.OnClickListener() {
-        @Override
+            @Override
             public void onClick(View v) {
                 //Long id = (Long) v.getTag();
-               // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
+                // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
             }
         });
-        }
-
-@Override
-public int getItemCount() {
-        return items.size();
-        }
-
-public class ViewHolder extends RecyclerView.ViewHolder {
-    public final View mView;
-    public final CircleImageView userImage;
-    public final TextView userName;
-
-    public User mItem;
-
-    public ViewHolder(View view) {
-        super(view);
-        mView = view;
-        userImage = (CircleImageView) view.findViewById(R.id.user_image);
-        userName = (TextView) view.findViewById(R.id.user_name);
     }
-}
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public final View mView;
+        public final ImageView productimage;
+       // public final TextView userName;
+
+        public Product mItem;
+
+        public ViewHolder(View view) {
+            super(view);
+            mView = view;
+            productimage = (ImageView) view.findViewById(R.id.product_image);
+           //userName = (TextView) view.findViewById(R.id.user_name);
+        }
+    }
 }

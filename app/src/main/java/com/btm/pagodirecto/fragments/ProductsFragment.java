@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.btm.pagodirecto.R;
-import com.btm.pagodirecto.adapters.GridRecyclerViewAdapter;
+import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
-import com.btm.pagodirecto.dto.User;
-import com.btm.pagodirecto.responses.ResponseUsers;
+import com.btm.pagodirecto.dto.Product;
+import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 
@@ -29,12 +29,12 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ListFragment.OnFragmentInteractionListener} interface
+ * {@link ProductsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ListFragment#newInstance} factory method to
+ * Use the {@link ProductsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment {
+public class ProductsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,7 +47,7 @@ public class ListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ListFragment() {
+    public ProductsFragment() {
         // Required empty public constructor
     }
 
@@ -57,11 +57,11 @@ public class ListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
+     * @return A new instance of fragment ProductsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, int param2) {
-        ListFragment fragment = new ListFragment();
+    public static ProductsFragment newInstance(String param1, int param2) {
+        ProductsFragment fragment = new ProductsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
@@ -93,14 +93,14 @@ public class ListFragment extends Fragment {
     private void loadProducts() {
         ServiceGenerator.getService(ApiService.class)
                 .products()
-                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
+                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseProducts>>() {
 
                     @Override
                     public void handleSuccess(Object response) {
-                        ResponseUsers responseUsers = (ResponseUsers) response;
-                        ArrayList<User> users = responseUsers.getUsers();
+                        ResponseProducts responseProducts = (ResponseProducts) response;
+                        ArrayList<Product> products = responseProducts.getProducts();
 
-                        recyclerView.setAdapter(new GridRecyclerViewAdapter(getContext(),users));
+                        recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getContext(),products));
                     }
 
                     @Override
@@ -109,7 +109,7 @@ public class ListFragment extends Fragment {
                     }
 
                     @Override
-                    public void handleFailError(Call<CustomResponse<ResponseUsers>> call, Throwable t) {
+                    public void handleFailError(Call<CustomResponse<ResponseProducts>> call, Throwable t) {
 
                     }
                 });

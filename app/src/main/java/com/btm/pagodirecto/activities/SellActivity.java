@@ -5,7 +5,6 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -14,11 +13,11 @@ import android.view.MenuItem;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
-import com.btm.pagodirecto.fragments.ListFragment;
+import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
 
 public class SellActivity extends BaseActivity implements CalculatorFragment.OnFragmentInteractionListener,
-                                                            ListFragment.OnFragmentInteractionListener {
+                                                            ProductsFragment.OnFragmentInteractionListener {
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
@@ -60,7 +59,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         // init corresponding fragment
         switch (item.getItemId()) {
             case R.id.menu_list:
-                frag = ListFragment.newInstance(getString(R.string.text_list),
+                frag = ProductsFragment.newInstance(getString(R.string.text_list),
                         getColorFromRes(R.color.color_list));
                 break;
             case R.id.menu_calculator:

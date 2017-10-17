@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/fragment_content"
     android:background="@drawable/background"
-    tools:context=".fragments.ListFragment">
+    tools:context=".fragments.ProductsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,6 +71,6 @@
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
         tools:context="com.btm.pagodirecto.activities.SellActivity"
-        tools:listitem="@layout/list_item_user" />
+        tools:listitem="@layout/list_item_product" />
 
 </LinearLayout>
