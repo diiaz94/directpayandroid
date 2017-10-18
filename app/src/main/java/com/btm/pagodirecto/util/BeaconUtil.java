@@ -7,6 +7,7 @@ import org.altbeacon.beacon.Beacon;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class BeaconUtil {
     private static JSONArray registeredBeacons = null;
 
     public static void setRegisteredBeacons(){
-        List<RegisteredBeacons> beaconList = null;
+        List<RegisteredBeacons> beaconList = new ArrayList<RegisteredBeacons>();
 
         //Mint beacon
         beaconList.add(new RegisteredBeacons("eddd1ebeac04e5defa99:ccf165e85832",

@@ -63,7 +63,7 @@ public class BeaconsRangeNotifier implements RangeNotifier {
                 currentBeacon = getBeaconFromList(beacon, beaconList);
 
                 if (currentBeacon != null) {
-                    beaconSendingLogicByApiRest(currentBeacon);
+                    beaconSendingLogic(currentBeacon);
                 }
             }
         }catch (Exception e) {
@@ -72,7 +72,7 @@ public class BeaconsRangeNotifier implements RangeNotifier {
         }
     }
 
-    private void  beaconSendingLogicByApiRest(Beacons beacon){
+    private void  beaconSendingLogic(Beacons beacon){
         //Do something with current beacon
         try {
             Log.d("beacon distance:: ", "idBeacon: "+String.valueOf(beacon.getBeaconId())+ " :: " +String.valueOf(beacon.getAccurateDistance()));

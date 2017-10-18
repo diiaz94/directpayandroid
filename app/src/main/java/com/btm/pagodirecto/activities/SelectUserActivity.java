@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.adapters.GridRecyclerViewAdapter;
@@ -41,7 +42,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @EActivity
-public class SelectUserActivity extends BaseActivity {
+public class SelectUserActivity extends BeaconScanner {
 
     @Bind(R.id.grid)
     RecyclerView recyclerView;
