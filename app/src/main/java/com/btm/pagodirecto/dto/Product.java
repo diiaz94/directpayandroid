@@ -9,8 +9,17 @@ public class Product {
     String name;
     String photo_url;
     String price;
+    String rating;
     String description;
     String status;
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
     public String get_id() {
         return _id;

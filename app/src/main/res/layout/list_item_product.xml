@@ -1,101 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="375"
-    android:gravity="center">
+    android:layout_height="120dp"
+    android:orientation="vertical"
+    android:weightSum="215"
+    android:gravity="center"
+    android:background="@color/black">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="375"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="410">
-
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="410"
-            android:orientation="vertical"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="4dp">
-
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="193"
+        android:weightSum="750"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="710"
+            android:background="@drawable/product_detail">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="194">
+                <android.support.v4.widget.CircleImageView
+                    android:id="@+id/product_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/trump"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="514"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="710">
+                android:weightSum="516">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="200"
-                    android:background="@color/black">
-
-                    <ImageView
-                        android:id="@+id/product_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="514"
+                    android:layout_weight="465"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="510">
+                    android:orientation="vertical"
+                    android:weightSum="194">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="470"
-                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="150"
                         android:orientation="vertical"
-                        android:weightSum="194">
+                        android:weightSum="150">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="150"
-                            android:orientation="vertical"
-                            android:weightSum="150">
-
+                            android:layout_weight="45"
+                            android:weightSum="465">
                             <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="45"></LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="65"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="365"
                                 android:gravity="center_vertical">
                                 <TextView
-                                    android:id="@+id/product_name"
+                                    android:id="@+id/product_price"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/black"
+                                    android:text="Bs 3.000"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="100"
+                                android:weightSum="100"
+                                android:gravity="center"
+                                android:background="@drawable/rating_orange_bg">
+                                <TextView
+                                    android:id="@+id/product_rating"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="40"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/white"
+                                    android:text="4.9"/>
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="25"
+                                    android:src="@drawable/star_white"/>
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="40"></LinearLayout>
                         </LinearLayout>
 
-                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="65"
+                            android:gravity="center_vertical">
 
+                            <TextView
+                                android:id="@+id/product_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Croissant"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="40"
+                            android:weightSum="465"
+                            android:gravity="end">
+                            <Button
+                                android:id="@+id/btn_detail"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top"
+                                android:layout_weight="140"
+                                android:background="@drawable/grid_button"
+                                android:gravity="center"
+                                android:text="VER DETALLE"
+                                android:textColor="@color/gray"
+                                android:textSize="8sp" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </LinearLayout>
+
 
     </LinearLayout>
 

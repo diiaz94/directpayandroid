@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:weightSum="1304"
+    android:weightSum="1200"
     android:orientation="vertical"
     android:id="@+id/fragment_content"
     android:background="@drawable/background"
@@ -60,14 +60,14 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/whiteTransparent"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1286"
+        android:layout_weight="1100"
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
         tools:context="com.btm.pagodirecto.activities.SellActivity"

@@ -47,7 +47,7 @@ private LayoutInflater inflater;
                 .inflate(R.layout.grid_item_user, parent, false);
 
 
-        Double height = (new Double(parent.getMeasuredHeight() / 2.5));
+        Double height = new Double(parent.getMeasuredHeight() / 2.5);
         int width = parent.getMeasuredWidth() / 2;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));

@@ -10,14 +10,11 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.dto.Product;
-import com.btm.pagodirecto.dto.Product;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Pedro on 4/10/2017.
@@ -54,10 +51,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
-       holder.productName.setText(items.get(position).getName());
+        holder.productPrice.setText("Bs. "+items.get(position).getPrice());
+        holder.productRating.setText(items.get(position).getRating());
+        holder.productName.setText(items.get(position).getName());
+
         Glide.with(ctx).load(glideUrl).into(holder.productImage);
-
-
 
         //holder.mView.setTag(items.get(position).getId());
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +75,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView productImage;
+        public final TextView productPrice;
+        public final TextView productRating;
         public final TextView productName;
 
         public Product mItem;
@@ -85,7 +85,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             super(view);
             mView = view;
             productImage = (ImageView) view.findViewById(R.id.product_image);
+            productPrice = (TextView) view.findViewById(R.id.product_price);
+            productRating = (TextView) view.findViewById(R.id.product_rating);
             productName = (TextView) view.findViewById(R.id.product_name);
+
+
         }
     }
 }
