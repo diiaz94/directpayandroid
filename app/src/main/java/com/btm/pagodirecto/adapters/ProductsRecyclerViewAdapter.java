@@ -10,14 +10,13 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.dto.Product;
+import com.btm.pagodirecto.transforms.RoundedCornersTransformation;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 
 import java.util.ArrayList;
-
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
@@ -61,8 +60,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         holder.productName.setText(items.get(position).getName());
 
         MultiTransformation multi = new MultiTransformation(
-                new RoundedCornersTransformation(100, 0, RoundedCornersTransformation.CornerType.TOP_RIGHT),
-                new RoundedCornersTransformation(100, 0, RoundedCornersTransformation.CornerType.BOTTOM_LEFT));
+                new RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.TOP_LEFT),
+                new RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.BOTTOM_LEFT));
 
         Glide.with(ctx).load(glideUrl).apply(bitmapTransform(multi)).into(holder.productImage);
 
