@@ -60,6 +60,7 @@ public class Util {
 
     public static final String HEADER_ID =
             SOURCE_TYPE+":"+TENANT_ID+":"+THING_TYPE_ID+":"+THING_ID; // Build id for Header Json
+    private static Context context;
 
     public static Long getTimeForNotification(){
         return intervalTime;
@@ -267,6 +268,10 @@ public class Util {
 
     public final static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    public static void setContext(Context context) {
+        Util.context = context;
     }
 
 }
