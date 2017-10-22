@@ -9,4 +9,5 @@
     <string name="text_calculator">Calculadora</string>
     <string name="cobrar">COBRAR</string>
     <string name="producto">Producto</string>
+    <string name="title_activity_cart">CartActivity</string>
 </resources>

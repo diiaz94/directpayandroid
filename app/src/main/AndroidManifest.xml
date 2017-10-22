@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.btm.pagodirecto">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,11 @@
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SelectUserActivity" />
         <activity android:name=".activities.SellActivity" />
-        <activity android:name=".activities.ProductDetailActivity"></activity>
+        <activity android:name=".activities.ProductDetailActivity" />
+        <activity
+            android:name=".CartActivity"
+            android:label="@string/title_activity_cart"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
