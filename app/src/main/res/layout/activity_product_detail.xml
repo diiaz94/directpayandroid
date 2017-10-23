@@ -22,6 +22,7 @@
             android:layout_weight="20"
             android:gravity="center">
             <Button
+                android:id="@+id/btn_back"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@drawable/back"
@@ -64,6 +65,7 @@
         android:weightSum="100">
 
         <ImageView
+            android:id="@+id/product_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
@@ -175,6 +177,7 @@
                 android:layout_weight="20">
 
                 <TextView
+                    android:id="@+id/product_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="Café Grande"
@@ -184,6 +187,7 @@
                     android:layout_weight="70"/>
 
                 <TextView
+                    android:id="@+id/product_price"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="Bs. 2,000"
@@ -197,12 +201,13 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/product_description"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="50"
-                android:textSize="12sp"
+                android:text="Einstein has just become the world's first time traveler. I sent him into the future. One minute into the future to be exact. And at exactly 1:21 AM we shall catch up with him. \n\n The way I see it, if you're gonna build a time machine into a car why not do it with some style."
                 android:textColor="@color/gray"
-                android:text="Einstein has just become the world's first time traveler. I sent him into the future. One minute into the future to be exact. And at exactly 1:21 AM we shall catch up with him. \n\n The way I see it, if you're gonna build a time machine into a car why not do it with some style."/>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

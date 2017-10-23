@@ -1,6 +1,7 @@
 package com.btm.pagodirecto.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.btm.pagodirecto.CartActivity;
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.SelectUserActivity_;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
@@ -18,11 +22,13 @@ import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
+import com.btm.pagodirecto.util.Util;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -44,6 +50,9 @@ public class ProductsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    @Bind(R.id.btn_shop)
+    Button btnShop;
 
     private OnFragmentInteractionListener mListener;
 
@@ -136,6 +145,15 @@ public class ProductsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @OnClick(R.id.btn_shop)
+    public void goToShop(){
+        Util.goToActivitySlide(
+                Util.getActivity(),
+                CartActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
     }
 
     /**
