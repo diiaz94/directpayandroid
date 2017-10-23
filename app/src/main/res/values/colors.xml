@@ -28,4 +28,6 @@
     <color name="gray02">#dcdad9</color>
     <color name="dark_gray">#444141</color>
     <color name="orange">#f58025</color>
+    <color name="black_with_opacity">#000000ff</color>
+    <color name="pd_red">#e33d51ff</color>
 </resources>
