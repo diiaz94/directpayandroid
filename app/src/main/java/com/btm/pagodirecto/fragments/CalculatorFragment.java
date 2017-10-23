@@ -1,6 +1,7 @@
 package com.btm.pagodirecto.fragments;
 
 import android.content.Context;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -251,10 +252,12 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             this.oper[1] = "+"; // 10 +
             inputResult.setText("Bs.0,00");
         }else{
-            this.oper[1] = "+";
-            this.oper[2] = this.getTextWithoutFormat();
-            inputResult.setText("Bs.0,00");
-            this.doOperation(this.oper[0],this.oper[1],this.oper[2]); // 0 + 10
+            if (!inputResult.getText().toString().isEmpty() || inputResult.getText().toString() != this.oper[2]){
+                this.oper[1] = "+";
+                this.oper[2] = this.getTextWithoutFormat();
+                inputResult.setText("Bs.0,00");
+                this.doOperation(this.oper[0],this.oper[1],this.oper[2]); // 0 + 10
+            }
         }
     }
 
