@@ -30,27 +30,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:weightSum="724"
         android:layout_weight="724"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="724">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             app:layoutManager="GridLayoutManager"
             app:spanCount="1"
             tools:context="com.btm.pagodirecto.CartActivity"
-            tools:listitem="@layout/car_item"
-            android:visibility="gone"/>
+            tools:listitem="@layout/car_item" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_weight="181"
-            android:weightSum="181"
+            android:background="@color/white"
             android:gravity="center"
-            android:background="@color/white">
+            android:orientation="vertical"
+            android:weightSum="181">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,7 +74,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="139"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/trump" />
+                        android:src="@drawable/croissant_xhdpi" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -289,14 +290,15 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_weight="181"
-            android:weightSum="181"
+            android:background="@color/white"
             android:gravity="center"
-            android:background="@color/white">
+            android:orientation="vertical"
+            android:weightSum="181">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -318,7 +320,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="139"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/trump" />
+                        android:src="@drawable/cafe_xhdpi" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -532,14 +534,15 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_weight="181"
-            android:weightSum="181"
+            android:background="@color/white"
             android:gravity="center"
-            android:background="@color/white">
+            android:orientation="vertical"
+            android:weightSum="181">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -562,7 +565,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="139"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/trump" />
+                        android:src="@drawable/cafegrande_xhdpi" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -776,14 +779,15 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_weight="181"
-            android:weightSum="181"
+            android:background="@color/white"
             android:gravity="center"
-            android:background="@color/white">
+            android:orientation="vertical"
+            android:weightSum="181">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -806,7 +810,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="139"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/trump" />
+                        android:src="@drawable/cerveza_xhdpi" />
 
                     <LinearLayout
                         android:layout_width="0dp"
