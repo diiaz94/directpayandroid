@@ -27,12 +27,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Pedro on 4/10/2017.
  */
 
-public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerViewAdapter.ViewHolder> {
+public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecyclerViewAdapter.ViewHolder> {
 
-    private final Context ctx;
-    private  ArrayList<User> items;
-    private LayoutInflater inflater;
-    public GridRecyclerViewAdapter(Context ctx, ArrayList<User> items) {
+private final Context ctx;
+private  ArrayList<User> items;
+private LayoutInflater inflater;
+
+    public UsersRecyclerViewAdapter(Context ctx, ArrayList<User> items) {
+
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
@@ -45,7 +47,7 @@ public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerVi
                 .inflate(R.layout.grid_item_user, parent, false);
 
 
-        Double height = (new Double(parent.getMeasuredHeight() / 2.5));
+        Double height = new Double(parent.getMeasuredHeight() / 2.5);
         int width = parent.getMeasuredWidth() / 2;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));
