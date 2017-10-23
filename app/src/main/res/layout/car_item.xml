@@ -51,41 +51,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="65"
-                            android:weightSum="465">
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="365"
-                                android:gravity="center_vertical">
-                                <TextView
-                                    android:id="@+id/car_title"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:textColor="@color/black"
-                                    android:text="Croissant"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="100"
-                                android:weightSum="100"
-                                android:gravity="center"
-                                android:background="@drawable/rating_orange_bg">
-                                <TextView
-                                    android:id="@+id/product_rating"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="40"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/white"
-                                    android:text="4.9"/>
-                                <ImageView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="25"
-                                    android:src="@drawable/star_white"/>
-                            </LinearLayout>
+                            android:weightSum="465"
+                            android:gravity="center_vertical">
+                            <TextView
+                                android:id="@+id/car_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"
+                                android:text="Croissant"/>
 
                         </LinearLayout>
 
@@ -93,15 +67,50 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="63"
+                            android:weightSum="465"
+                            android:orientation="horizontal"
                             android:gravity="center_vertical">
 
-                            <TextView
-                                android:id="@+id/product_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Croissant"
-                                android:textColor="@color/black"
-                                android:textSize="14sp"/>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="183"
+                                android:weightSum="183"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/border">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="44"
+                                    android:weightSum="63"
+                                    android:orientation="vertical">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="27">
+                                    <ImageButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="27"
+                                        android:background="@color/transparent"
+                                        android:src="@drawable/plus_icon__hdpi"/>
+                                </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="282"
+                                android:gravity="center_vertical|end">
+                                <TextView
+                                    android:id="@+id/car_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    android:text="Bs. 9000"/>
+                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
