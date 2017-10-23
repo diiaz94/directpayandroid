@@ -77,6 +77,7 @@
                                 android:layout_weight="183"
                                 android:weightSum="183"
                                 android:gravity="center_vertical"
+                                android:orientation="horizontal"
                                 android:background="@drawable/border">
                                 <LinearLayout
                                     android:layout_width="0dp"
