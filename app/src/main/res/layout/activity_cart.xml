@@ -31,8 +31,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="724">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="GridLayoutManager"
+            app:spanCount="1"
+            tools:context="com.btm.pagodirecto.CartActivity"
+            tools:listitem="@layout/car_item" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -57,12 +66,12 @@
                 android:text="Subtotal:"/>
 <View
     android:layout_width="20dp"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Bs. 15.500:"/>
+                    android:text="Bs. 15.500"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
