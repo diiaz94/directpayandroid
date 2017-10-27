@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -9,12 +10,16 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
+
+import butterknife.Bind;
+import butterknife.OnClick;
 
 public class SellActivity extends BaseActivity implements CalculatorFragment.OnFragmentInteractionListener,
                                                             ProductsFragment.OnFragmentInteractionListener {
@@ -103,4 +108,15 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     public void onFragmentInteraction(Uri uri) {
 
     }
-}
+
+    @Override
+    public void onBackPressed() {
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                SelectUserActivity_.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
+    }
+
+    }

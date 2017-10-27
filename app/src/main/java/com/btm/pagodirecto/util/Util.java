@@ -172,7 +172,14 @@ public class Util {
         Intent intent = new Intent(getContext(), toActivity);
         getActivity().startActivity(intent.addFlags(intentsFlags));
         fromActivity.finish();
-        getActivity().overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
+        getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+    }
+
+    public static void goToActivitySlideBack(Activity fromActivity, Class toActivity, int intentsFlags) {
+        Intent intent = new Intent(getContext(), toActivity);
+        getActivity().startActivity(intent.addFlags(intentsFlags));
+        fromActivity.finish();
+        getActivity().overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
     }
 
     public static void goToActivityFade(Activity fromActivity, Class toActivity, int intentsFlags) {

@@ -61,8 +61,19 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_back)
     public void goToSell(){
-        Util.goToActivitySlide(
-                this,
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                SellActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
+    }
+
+    @Override
+    public void onBackPressed() {
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
                 SellActivity.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );

@@ -1,11 +1,15 @@
 package com.btm.pagodirecto;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.btm.pagodirecto.activities.SellActivity;
+import com.btm.pagodirecto.util.Util;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -25,6 +29,16 @@ public class CartActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+    }
+
+    @Override
+    public void onBackPressed() {
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                SellActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
     }
 
 }

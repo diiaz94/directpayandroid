@@ -54,6 +54,9 @@ public class ProductsFragment extends Fragment {
     @Bind(R.id.btn_shop)
     Button btnShop;
 
+    @Bind(R.id.btn_back)
+    Button btnBack;
+
     private OnFragmentInteractionListener mListener;
 
     public ProductsFragment() {
@@ -152,6 +155,16 @@ public class ProductsFragment extends Fragment {
         Util.goToActivitySlide(
                 Util.getActivity(),
                 CartActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
+    }
+
+    @OnClick(R.id.btn_back)
+    public void goBack(){
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                SelectUserActivity_.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
     }

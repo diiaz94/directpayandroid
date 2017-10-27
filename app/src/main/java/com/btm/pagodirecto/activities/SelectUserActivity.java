@@ -155,4 +155,14 @@ public class SelectUserActivity extends BeaconScanner {
         inputMethodManager.showSoftInput(view, 0);
     }
 
+    @Override
+    public void onBackPressed() {
+        // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                HomeActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
+    }
+
 }

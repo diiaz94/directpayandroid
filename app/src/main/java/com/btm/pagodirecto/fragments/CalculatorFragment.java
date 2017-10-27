@@ -1,6 +1,7 @@
 package com.btm.pagodirecto.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,9 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.SelectUserActivity_;
+import com.btm.pagodirecto.util.Util;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
@@ -74,6 +78,9 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     @Bind(R.id.btn_zero)
     TextView btnZero;
+
+    @Bind(R.id.btn_back)
+    Button btnBack;
 
     private OnFragmentInteractionListener mListener;
 
@@ -247,42 +254,58 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     @OnClick(R.id.btn_plus)
     public void sum(){
-        if (this.oper[0].isEmpty()){
-            this.oper[0] = this.getTextWithoutFormat();
-            this.oper[1] = "+"; // 10 +
-            inputResult.setText("Bs.0,00");
-        }else{
-            if (!inputResult.getText().toString().isEmpty() || inputResult.getText().toString() != this.oper[2]){
-                this.oper[1] = "+";
-                this.oper[2] = this.getTextWithoutFormat();
+        this.oper[1] = "+";
+        if (!emptyText()){
+            if (this.oper[0].isEmpty()){
+                this.oper[0] = getTextWithoutFormat();
                 inputResult.setText("Bs.0,00");
-                this.doOperation(this.oper[0],this.oper[1],this.oper[2]); // 0 + 10
+            }else {
+                this.oper[2] = getTextWithoutFormat();
+                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
             }
         }
     }
 
     @OnClick(R.id.btn_sustract)
     public void sustract(){
-        if (this.oper[0].isEmpty()){
-            this.oper[0] = inputResult.getText().toString();
-            this.oper[1] = "-";
-        }else{
-            this.oper[1] = "-";
-            this.oper[2] = this.getTextWithoutFormat();
-            this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
+        this.oper[1] = "-";
+        if (!emptyText()){
+            if (this.oper[0].isEmpty()){
+                this.oper[0] = getTextWithoutFormat();
+                inputResult.setText("Bs.0,00");
+            }else {
+                this.oper[2] = getTextWithoutFormat();
+                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
+            }
         }
     }
 
     @OnClick(R.id.btn_mult)
     public void mult(){
         this.oper[1] = "*";
-        this.doOperation(this.oper[0],"*",inputResult.getText().toString());
+        if (!emptyText()){
+            if (this.oper[0].isEmpty()){
+                this.oper[0] = getTextWithoutFormat();
+                inputResult.setText("Bs.0,00");
+            }else {
+                this.oper[2] = getTextWithoutFormat();
+                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
+            }
+        }
     }
 
     @OnClick(R.id.btn_div)
     public void div(){
         this.oper[1] = "/";
-        this.doOperation(this.oper[0],"/",inputResult.getText().toString());
+        if (!emptyText()){
+            if (this.oper[0].isEmpty()){
+                this.oper[0] = getTextWithoutFormat();
+                inputResult.setText("Bs.0,00");
+            }else {
+                this.oper[2] = getTextWithoutFormat();
+                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
+            }
+        }
     }
 
     @OnClick(R.id.btn_equal)
@@ -314,12 +337,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                     break;
             }
         }
-        //result = roundTwoDecimals(result);
         this.finalResult = result;
-        this.oper[0] = result.toString();
+        this.oper[0] = "";
         this.oper[1] = "";
         this.oper[2] = "";
-        formatText(result.toString().concat("0"),0,result.toString().length()-1,result.toString().length());
+        formatText(String.format( "%.2f", result ),0,result.toString().length()-1,result.toString().length());
     }
 
     public String getTextWithoutFormat(){
@@ -329,9 +351,23 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         return  cleanString;
     }
 
+    public boolean emptyText(){
+        return (getTextWithoutFormat().equals("0.00"));
+    }
+
     double roundTwoDecimals(double d) {
-        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        DecimalFormat twoDForm = new DecimalFormat("###################.##");
         return Double.valueOf(twoDForm.format(d));
+    }
+
+    @OnClick(R.id.btn_back)
+    public void goBack(){
+            // code here to show dialog
+        Util.goToActivitySlideBack(
+                Util.getActivity(),
+                SelectUserActivity_.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+        );
     }
 }
 
