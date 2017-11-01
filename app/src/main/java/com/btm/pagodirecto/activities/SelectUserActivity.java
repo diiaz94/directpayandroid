@@ -65,7 +65,7 @@ public class SelectUserActivity extends BeaconScanner {
         @Override
         public  void onReceive(Context context, final Intent intent) {
             // Get extra data included in the Intent
-            
+
             String action = intent.getAction();
             String usr = intent.getStringExtra("user");
             Gson gson = new Gson();
@@ -109,7 +109,7 @@ public class SelectUserActivity extends BeaconScanner {
 
         JSONObject json = new JSONObject();
         try {
-            json.put("beacon","");
+            json.put("beacon","1");
             json.put("user",Util.getFromSharedPreferences("user_id"));
         } catch (JSONException e) {
             e.printStackTrace();
