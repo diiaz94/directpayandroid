@@ -2,6 +2,7 @@ package com.btm.pagodirecto.services;
 
 
 import com.btm.pagodirecto.interceptor.HttpInterceptor;
+import com.btm.pagodirecto.util.Constants;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 
     //Test
-    private static final String API_BASE_URL = "https://pagodirectoapi.herokuapp.com";
+    private static final String API_BASE_URL = Constants.SERVER_URL;
 
     // Interceptor for logging
     private  static final HttpLoggingInterceptor logginInterceptor = new HttpLoggingInterceptor()

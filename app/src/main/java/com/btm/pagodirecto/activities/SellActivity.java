@@ -14,9 +14,13 @@ import android.widget.Button;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -51,6 +55,21 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             selectedItem = mBottomNav.getMenu().getItem(0);
         }
         selectFragment(selectedItem);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon","1");
+            json.put("user",Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        SocketHandle.emitEvent("exit region", json);
     }
 
     @Override

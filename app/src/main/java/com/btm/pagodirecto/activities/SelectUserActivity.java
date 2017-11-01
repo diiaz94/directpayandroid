@@ -3,6 +3,8 @@ package com.btm.pagodirecto.activities;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,16 +25,21 @@ import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 
 import com.btm.pagodirecto.adapters.UsersRecyclerViewAdapter;
+import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.domain.beacons.RegisteredBeacons;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.responses.ResponseUsers;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.util.BeaconUtil;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
+import com.google.gson.Gson;
 
 import org.altbeacon.beacon.Beacon;
 import org.androidannotations.annotations.EActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +61,29 @@ public class SelectUserActivity extends BeaconScanner {
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
 
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public  void onReceive(Context context, final Intent intent) {
+            // Get extra data included in the Intent
+            
+            String action = intent.getAction();
+            String usr = intent.getStringExtra("user");
+            Gson gson = new Gson();
+            User user = gson.fromJson(usr, User.class);
+
+            if(action.equalsIgnoreCase(Constants.ADD_USER)){
+                //ADD USER IN LIST
+
+            }
+
+            if(action.equalsIgnoreCase(Constants.REMOVE_USER)){
+                //REMOVE USER IN LIST
+
+            }
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +93,8 @@ public class SelectUserActivity extends BeaconScanner {
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         loadUsers();
         hideSoftKeyboard();
+
+
     }
 
     @Override
@@ -73,7 +105,17 @@ public class SelectUserActivity extends BeaconScanner {
         requestBluetoothPermission();
         requestLocationAccessPermission();
         BeaconUtil.setRegisteredBeacons();
-        BeaconUtil.getRegisteredBeacons();                 // Download list of registered listPromotion
+        BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon","");
+            json.put("user",Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        SocketHandle.emitEvent("enter region", json);
 
     }
 

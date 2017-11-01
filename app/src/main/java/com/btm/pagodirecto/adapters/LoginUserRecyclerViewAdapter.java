@@ -80,6 +80,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
                 //Open home activity
                 Util.saveInSharedPreferences("user_name",items.get(position).getName());
                 Util.saveInSharedPreferences("user_url_image",items.get(position).getPhoto_url());
+                Util.saveInSharedPreferences("user_id", items.get(position).getId());
 
                 Util.goToActivitySlide(
                         Util.getActivity(),

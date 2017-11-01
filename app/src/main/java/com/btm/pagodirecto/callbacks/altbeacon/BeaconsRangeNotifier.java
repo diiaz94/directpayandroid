@@ -155,8 +155,9 @@ public class BeaconsRangeNotifier implements RangeNotifier {
 
     public void emitEnterRegion(Beacons beacon) throws JSONException {
 
-        JSONObject user = new JSONObject(Util.getFromSharedPreferences("user"));
-        SocketHandle.emitEvent("",user);
+        //JSONObject data = new JSONObject(Util.getFromSharedPreferences("user"));
+
+        //SocketHandle.emitEvent("",user);
 
     }
 

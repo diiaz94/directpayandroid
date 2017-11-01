@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.adapters;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +15,12 @@ import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.ProductDetailActivity;
 import com.btm.pagodirecto.activities.SellActivity;
 import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
