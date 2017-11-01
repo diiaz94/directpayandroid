@@ -65,6 +65,7 @@ public class SelectUserActivity extends BeaconScanner {
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
     private ArrayList<User> users = new ArrayList<User>();
+    public Boolean enterRegion = false;
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
@@ -85,10 +86,15 @@ public class SelectUserActivity extends BeaconScanner {
 
             if(action.equalsIgnoreCase(Constants.REMOVE_USER)){
                 //REMOVE USER IN LIST
-                users.remove(user);
+                users.remove(this.getIndexFromUser(user));
                 recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
             }
 
+        }
+
+        private int getIndexFromUser(User user) {
+
+            return 0;
         }
     };
 
@@ -117,36 +123,23 @@ public class SelectUserActivity extends BeaconScanner {
     protected void onResume(){
         super.onResume();
 
-        Util.setThreadPolicy();
-        requestBluetoothPermission();
-        requestLocationAccessPermission();
-        BeaconUtil.setRegisteredBeacons();
-        BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
+        if (Util.getFromSharedPreferences("user_role").equals("customer")) {
+            Util.setThreadPolicy();
+            requestBluetoothPermission();
+            requestLocationAccessPermission();
+            BeaconUtil.setRegisteredBeacons();
+            BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
 
-        JSONObject json = new JSONObject();
-        try {
-            json.put("beacon","1");
-            json.put("user",Util.getFromSharedPreferences("user_id"));
-        } catch (JSONException e) {
-            e.printStackTrace();
+            JSONObject json = new JSONObject();
+            try {
+                json.put("beacon", "1");
+                json.put("user", Util.getFromSharedPreferences("user_id"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            this.enterRegion = true;
+            SocketHandle.emitEvent("enter region", json);
         }
-
-        SocketHandle.emitEvent("enter region", json);
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        JSONObject json = new JSONObject();
-        try {
-            json.put("beacon","1");
-            json.put("user",Util.getFromSharedPreferences("user_id"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        SocketHandle.emitEvent("exit region", json);
     }
 
     @Override
@@ -159,7 +152,7 @@ public class SelectUserActivity extends BeaconScanner {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        this.enterRegion = false;
         SocketHandle.emitEvent("exit region", json);
     }
 
