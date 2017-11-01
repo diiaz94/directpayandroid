@@ -114,11 +114,14 @@ public class SocketHandle {
 
             try {
                 JSONObject obj = (JSONObject) args[0];
-            //User user = Util.string2Object(obj.getJSONObject("user").toString(),User.class);
+                User user = Util.string2Object(obj.getJSONObject("user").toString(),User.class);
 
-            Intent intent = new Intent(Constants.ADD_USER);
-            intent.putExtra("user", obj.getJSONObject("user").toString());
-            LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
+                if(user.getRole().equalsIgnoreCase("customer") &&
+                  !user.getId().equalsIgnoreCase(Util.getFromSharedPreferences("user_id"))){
+                    Intent intent = new Intent(Constants.ADD_USER);
+                    intent.putExtra("user", obj.getJSONObject("user").toString());
+                    LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
