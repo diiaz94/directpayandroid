@@ -1,5 +1,10 @@
 package com.btm.pagodirecto.dto;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Pedro on 4/10/2017.
  */
@@ -49,5 +54,15 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public JSONObject toJSONObject(){
+        Gson gson = new Gson();
+        try {
+            return new JSONObject(gson.toJson(this));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
