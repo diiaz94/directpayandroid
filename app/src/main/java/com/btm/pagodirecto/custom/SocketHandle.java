@@ -25,7 +25,7 @@ public class SocketHandle {
     private static Socket mSocket;
 
 
-    public static void init(Context context){
+    public static void init(Context context) {
 
         try {
             mSocket = IO.socket(Constants.SERVER_URL);
@@ -34,10 +34,12 @@ public class SocketHandle {
         }
         Util.setContext(context);
         mSocket.on(Socket.EVENT_CONNECT, onConnect);
-        mSocket.on(Socket.EVENT_DISCONNECT,onDisconnect);
+        mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
         //mSocket.on("enter region", onJoin);
+        mSocket.on("enter region", onEnterRegion);
+        mSocket.on("exit region", onExitRegion);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
@@ -45,11 +47,16 @@ public class SocketHandle {
 
     }
 
+    public static void emitEvent(String event, JSONObject args) {
+
+        mSocket.emit(event, args);
+    }
+
     private static Emitter.Listener onConnect = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
 
-            Log.i(TAG,"Connected ");
+            Log.i(TAG, "Connected ");
 
             JSONObject data = new JSONObject();
             //data.put("user_id",Util.getId());
@@ -61,15 +68,36 @@ public class SocketHandle {
     private static Emitter.Listener onDisconnect = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
-            Log.i(TAG,"Disconnected ");
+            Log.i(TAG, "Disconnected ");
             // Util.showToastMessage("Disconnected"  + Util.getEmail());
         }
     };
     private static Emitter.Listener onConnectError = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
-            Log.i(TAG,"onConnectError ");
+            Log.i(TAG, "onConnectError ");
             //Util.showToastMessage(R.string.error_connect + Util.getEmail());
         }
+    };
+
+
+    private static Emitter.Listener onEnterRegion = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            //Log.i(TAG,"onEnterRegion " );
+            
+        }
+
+        
+    };
+
+    private static Emitter.Listener onExitRegion = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            //Log.i(TAG,"onExitRegion " );
+
+        }
+
+
     };
 }

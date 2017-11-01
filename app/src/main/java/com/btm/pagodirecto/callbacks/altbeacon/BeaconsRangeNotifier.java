@@ -86,7 +86,7 @@ public class BeaconsRangeNotifier implements RangeNotifier {
                     beacon.setOutStatus();
                     beacon.setArrive(false);
                     //Emit exit region from that beacon
-                    
+
                 }
             }
         }catch (Exception e) {
