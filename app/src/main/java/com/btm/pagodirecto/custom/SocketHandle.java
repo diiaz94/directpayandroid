@@ -24,6 +24,9 @@ public class SocketHandle {
     private static final String TAG = "SocketHandle";
     private static Socket mSocket;
 
+    private static final String EVENT_ENTER_REGION = "Enter region";
+    private static final String EVENT_EXIT_REGION = "Exit region";
+
 
     public static void init(Context context) {
 
@@ -38,8 +41,8 @@ public class SocketHandle {
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
         //mSocket.on("enter region", onJoin);
-        mSocket.on("enter region", onEnterRegion);
-        mSocket.on("exit region", onExitRegion);
+        mSocket.on(EVENT_ENTER_REGION, onEnterRegion);
+        mSocket.on(EVENT_EXIT_REGION, onExitRegion);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
@@ -85,7 +88,7 @@ public class SocketHandle {
         @Override
         public void call(final Object... args) {
             //Log.i(TAG,"onEnterRegion " );
-            
+
         }
 
         

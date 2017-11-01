@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.google.gson.Gson;
 import com.btm.pagodirecto.domain.beacons.Beacons;
@@ -80,7 +81,7 @@ public class BeaconsRangeNotifier implements RangeNotifier {
                 Log.d("beacons", "YES REGISTERED");
                 beacon.setInStatus();
                 //Emit enter region from that beacon
-
+                this.emitEnterRegion(beacon);
             }else{ // OUT Region > 3 m
                 if(beacon.getInsideRegion()) {
                     beacon.setOutStatus();
@@ -150,6 +151,13 @@ public class BeaconsRangeNotifier implements RangeNotifier {
         builder.setTitle("Functionality limited");
         builder.setMessage("Since location access has not been granted, this app will not be able to discover listPromotions when in the background.");
         builder.show();
+    }
+
+    public void emitEnterRegion(Beacons beacon) throws JSONException {
+
+        JSONObject user = new JSONObject(Util.getFromSharedPreferences("user"));
+        SocketHandle.emitEvent("",user);
+
     }
 
     /*
