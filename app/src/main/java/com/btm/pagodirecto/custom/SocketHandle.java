@@ -132,7 +132,19 @@ public class SocketHandle {
         @Override
         public void call(final Object... args) {
             //Log.i(TAG,"onEnterRegion " );
+            try {
+                JSONObject obj = (JSONObject) args[0];
+                User user = Util.string2Object(obj.getJSONObject("user").toString(),User.class);
 
+                if(user.getRole().equalsIgnoreCase("customer") &&
+                        !user.getId().equalsIgnoreCase(Util.getFromSharedPreferences("user_id"))){
+                    Intent intent = new Intent(Constants.REMOVE_USER);
+                    intent.putExtra("user", obj.getJSONObject("user").toString());
+                    LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
 
