@@ -37,7 +37,9 @@ public class SocketHandle {
         mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
+        //mSocket.on("enter region", onJoin);
         mSocket.on("enter region", onEnterRegion);
+        mSocket.on("exit region", onExitRegion);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
@@ -82,10 +84,20 @@ public class SocketHandle {
     private static Emitter.Listener onEnterRegion = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
-            //Log.i(TAG,"onReceiveMessage " + Util.getEmail());
-
+            //Log.i(TAG,"onEnterRegion " );
+            
         }
 
         
+    };
+
+    private static Emitter.Listener onExitRegion = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            //Log.i(TAG,"onExitRegion " );
+
+        }
+
+
     };
 }

@@ -79,10 +79,14 @@ public class BeaconsRangeNotifier implements RangeNotifier {
             if (beacon.getDistance() <= MAX_REGION_DISTANCE) {  // IN Region < 3 m
                 Log.d("beacons", "YES REGISTERED");
                 beacon.setInStatus();
+                //Emit enter region from that beacon
+
             }else{ // OUT Region > 3 m
                 if(beacon.getInsideRegion()) {
                     beacon.setOutStatus();
                     beacon.setArrive(false);
+                    //Emit exit region from that beacon
+
                 }
             }
         }catch (Exception e) {
