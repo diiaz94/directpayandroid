@@ -15,6 +15,15 @@ public class User {
     String name;
     String photo_url;
     String status;
+    String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getId() {
         return _id;
