@@ -44,7 +44,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -83,7 +85,8 @@ public class SelectUserActivity extends BeaconScanner {
 
             if(action.equalsIgnoreCase(Constants.REMOVE_USER)){
                 //REMOVE USER IN LIST
-
+                users.remove(user);
+                recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
             }
 
         }
@@ -96,7 +99,8 @@ public class SelectUserActivity extends BeaconScanner {
         Util.setActivity(this);
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-        //loadUsers();
+
+        if (Util.getFromSharedPreferences("user_role").equals("customer")){loadUsers();}
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ADD_USER);
@@ -131,6 +135,33 @@ public class SelectUserActivity extends BeaconScanner {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon","1");
+            json.put("user",Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        SocketHandle.emitEvent("exit region", json);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon","1");
+            json.put("user",Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        SocketHandle.emitEvent("exit region", json);
+    }
 
     //Buetooth permission and activate
     private void requestBluetoothPermission(){
@@ -165,14 +196,19 @@ public class SelectUserActivity extends BeaconScanner {
 
 
     private void loadUsers() {
-      ServiceGenerator.getService(ApiService.class)
-                .users()
+
+        Map<String,String> map = new HashMap<>();
+        map.put("role", Util.getFromSharedPreferences("user_role"));
+        map.put("user_id", Util.getFromSharedPreferences("user_id"));
+
+        ServiceGenerator.getService(ApiService.class)
+                .users(map)
                 .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
 
                     @Override
                     public void handleSuccess(Object response) {
                         ResponseUsers responseUsers = (ResponseUsers) response;
-                        ArrayList<User> users = responseUsers.getUsers();
+                        users = responseUsers.getUsers();
 
                        recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
                     }

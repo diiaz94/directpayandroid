@@ -18,6 +18,8 @@ import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.util.Util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,8 +48,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loadUsers() {
+        Map<String,String> map = new HashMap<>();
         ServiceGenerator.getService(ApiService.class)
-                .users()
+                .users(map)
                 .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
 
                     @Override
