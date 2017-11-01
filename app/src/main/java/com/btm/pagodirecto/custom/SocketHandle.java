@@ -37,7 +37,7 @@ public class SocketHandle {
         mSocket.on(Socket.EVENT_DISCONNECT,onDisconnect);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
-       // mSocket.on("enter region", onJoin);
+        //mSocket.on("enter region", onJoin);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
