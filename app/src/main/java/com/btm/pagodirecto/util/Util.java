@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -279,6 +282,12 @@ public class Util {
 
     public static void setContext(Context context) {
         Util.context = context;
+    }
+
+    public static <S> S string2Object(String jsonString,Class<S> objectClass) {
+        Gson gson = new Gson();
+        S obj = gson.fromJson(jsonString, objectClass);
+        return obj;
     }
 
 }
