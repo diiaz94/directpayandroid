@@ -7,9 +7,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,6 +62,7 @@ public class SelectUserActivity extends BeaconScanner {
     private final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
+    private ArrayList<User> users = new ArrayList<User>();
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
@@ -73,6 +76,8 @@ public class SelectUserActivity extends BeaconScanner {
 
             if(action.equalsIgnoreCase(Constants.ADD_USER)){
                 //ADD USER IN LIST
+                users.add(users.size(),user);
+                recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
 
             }
 
@@ -91,7 +96,14 @@ public class SelectUserActivity extends BeaconScanner {
         Util.setActivity(this);
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-        loadUsers();
+        //loadUsers();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.ADD_USER);
+        filter.addAction(Constants.REMOVE_USER);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                filter);
+
         hideSoftKeyboard();
 
 
