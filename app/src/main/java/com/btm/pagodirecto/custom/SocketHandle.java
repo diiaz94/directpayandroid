@@ -1,10 +1,14 @@
 package com.btm.pagodirecto.custom;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +28,6 @@ public class SocketHandle {
     private static final String TAG = "SocketHandle";
     private static Socket mSocket;
 
-    private static final String EVENT_ENTER_REGION = "Enter region";
-    private static final String EVENT_EXIT_REGION = "Exit region";
-
 
     public static void init(Context context) {
 
@@ -41,8 +42,10 @@ public class SocketHandle {
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
         //mSocket.on("enter region", onJoin);
-        mSocket.on(EVENT_ENTER_REGION, onEnterRegion);
-        mSocket.on(EVENT_EXIT_REGION, onExitRegion);
+        mSocket.on(Constants.ENTER_REGION, onEnterRegion);
+        mSocket.on(Constants.EXIT_REGION, onExitRegion);
+        mSocket.on(Constants.ADD_USER, onAddUser);
+        mSocket.on(Constants.REMOVE_USER, onRemoveUser);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
@@ -91,13 +94,41 @@ public class SocketHandle {
 
         }
 
-        
+
     };
 
     private static Emitter.Listener onExitRegion = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
             //Log.i(TAG,"onExitRegion " );
+
+        }
+
+
+    };
+
+    private static Emitter.Listener onAddUser = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            //Log.i(TAG,"onEnterRegion " );
+
+            try {
+                JSONObject obj = (JSONObject) args[0];
+            //User user = Util.string2Object(obj.getJSONObject("user").toString(),User.class);
+
+            Intent intent = new Intent(Constants.ADD_USER);
+            intent.putExtra("user", obj.getJSONObject("user").toString());
+            LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    private static Emitter.Listener onRemoveUser = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            //Log.i(TAG,"onEnterRegion " );
 
         }
 
