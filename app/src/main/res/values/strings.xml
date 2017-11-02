@@ -11,4 +11,5 @@
     <string name="producto">Producto</string>
     <string name="title_activity_cart">CartActivity</string>
     <string name="title_activity_pin">Pin</string>
+    <string name="security_pin_label">Pin de Seguridad</string>
 </resources>
