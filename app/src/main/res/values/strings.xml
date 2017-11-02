@@ -12,4 +12,6 @@
     <string name="title_activity_cart">CartActivity</string>
     <string name="title_activity_pin">Pin</string>
     <string name="security_pin_label">Pin de Seguridad</string>
+    <string name="pin_reset_label">RESET</string>
+    <string name="pin_delete_label">ELIMINAR</string>
 </resources>

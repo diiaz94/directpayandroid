@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.btm.pagodirecto.PinActivity;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.util.Util;
@@ -38,11 +39,15 @@ public class HomeActivity extends BaseActivity {
 
     @OnClick(R.id.btn_sell)
     public void goToSell(){
-        Util.goToActivitySlide(
+        /*Util.goToActivitySlide(
             this,
             SelectUserActivity_.class,
             Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );
+        );*/
+        Util.goToActivitySlide(
+                this,
+                PinActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
     public void setUserAttributes(){
