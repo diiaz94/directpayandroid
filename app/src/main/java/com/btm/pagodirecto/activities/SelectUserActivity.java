@@ -79,22 +79,38 @@ public class SelectUserActivity extends BeaconScanner {
 
             if(action.equalsIgnoreCase(Constants.ADD_USER)){
                 //ADD USER IN LIST
-                users.add(users.size(),user);
-                recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
-
+                if (!ifExists(user)){
+                    users.add(users.size()-(users.size()>0?1:0),user);
+                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                }
             }
 
-            if(action.equalsIgnoreCase(Constants.REMOVE_USER)){
+            if (action.equalsIgnoreCase(Constants.REMOVE_USER)){
                 //REMOVE USER IN LIST
-                users.remove(this.getIndexFromUser(user));
-                recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                if (users.size() > 0) {
+                    users.remove(this.getIndexFromUser(user));
+                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                }
             }
 
         }
 
         private int getIndexFromUser(User user) {
-
+            for (int i = 0; i < users.size(); i++){
+                if (users.get(i).getId().equals(user.getId())){
+                    return i;
+                }
+            }
             return 0;
+        }
+
+        private boolean ifExists(User user){
+            for (int i = 0; i < users.size(); i++){
+                if (users.get(i).getId().equals(user.getId())){
+                    return true;
+                }
+            }
+            return false;
         }
     };
 
@@ -116,6 +132,15 @@ public class SelectUserActivity extends BeaconScanner {
 
         hideSoftKeyboard();
 
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon", "1");
+            json.put("user", Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        this.enterRegion = true;
+        SocketHandle.emitEvent("enter region", json);
 
     }
 
@@ -130,15 +155,6 @@ public class SelectUserActivity extends BeaconScanner {
             BeaconUtil.setRegisteredBeacons();
             BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
 
-            JSONObject json = new JSONObject();
-            try {
-                json.put("beacon", "1");
-                json.put("user", Util.getFromSharedPreferences("user_id"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            this.enterRegion = true;
-            SocketHandle.emitEvent("enter region", json);
         }
     }
 
