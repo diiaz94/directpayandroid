@@ -33,7 +33,8 @@
             android:name=".PinActivity"
             android:label="@string/title_activity_pin"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.P2PActivity"></activity>
+        <activity android:name=".activities.P2PActivity" />
+        <activity android:name=".activities.SplitPaymentActivity"></activity>
     </application>
 
 </manifest>

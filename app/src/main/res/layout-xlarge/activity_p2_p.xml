@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="1291"
     android:orientation="vertical"
+
     android:background="@drawable/background"
     tools:context="com.btm.pagodirecto.activities.P2PActivity">
 
