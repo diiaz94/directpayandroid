@@ -12,7 +12,54 @@
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="82"></LinearLayout>
+    android:layout_weight="82"
+    android:weightSum="750"
+    android:orientation="horizontal"
+    android:gravity="center">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="690"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="70"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/back"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:text="Atras"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="400"
+                    android:text="PIN"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -229,7 +276,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -250,7 +297,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -271,7 +318,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -304,7 +351,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -325,7 +372,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -346,7 +393,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -379,7 +426,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -400,7 +447,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -421,7 +468,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -473,7 +520,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
