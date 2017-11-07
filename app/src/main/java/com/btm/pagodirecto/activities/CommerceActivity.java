@@ -35,6 +35,13 @@ public class CommerceActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private TabLayout tabLayout;
+
+    private int[] tabIcons = {
+            R.drawable.mapsandflags,
+            R.drawable.list,
+            R.drawable.like
+    };
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -46,8 +53,6 @@ public class CommerceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commerce);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -56,11 +61,18 @@ public class CommerceActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        setupTabIcons();
 
     }
 
+    private void setupTabIcons(){
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -156,14 +168,14 @@ public class CommerceActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
+            /*switch (position) {
                 case 0:
                     return "NEARBY";
                 case 1:
                     return "LIST";
                 case 2:
                     return "FAVORITES";
-            }
+            }*/
             return null;
         }
     }
