@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1291"
-    tools:context="com.btm.pagodirecto.PinActivity"
+    tools:context="com.btm.pagodirecto.activities.PinActivity"
     android:orientation="vertical"
     android:background="@drawable/background">
 

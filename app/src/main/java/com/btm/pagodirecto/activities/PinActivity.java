@@ -1,4 +1,4 @@
-package com.btm.pagodirecto;
+package com.btm.pagodirecto.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.util.Util;
 
 import java.util.ArrayList;

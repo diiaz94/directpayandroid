@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.btm.pagodirecto.CartActivity;
+import com.btm.pagodirecto.activities.CartActivity;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.SelectUserActivity_;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
