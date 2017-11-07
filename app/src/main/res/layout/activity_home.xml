@@ -185,24 +185,26 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:gravity="center">
+
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:text="PAGAR"
-                android:textSize="15sp"
-                android:gravity="center"
                 android:id="@+id/btn_pay"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
                 android:layout_gravity="top"
-                android:textColor="@color/white"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/main_button"/>
+                android:background="@drawable/main_button"
+                android:gravity="center"
+                android:text="PAGAR"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="VENDER"
+                android:text="COMERCIOS"
                 android:textSize="15sp"
                 android:gravity="center"
-                android:id="@+id/btn_sell"
+                android:id="@+id/btn_commerces"
                 android:layout_gravity="bottom"
                 android:textColor="@color/white"
                 android:background="@drawable/main_button"/>

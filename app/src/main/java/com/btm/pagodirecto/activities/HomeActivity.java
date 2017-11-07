@@ -19,8 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends BaseActivity {
 
-    @Bind(R.id.btn_sell)
-    Button btnSell;
+    @Bind(R.id.btn_commerces)
+    Button btnCommerces;
+
+    @Bind(R.id.btn_pay)
+    Button btnPay;
 
     @Bind(R.id.user_name)
     TextView userName;
@@ -36,16 +39,19 @@ public class HomeActivity extends BaseActivity {
         this.setUserAttributes();
     }
 
-    @OnClick(R.id.btn_sell)
-    public void goToSell(){
-        /*Util.goToActivitySlide(
-            this,
-            SelectUserActivity_.class,
-            Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );*/
+    @OnClick(R.id.btn_pay)
+    public void goToPay(){
         Util.goToActivitySlide(
                 this,
                 CommerceProducts.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
+    @OnClick(R.id.btn_commerces)
+    public void goToCommerce(){
+        Util.goToActivitySlide(
+                this,
+                CommerceActivity.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
