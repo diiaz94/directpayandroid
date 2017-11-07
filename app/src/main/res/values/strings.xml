@@ -14,4 +14,7 @@
     <string name="security_pin_label">Pin de Seguridad</string>
     <string name="pin_reset_label">RESET</string>
     <string name="pin_delete_label">ELIMINAR</string>
+    <string name="title_activity_commerce">CommerceActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

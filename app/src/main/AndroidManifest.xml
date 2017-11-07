@@ -34,7 +34,11 @@
             android:label="@string/title_activity_pin"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.P2PActivity" />
-        <activity android:name=".activities.SplitPaymentActivity"></activity>
+        <activity android:name=".activities.SplitPaymentActivity" />
+        <activity
+            android:name=".activities.CommerceActivity"
+            android:label="@string/title_activity_commerce"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

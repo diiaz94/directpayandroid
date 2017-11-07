@@ -50,6 +50,14 @@ public class HomeActivity extends BaseActivity {
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
+    @OnClick(R.id.btn_shop)
+    public void goToCommerce(){
+        Util.goToActivitySlide(
+                this,
+                CommerceActivity.class,
+                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
     public void setUserAttributes(){
         userName.setText(Util.getFromSharedPreferences("user_name"));
 
