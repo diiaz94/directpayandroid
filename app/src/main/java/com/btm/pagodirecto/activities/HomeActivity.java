@@ -46,7 +46,7 @@ public class HomeActivity extends BaseActivity {
         );*/
         Util.goToActivitySlide(
                 this,
-                PinActivity.class,
+                SelectUserActivity_.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
