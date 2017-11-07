@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1291"
-    tools:context="com.btm.pagodirecto.CartActivity"
+    tools:context="com.btm.pagodirecto.activities.CartActivity"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:visibility="visible"
             app:layoutManager="GridLayoutManager"
             app:spanCount="1"
-            tools:context="com.btm.pagodirecto.CartActivity"
+            tools:context="com.btm.pagodirecto.activities.CartActivity"
             tools:listitem="@layout/car_item" />
 
 

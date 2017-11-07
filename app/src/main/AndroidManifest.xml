@@ -26,11 +26,11 @@
         <activity android:name=".activities.SellActivity" />
         <activity android:name=".activities.ProductDetailActivity" />
         <activity
-            android:name=".CartActivity"
+            android:name=".activities.CartActivity"
             android:label="@string/title_activity_cart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PinActivity"
+            android:name=".activities.PinActivity"
             android:label="@string/title_activity_pin"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.P2PActivity" />
