@@ -61,7 +61,6 @@ public class CommerceProducts extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         loadProducts();
 
-      scrollContainer.
     }
 
     private void loadProducts() {

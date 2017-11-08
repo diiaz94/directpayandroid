@@ -44,7 +44,6 @@
             tools:context="com.btm.pagodirecto.activities.CartActivity"
             tools:listitem="@layout/car_item" />
 
-
     </LinearLayout>
 
     <LinearLayout
