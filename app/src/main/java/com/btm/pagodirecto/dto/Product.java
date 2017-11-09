@@ -13,6 +13,20 @@ public class Product {
     String description;
     String status;
 
+    int qty;
+
+    public Product(){
+        qty = 1;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
     public String getRating() {
         return rating;
     }

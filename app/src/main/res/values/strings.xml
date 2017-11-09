@@ -17,4 +17,7 @@
     <string name="title_activity_commerce">CommerceActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="enviar_pedido">ENVIAR PEDIDO</string>
+    <string name="pay_label">PAGAR</string>
+    <string name="car_item_count_placeholder">0 items en tu carrito de compras</string>
 </resources>

@@ -15,7 +15,7 @@
         android:fillViewport="true"
         android:scrollbars="none">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:weightSum="750">
             <LinearLayout
@@ -39,7 +39,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="690"
+                            android:layout_weight="704"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:weightSum="100">
@@ -47,37 +47,103 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_weight="48"
+                                android:layout_weight="56"
                                 android:orientation="horizontal"
-                                android:weightSum="690">
-
-                                <Button
-                                    android:id="@+id/btn_back"
+                                android:weightSum="704">
+                                <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="48"
-                                    android:background="@drawable/back"
-                                    android:gravity="center" />
-
-                                <TextView
+                                    android:weightSum="56"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+                                    <Button
+                                        android:id="@+id/btn_back"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="48"
+                                        android:background="@drawable/back"
+                                        android:gravity="center" />
+                                </LinearLayout>
+                                <View
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="594"
+                                    android:layout_weight="7"/>
+                                <TextView
+                                    android:id="@+id/textView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="587"
                                     android:gravity="center"
                                     android:text="Lodge Restaurant"
                                     android:textColor="@color/white"
                                     android:textSize="18dp"
                                     android:textStyle="bold" />
 
-                                <Button
-                                    android:id="@+id/btn_shop"
+                                <LinearLayout
+
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="48"
-                                    android:background="@drawable/cart"
-                                    android:gravity="center" />
-                            </LinearLayout>
+                                    android:clickable="true"
+                                    android:layout_weight="62">
+                                    <RelativeLayout
+                                        android:id="@+id/shop_container_icon"
+                                        android:clickable="true"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                           android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:weightSum="62"
+                                           android:orientation="horizontal">
+                                           <LinearLayout
+                                               android:layout_width="0dp"
+                                               android:layout_height="match_parent"
+                                               android:layout_weight="48"
+                                               android:weightSum="56"
+                                               android:orientation="vertical"
+                                               android:gravity="center">
+                                               <Button
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="0dp"
+                                                   android:layout_weight="48"
+                                                   android:background="@drawable/cart_icon_xhdpi"
+                                                   android:gravity="center" />
+                                           </LinearLayout>
+                                       </LinearLayout>
+                                        <LinearLayout
+                                            android:id="@+id/container_item_count"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:weightSum="62"
+                                            android:gravity="end"
+                                            android:visibility="gone">
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="50"
+                                                android:weightSum="62"
+                                                android:orientation="vertical">
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="50"
+                                                    android:background="@drawable/dot_filled_xhdpi"
+                                                    android:gravity="center">
+                                                    <TextView
+                                                        android:id="@+id/cart_items_count_txt"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textSize="@dimen/xsmall"
+                                                        android:text="9+"
+                                                        android:textColor="@color/pd_blue"/>
+                                                </LinearLayout>
+                                            </LinearLayout>
 
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -92,34 +158,8 @@
                         tools:listitem="@layout/list_item_product" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/car_container"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="647"
-                android:weightSum="1293"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="84"
-                    android:weightSum="647"
-                    android:gravity="center">
+            <include layout="@layout/activity_cart"/>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="585"
-                        android:gravity="center_vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:text="4 items en tu carrito de compra"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
         </LinearLayout>
 
 
