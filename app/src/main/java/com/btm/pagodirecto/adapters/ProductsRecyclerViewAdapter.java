@@ -45,8 +45,6 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     }
 
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

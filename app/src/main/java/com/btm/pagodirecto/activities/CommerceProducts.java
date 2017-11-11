@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
@@ -44,6 +45,9 @@ public class CommerceProducts extends AppCompatActivity {
     LinearLayout carContainer;
     @Bind(R.id.grid)
     RecyclerView recyclerView;
+    @Bind(R.id.car_list)
+    RecyclerView carListRecyclerView;
+
     @Bind(R.id.shop_container_icon)
     RelativeLayout shopContainerIcon;
     @Bind(R.id.container_item_count)
@@ -61,6 +65,7 @@ public class CommerceProducts extends AppCompatActivity {
     private Double subTotal;
 
     private  ArrayList<Product> cartItems;
+    private RecyclerView.Adapter cartListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +74,6 @@ public class CommerceProducts extends AppCompatActivity {
         ButterKnife.bind(this);
         carOpen = false;
         subTotal=0.00;
-        cartItems= new ArrayList<Product>();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         //int height = displayMetrics.heightPixels;
@@ -78,7 +82,40 @@ public class CommerceProducts extends AppCompatActivity {
         carContainer.setLayoutParams(new LinearLayout.LayoutParams((new Double(width/ 1.14f)).intValue(), carContainer.getLayoutParams().height ));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         loadProducts();
+        initCartList();
 
+    }
+
+    private void initCartList() {
+
+        cartItems= new ArrayList<Product>();
+        cartListAdapter = new ProductsCartRecyclerViewAdapter(getApplicationContext(),cartItems,new ProductsCartRecyclerViewAdapter.OnItemClickListener() {
+            @Override public void onItemClick(int i,int type) {
+                switch (type){
+                    case 0://inc
+                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()+1);
+                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
+                        subTotal+=cartItems.get(i).getCartPrice();
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartListAdapter.notifyItemChanged(i);
+                        break;
+                    case 1://dec
+                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()-1);
+                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
+                        subTotal-=cartItems.get(i).getCartPrice();
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartListAdapter.notifyItemChanged(i);
+                        break;
+                    case 2://delete
+                        cartItems.remove(i);
+                        subTotal-=cartItems.get(i).getCartPrice();
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartListAdapter.notifyItemRemoved(i);
+                        break;
+                }
+            }
+        });
+        carListRecyclerView.setAdapter(cartListAdapter);
     }
 
     private void loadProducts() {
@@ -122,6 +159,9 @@ public class CommerceProducts extends AppCompatActivity {
             p.setRating(item.getRating());
             p.setStatus(item.getStatus());
             cartItems.add(p);
+            cartListAdapter.notifyItemInserted(cartItems.size()-1);
+            carListRecyclerView.scrollToPosition(cartItems.size()-1);
+
             subTotal += Double.valueOf(item.getPrice());
             updateItemsCount();
         }

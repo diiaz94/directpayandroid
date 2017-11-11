@@ -22,7 +22,7 @@
             android:weightSum="579">
 
             <ImageView
-                android:id="@+id/product_image"
+                android:id="@+id/item_image"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="139"
@@ -59,7 +59,7 @@
                             android:weightSum="403">
 
                             <TextView
-                                android:id="@+id/car_title"
+                                android:id="@+id/item_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Croissant"
@@ -84,16 +84,19 @@
                                 android:weightSum="183">
 
                                 <LinearLayout
+                                    android:id="@+id/delete_view"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="183"
                                     android:background="@drawable/border_qty_item_cart_bg"
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal"
-                                    android:visibility="visible"
+                                    android:visibility="gone"
                                     android:weightSum="183">
 
                                     <LinearLayout
+                                        android:id="@+id/item_inc2"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
@@ -124,26 +127,31 @@
                                         android:layout_weight="132">
 
                                         <Button
+                                            android:id="@+id/item_delete"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:background="@drawable/delete_item_cart_bg"
                                             android:text="ELIMINAR"
+                                            android:textSize="@dimen/small"
                                             android:textColor="@color/white" />
 
                                     </LinearLayout>
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/default_view"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="154"
                                     android:background="@drawable/border"
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal"
-                                    android:visibility="gone"
+                                    android:visibility="visible"
                                     android:weightSum="154">
 
                                     <LinearLayout
+                                        android:id="@+id/item_inc"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
@@ -177,15 +185,18 @@
                                         android:weightSum="63">
 
                                         <TextView
+                                            android:id="@+id/item_qty"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="2"
                                             android:textColor="@color/black"
-                                            android:textSize="18sp" />
+                                            android:textSize="@dimen/small" />
 
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:id="@+id/item_dec"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
@@ -220,7 +231,7 @@
                                 android:gravity="center_vertical|end">
 
                                 <TextView
-                                    android:id="@+id/car_price"
+                                    android:id="@+id/item_price"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Bs. 9000"
