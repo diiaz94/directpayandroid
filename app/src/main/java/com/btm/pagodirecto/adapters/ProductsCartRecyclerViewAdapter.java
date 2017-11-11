@@ -69,7 +69,7 @@ public class ProductsCartRecyclerViewAdapter extends RecyclerView.Adapter<Produc
 
         Glide.with(ctx).load(glideUrl).apply(bitmapTransform(multi)).into(holder.itemImage);
 
-        if(items.get(position).getCartQty()>0){
+        if(items.get(position).getCartQty()>1){
             holder.defaultView.setVisibility(View.VISIBLE);
             holder.deleteView.setVisibility(View.GONE);
         }else{

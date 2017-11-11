@@ -90,26 +90,26 @@ public class CommerceProducts extends AppCompatActivity {
 
         cartItems= new ArrayList<Product>();
         cartListAdapter = new ProductsCartRecyclerViewAdapter(getApplicationContext(),cartItems,new ProductsCartRecyclerViewAdapter.OnItemClickListener() {
-            @Override public void onItemClick(int i,int type) {
+            @Override public synchronized void onItemClick(int i,int type) {
                 switch (type){
                     case 0://inc
+                        subTotal+=Double.valueOf(cartItems.get(i).getPrice());
+                        subTotalAmount.setText(String.valueOf(subTotal));
                         cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()+1);
                         cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
-                        subTotal+=cartItems.get(i).getCartPrice();
-                        subTotalAmount.setText(String.valueOf(subTotal));
                         cartListAdapter.notifyItemChanged(i);
                         break;
                     case 1://dec
+                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
+                        subTotalAmount.setText(String.valueOf(subTotal));
                         cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()-1);
                         cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
-                        subTotal-=cartItems.get(i).getCartPrice();
-                        subTotalAmount.setText(String.valueOf(subTotal));
                         cartListAdapter.notifyItemChanged(i);
                         break;
                     case 2://delete
-                        cartItems.remove(i);
-                        subTotal-=cartItems.get(i).getCartPrice();
+                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
                         subTotalAmount.setText(String.valueOf(subTotal));
+                        cartItems.remove(i);
                         cartListAdapter.notifyItemRemoved(i);
                         break;
                 }
@@ -148,7 +148,7 @@ public class CommerceProducts extends AppCompatActivity {
                 });
     }
 
-    private void attemptAddProduct(Product item) {
+    private synchronized void attemptAddProduct(Product item) {
         Product p = new Product();
         if(!exist(item.get_id())){
             p.set_id(item.get_id());
