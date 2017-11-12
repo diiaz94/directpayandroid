@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/car_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1291"
-    tools:context="com.btm.pagodirecto.activities.CartActivity"
-    android:orientation="vertical">
+    android:layout_weight="350"
+    android:weightSum="1293"
+    android:orientation="vertical"
+    android:background="@color/white">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="84"
-        android:weightSum="647"
-        android:gravity="center">
+        android:layout_weight="87"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="647">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="585"
             android:gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="4 items en tu carrito de compra"/>
+
+            <TextView
+                android:id="@+id/car_items_count_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_item_count_placeholder"
+                android:textColor="@color/black" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="724"
+        android:layout_weight="721"
         android:orientation="vertical"
-        android:weightSum="724">
+        android:weightSum="721">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/grid"
+            android:id="@+id/car_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"
             app:layoutManager="GridLayoutManager"
             app:spanCount="1"
-            tools:context="com.btm.pagodirecto.activities.CartActivity"
+            tools:context="com.btm.pagodirecto.CartActivity"
             tools:listitem="@layout/car_item" />
-
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="347"
+        android:layout_weight="233"
         android:weightSum="647"
         android:gravity="center">
 
@@ -60,32 +67,38 @@
             android:layout_weight="587"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:weightSum="347">
+            android:weightSum="233">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="263">
+                android:layout_weight="145"
+                android:weightSum="1">
+
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="Subtotal:"/>
+                    android:id="@+id/sub_total_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subtotal:"
+                    android:textSize="16sp" />
+
                 <View
                     android:layout_width="20dp"
                     android:layout_height="match_parent"/>
+
                 <TextView
+                    android:id="@+id/sub_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:text="Bs. 0,00"
                     android:textColor="@color/black"
-                    android:text="Bs. 15.500"/>
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="93"
+        android:layout_weight="90"
         android:weightSum="647"
         android:gravity="center">
 
@@ -94,12 +107,36 @@
             android:layout_height="match_parent"
             android:layout_weight="588"
             android:weightSum="647">
-        <Button
-            android:layout_width="match_parent"
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/grid_button"
+                android:text="@string/enviar_pedido"
+                android:textColor="@color/gray03"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="27"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:weightSum="647"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/button_orange_circle"
-            android:text="Enviar factura"
-            android:textColor="@color/white"/>
+            android:layout_weight="588"
+            android:weightSum="647">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sell_button"
+                android:text="@string/pay_label"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

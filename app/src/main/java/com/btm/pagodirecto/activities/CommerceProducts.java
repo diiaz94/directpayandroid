@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
@@ -42,9 +45,27 @@ public class CommerceProducts extends AppCompatActivity {
     LinearLayout carContainer;
     @Bind(R.id.grid)
     RecyclerView recyclerView;
-    @Bind(R.id.btn_shop)
-    Button btnShop;
+    @Bind(R.id.car_list)
+    RecyclerView carListRecyclerView;
+
+    @Bind(R.id.shop_container_icon)
+    RelativeLayout shopContainerIcon;
+    @Bind(R.id.container_item_count)
+    LinearLayout containerItemCount;
+    @Bind(R.id.cart_items_count_txt)
+    TextView cartItemsCountTxt;
+    @Bind(R.id.car_items_count_label)
+    TextView carItemsCountLabel;
+    @Bind(R.id.sub_total_label)
+    TextView subTotalLabel;
+    @Bind(R.id.sub_total_amount)
+    TextView subTotalAmount;
+
     private boolean carOpen;
+    private Double subTotal;
+
+    private  ArrayList<Product> cartItems;
+    private RecyclerView.Adapter cartListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +73,49 @@ public class CommerceProducts extends AppCompatActivity {
         setContentView(R.layout.activity_commerce_products);
         ButterKnife.bind(this);
         carOpen = false;
+        subTotal=0.00;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         //int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
         productsContainer.setLayoutParams(new LinearLayout.LayoutParams(width, productsContainer.getLayoutParams().height ));
-        carContainer.setLayoutParams(new LinearLayout.LayoutParams((new Double(width/ 1.5)).intValue(), carContainer.getLayoutParams().height ));
+        carContainer.setLayoutParams(new LinearLayout.LayoutParams((new Double(width/ 1.14f)).intValue(), carContainer.getLayoutParams().height ));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         loadProducts();
+        initCartList();
 
-      //scrollContainer.
+    }
+
+    private void initCartList() {
+
+        cartItems= new ArrayList<Product>();
+        cartListAdapter = new ProductsCartRecyclerViewAdapter(getApplicationContext(),cartItems,new ProductsCartRecyclerViewAdapter.OnItemClickListener() {
+            @Override public synchronized void onItemClick(int i,int type) {
+                switch (type){
+                    case 0://inc
+                        subTotal+=Double.valueOf(cartItems.get(i).getPrice());
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()+1);
+                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
+                        cartListAdapter.notifyItemChanged(i);
+                        break;
+                    case 1://dec
+                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()-1);
+                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
+                        cartListAdapter.notifyItemChanged(i);
+                        break;
+                    case 2://delete
+                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
+                        subTotalAmount.setText(String.valueOf(subTotal));
+                        cartItems.remove(i);
+                        cartListAdapter.notifyItemRemoved(i);
+                        break;
+                }
+            }
+        });
+        carListRecyclerView.setAdapter(cartListAdapter);
     }
 
     private void loadProducts() {
@@ -74,7 +128,12 @@ public class CommerceProducts extends AppCompatActivity {
                         ResponseProducts responseProducts = (ResponseProducts) response;
                         ArrayList<Product> products = responseProducts.getProducts();
 
-                        recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getApplicationContext(),products));
+                        recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getApplicationContext(),products,new ProductsRecyclerViewAdapter.OnItemClickListener() {
+                            @Override public void onItemClick(Product item) {
+                                Util.showMessage(item.getPrice());
+                                attemptAddProduct(item);
+                            }
+                        }));
                     }
 
                     @Override
@@ -89,13 +148,47 @@ public class CommerceProducts extends AppCompatActivity {
                 });
     }
 
+    private synchronized void attemptAddProduct(Product item) {
+        Product p = new Product();
+        if(!exist(item.get_id())){
+            p.set_id(item.get_id());
+            p.setDescription(item.getDescription());
+            p.setName(item.getName());
+            p.setPhoto_url(item.getPhoto_url());
+            p.setPrice(item.getPrice());
+            p.setRating(item.getRating());
+            p.setStatus(item.getStatus());
+            cartItems.add(p);
+            cartListAdapter.notifyItemInserted(cartItems.size()-1);
+            carListRecyclerView.scrollToPosition(cartItems.size()-1);
+
+            subTotal += Double.valueOf(item.getPrice());
+            updateItemsCount();
+        }
+    }
+
+    private boolean exist(String id) {
+        for (int i = 0; i < cartItems.size(); i++) {
+            if(cartItems.get(i).get_id().equalsIgnoreCase(id)) return true;
+        }
+        return false;
+    }
+
+    private void updateItemsCount() {
+
+        cartItemsCountTxt.setText(String.valueOf(cartItems.size()));
+        carItemsCountLabel.setText(String.valueOf(cartItems.size())+" items en tu carrito de compras");
+        subTotalAmount.setText(String.valueOf(subTotal));
+        containerItemCount.setVisibility(cartItems.isEmpty()?View.GONE:View.VISIBLE);
+    }
+
     @OnClick(R.id.btn_back)
     public void goBack(){
 
         this.finish();
     }
 
-    @OnClick(R.id.btn_shop)
+    @OnClick(R.id.shop_container_icon)
     public void goToShop(){
 
         if(carOpen)

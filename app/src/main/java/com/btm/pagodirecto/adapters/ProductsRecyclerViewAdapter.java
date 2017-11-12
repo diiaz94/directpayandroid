@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,10 +35,13 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     private final Context ctx;
     private  ArrayList<Product> items;
     private LayoutInflater inflater;
-    public ProductsRecyclerViewAdapter(Context ctx, ArrayList<Product> items) {
+    private final OnItemClickListener listener;
+
+    public ProductsRecyclerViewAdapter(Context ctx, ArrayList<Product> items, OnItemClickListener listener) {
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
+        this.listener = listener;
     }
 
 
@@ -79,10 +83,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             }
         });
 
-        holder.btnDetail.setTag(items.get(position).get_id());
-        holder.btnDetail.setOnClickListener(new View.OnClickListener() {
+       holder.btnBuy.setTag(items.get(position).get_id());
+        holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Util.saveInSharedPreferences("product_name",items.get(position).getName());
                 Util.saveInSharedPreferences("product_description",items.get(position).getDescription());
                 Util.saveInSharedPreferences("product_url_image",items.get(position).getPhoto_url());
@@ -94,7 +99,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
                         Util.getActivity(),
                         ProductDetailActivity.class,
                         Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-                );
+                );*/
+                listener.onItemClick(items.get(position));
             }
         });
     }
@@ -104,13 +110,17 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         return items.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Product item);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView productImage;
         public final TextView productPrice;
         public final TextView productRating;
         public final TextView productName;
-        public final Button btnDetail;
+        public final Button btnBuy;
 
         public Product mItem;
 
@@ -121,8 +131,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             productPrice = (TextView) view.findViewById(R.id.product_price);
             productRating = (TextView) view.findViewById(R.id.product_rating);
             productName = (TextView) view.findViewById(R.id.product_name);
-            btnDetail = (Button) view.findViewById(R.id.btn_detail);
-
+            btnBuy = (Button) view.findViewById(R.id.btn_buy);
 
         }
     }
