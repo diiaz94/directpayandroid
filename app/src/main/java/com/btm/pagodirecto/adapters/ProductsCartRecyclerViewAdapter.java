@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.transforms.RoundedCornersTransformation;
+import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -60,7 +61,7 @@ public class ProductsCartRecyclerViewAdapter extends RecyclerView.Adapter<Produc
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
         holder.itemTitle.setText(items.get(position).getName());
-        holder.itemPrice.setText("Bs. "+String.valueOf(Double.valueOf(items.get(position).getPrice())*items.get(position).getCartQty()));
+        holder.itemPrice.setText("Bs. "+ Util.formatMoney(String.valueOf(Double.valueOf(items.get(position).getPrice())*items.get(position).getCartQty())));
         holder.itemQty.setText(String.valueOf(items.get(position).getCartQty()));
 
         MultiTransformation multi = new MultiTransformation(

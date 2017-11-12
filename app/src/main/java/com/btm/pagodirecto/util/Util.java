@@ -290,4 +290,7 @@ public class Util {
         return obj;
     }
 
+    public static String formatMoney(String s) {
+        return s;
+    }
 }
