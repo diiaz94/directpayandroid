@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         app:layoutManager="GridLayoutManager"
         app:spanCount="2"
-        tools:context="com.btm.pagodirecto.activities.SelectUserActivity"
+        tools:context="com.btm.pagodirecto.activities.MainActivity"
         tools:listitem="@layout/grid_item_user" />
 
 </RelativeLayout>
