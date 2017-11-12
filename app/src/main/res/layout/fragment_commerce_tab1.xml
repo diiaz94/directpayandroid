@@ -4,21 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.btm.pagodirecto.activities.CommerceActivity$PlaceholderFragment">
-
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First tab"/>
+    tools:context="com.btm.pagodirecto.activities.CommerceActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="@string/menu_list"
-        app:spanCount="2"
-        tools:context="com.btm.pagodirecto.activities.SelectUserActivity"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="1"
+        tools:context="com.btm.pagodirecto.activities.CommerceActivity"
         tools:listitem="@layout/list_item_store" />
 
 </LinearLayout>
