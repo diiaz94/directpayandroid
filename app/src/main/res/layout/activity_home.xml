@@ -4,212 +4,351 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:weightSum="100"
+    android:weightSum="1291"
     tools:context="com.btm.pagodirecto.activities.HomeActivity"
     android:background="@drawable/background"
     android:baselineAligned="false"
     android:orientation="vertical">
 
-    <!--Include header-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="130"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="100">
+        android:weightSum="750">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="20"
-            android:gravity="center">
-            <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/menu"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="60"
-            android:text="Julia Mitchell"
-            android:id="@+id/user_name"
+            android:layout_weight="704"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:textColor="@color/white"/>
+            android:orientation="vertical"
+            android:weightSum="100">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="20"
-            android:gravity="center">
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/points"
-                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="56"
+                android:orientation="horizontal"
+                android:weightSum="704">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:weightSum="56"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/btn_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="48"
+                        android:background="@drawable/menu_icon_xhdpi"
+                        android:gravity="center" />
+                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"/>
+                <TextView
+                    android:id="@+id/titleView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="587"
+                    android:gravity="center"
+                    android:text="Julia Mitchel"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:layout_weight="62">
+                    <RelativeLayout
+                        android:id="@+id/shop_container_icon"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="62"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="48"
+                                android:weightSum="56"
+                                android:orientation="vertical"
+                                android:gravity="center">
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="48"
+                                    android:background="@drawable/points"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/container_item_count"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="62"
+                            android:gravity="end"
+                            android:visibility="gone">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="50"
+                                android:weightSum="62"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="12dp"
+                                    android:layout_height="11dp"
+                                    android:layout_weight="50"
+                                    android:background="@drawable/dot_filled_xhdpi"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/cart_items_count_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="9+"
+                                        android:textColor="@color/pd_blue"
+                                        android:textSize="@dimen/xsmall" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:weightSum="100"
-        android:layout_weight="90"
-        android:orientation="vertical"
-        android:id="@+id/container">
-
+        android:layout_weight="340"
+        android:weightSum="340"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="81"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="35"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            android:id="@+id/container_photo"
+            android:layout_weight="210"
+            android:weightSum="750"
             android:gravity="center">
-
-            <LinearLayout
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
-                android:gravity="center">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/trump" 
-                    android:id="@+id/image_profile"
-                    app:civ_border_width="1dp"
-                    app:civ_border_color="#26FFFFFF"/>
-            </LinearLayout>
+                android:layout_weight="210"
+                android:src="@drawable/trump"
+                android:id="@+id/image_profile"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#26FFFFFF"/>
 
         </LinearLayout>
-        
-        <LinearLayout
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="12"
-            android:orientation="horizontal"
-            android:weightSum="90.4">
+            android:layout_weight="49"/>
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="131"
+        android:weightSum="750"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="565"
+            android:weightSum="565"
+            android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2"
-                    android:textSize="35dp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="T.CRÉDITO"
-                    android:textSize="12dp"
-                    android:textColor="@color/whiteTransparent"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
+                android:layout_weight="172"
+                android:weightSum="131"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="78"
+                    android:gravity="center">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="48"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:text="T. CREDITO"
+                        android:textSize="@dimen/xxsmall"/>
+                </LinearLayout>
+            </LinearLayout>
             <View
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
                 android:background="@color/whiteTransparent"/>
-
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="370K"
-                    android:textSize="35dp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="S.PREPAGO"
-                    android:textSize="12dp"
-                    android:textColor="@color/whiteTransparent"
-                    android:layout_gravity="center"/>
+                android:layout_weight="221"
+                android:weightSum="131"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="78"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="370k"
+                        android:textSize="@dimen/large"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="48"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:text="S. PREPAGADO"
+                        android:textSize="@dimen/xxsmall"/>
+                </LinearLayout>
             </LinearLayout>
-
             <View
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:background="@color/whiteTransparent" />
-
+                android:background="@color/whiteTransparent"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="75"
-                    android:textSize="35dp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TRANSACCIONES"
-                    android:textSize="12dp"
-                    android:textColor="@color/whiteTransparent"
-                    android:layout_gravity="center"/>
+                android:layout_weight="172"
+                android:weightSum="131"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="78"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="48"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:text="TRANSACCIONES"
+                        android:textSize="@dimen/xxsmall"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="181"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="137"
+        android:weightSum="137"
+        android:orientation="vertical"
+        android:gravity="bottom">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="40"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
+            android:weightSum="750"
+            android:layout_weight="108"
+            android:orientation="horizontal"
             android:gravity="center">
-
             <Button
                 android:id="@+id/btn_pay"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="613"
                 android:layout_gravity="top"
-                android:layout_marginBottom="30dp"
                 android:background="@drawable/main_button"
                 android:gravity="center"
                 android:text="PAGAR"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:text="COMERCIOS"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:id="@+id/btn_commerces"
-                android:layout_gravity="bottom"
-                android:textColor="@color/white"
-                android:background="@drawable/main_button"/>
-
+                android:textSize="@dimen/medium" />
         </LinearLayout>
-
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="137"
+        android:weightSum="137"
+        android:orientation="vertical"
+        android:gravity="bottom">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="750"
+            android:layout_weight="108"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_commerces"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="613"
+                android:layout_gravity="top"
+                android:background="@drawable/main_button"
+                android:gravity="center"
+                android:text="COMERCIOS"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
