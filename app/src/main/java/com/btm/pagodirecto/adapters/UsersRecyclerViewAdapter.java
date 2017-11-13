@@ -35,12 +35,14 @@ public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecycler
 private final Context ctx;
 private  ArrayList<User> items;
 private LayoutInflater inflater;
+private final UsersRecyclerViewAdapter.OnItemClickListener listener;
 
-    public UsersRecyclerViewAdapter(Context ctx, ArrayList<User> items) {
+    public UsersRecyclerViewAdapter(Context ctx, ArrayList<User> items, UsersRecyclerViewAdapter.OnItemClickListener listener) {
 
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
+        this.listener = listener;
     }
 
 
@@ -58,7 +60,7 @@ private LayoutInflater inflater;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = items.get(position);
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
@@ -81,10 +83,14 @@ private LayoutInflater inflater;
         holder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Open sell activity
+               listener.onItemClick(position,0);
 
             }
         });
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int i,int action);
     }
 
     @Override

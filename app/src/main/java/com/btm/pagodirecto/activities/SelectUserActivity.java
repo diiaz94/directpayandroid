@@ -81,7 +81,11 @@ public class SelectUserActivity extends BeaconScanner {
                 //ADD USER IN LIST
                 if (!ifExists(user)){
                     users.add(users.size()-(users.size()>0?1:0),user);
-                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                        @Override public synchronized void onItemClick(int i,int type) {
+
+                        }
+                    }));
                 }
             }
 
@@ -89,7 +93,11 @@ public class SelectUserActivity extends BeaconScanner {
                 //REMOVE USER IN LIST
                 if (users.size() > 0) {
                     users.remove(this.getIndexFromUser(user));
-                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                        @Override public synchronized void onItemClick(int i,int type) {
+
+                        }
+                    }));
                 }
             }
 
@@ -214,7 +222,11 @@ public class SelectUserActivity extends BeaconScanner {
                         ResponseUsers responseUsers = (ResponseUsers) response;
                         users = responseUsers.getUsers();
 
-                       recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users));
+                       recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                           @Override public synchronized void onItemClick(int i,int type) {
+
+                           }
+                       }));
                     }
 
                     @Override

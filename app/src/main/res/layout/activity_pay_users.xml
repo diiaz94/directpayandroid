@@ -10,8 +10,6 @@
     android:weightSum="1291"
     android:orientation="vertical">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -36,20 +34,22 @@
                 android:weightSum="690">
 
                 <Button
+                    android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="48"
                     android:background="@drawable/back"
                     android:gravity="center" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="594"
-                    android:text="PAGAR"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:text="PAGAR"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/medium"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
@@ -125,6 +125,7 @@
 
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -137,9 +138,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="720"
+            android:background="@drawable/tabs"
             android:orientation="horizontal"
-            android:weightSum="720"
-            android:background="@drawable/tabs">
+            android:weightSum="720">
 
             <LinearLayout
                 android:id="@+id/users_tab"
@@ -147,47 +148,94 @@
                 android:layout_height="match_parent"
                 android:layout_weight="360"
                 android:background="@drawable/tabs_select_state"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Usuarios"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium"/>
+                    android:textSize="@dimen/xxmedium" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/pending_tab"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="360"
                 android:orientation="horizontal"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pendientes"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/medium"/>
+                android:weightSum="360">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="242"
+                    android:gravity="end|center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pendientes"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/xxmedium" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30" />
+
+                <LinearLayout
+                    android:id="@+id/pending_items_count_container"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="68"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="68"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="68"
+                        android:background="@drawable/dot_filled_xhdpi"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/pending_items_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9+"
+                            android:textColor="@color/pd_blue"
+                            android:textSize="@dimen/xsmall" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="54"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/users_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1024"
+        android:layout_weight="970"
+        android:visibility="visible"
         app:layoutManager="GridLayoutManager"
         app:spanCount="2"
         tools:context="com.btm.pagodirecto.activities.PayUsers"
-        tools:listitem="@layout/grid_item_user"
-        android:visibility="visible"/>
+        tools:listitem="@layout/grid_item_user" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pending_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1024"
+        android:layout_weight="970"
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
         tools:context="com.btm.pagodirecto.activities.PayUsers"

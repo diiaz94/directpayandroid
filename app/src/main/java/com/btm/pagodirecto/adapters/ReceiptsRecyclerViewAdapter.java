@@ -28,12 +28,14 @@ public class ReceiptsRecyclerViewAdapter extends RecyclerView.Adapter<ReceiptsRe
     private final Context ctx;
     private  ArrayList<Receipt> items;
     private LayoutInflater inflater;
+    private final ReceiptsRecyclerViewAdapter.OnItemClickListener listener;
 
-    public ReceiptsRecyclerViewAdapter(Context ctx, ArrayList<Receipt> items) {
+    public ReceiptsRecyclerViewAdapter(Context ctx, ArrayList<Receipt> items, ReceiptsRecyclerViewAdapter.OnItemClickListener listener) {
 
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
+        this.listener = listener;
     }
 
 
@@ -51,13 +53,13 @@ public class ReceiptsRecyclerViewAdapter extends RecyclerView.Adapter<ReceiptsRe
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = items.get(position);
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
         holder.receiptTitle.setText(items.get(position).getName());
-        holder.receiptTitle.setText(items.get(position).getDescription());
+        holder.receiptDescription.setText(items.get(position).getDescription());
         Glide.with(ctx).load(glideUrl).into(holder.receiptImage);
 
 
@@ -66,11 +68,14 @@ public class ReceiptsRecyclerViewAdapter extends RecyclerView.Adapter<ReceiptsRe
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Long id = (Long) v.getTag();
-                // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
+             listener.onItemClick(position,0);
             }
         });
 
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int i,int action);
     }
 
     @Override

@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
@@ -35,6 +37,9 @@ import retrofit2.Response;
 
 public class PayUsers extends BaseActivity {
 
+    @Bind(R.id.btn_back)
+    Button btnBack;
+
     @Bind(R.id.users_grid)
     RecyclerView usersGrid;
 
@@ -47,6 +52,11 @@ public class PayUsers extends BaseActivity {
     @Bind(R.id.pending_tab)
     LinearLayout pendingTab;
 
+    @Bind(R.id.pending_items_count_container)
+    LinearLayout pendingitemsCountContainer;
+
+    @Bind(R.id.pending_items_count)
+    TextView pendingitemsCount;
 
     private ArrayList<User> mUsers = new ArrayList<User>();
     private ArrayList<Receipt> mPendings = new ArrayList<Receipt>();
@@ -73,7 +83,7 @@ public class PayUsers extends BaseActivity {
         Map<String,String> map = new HashMap<>();
         map.put("role", Util.getFromSharedPreferences("user_role"));
         map.put("user_id", Util.getFromSharedPreferences("user_id"));
-
+        final BaseActivity act = this;
         ServiceGenerator.getService(ApiService.class)
                 .users(map)
                 .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
@@ -82,7 +92,20 @@ public class PayUsers extends BaseActivity {
                     public void handleSuccess(Object response) {
                         ResponseUsers responseUsers = (ResponseUsers) response;
                         mUsers = responseUsers.getUsers();
-                        usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),mUsers));
+
+                        usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),mUsers,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                            @Override public synchronized void onItemClick(int i,int type) {
+                                switch (type){
+                                    case 0:
+                                        Util.saveInSharedPreferences("pay_image_url",mUsers.get(i).getPhoto_url());
+                                        Util.saveInSharedPreferences("pay_entity_name",mUsers.get(i).getName());
+                                        Util.goToActivitySlide(
+                                                act,
+                                                PayActivity.class);
+                                        break;
+                                }
+                            }
+                        }));
                     }
 
                     @Override
@@ -101,7 +124,7 @@ public class PayUsers extends BaseActivity {
         Map<String,String> map = new HashMap<>();
         map.put("status", "pending");
         //map.put("user_id", Util.getFromSharedPreferences("user_id"));
-
+        final BaseActivity act = this;
         ServiceGenerator.getService(ApiService.class)
                 .receipts(map)
                 .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseReceipts>>() {
@@ -110,7 +133,24 @@ public class PayUsers extends BaseActivity {
                     public void handleSuccess(Object response) {
                         ResponseReceipts responseReceipts = (ResponseReceipts) response;
                         mPendings = responseReceipts.getReceipts();
-                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings));
+                        if(mPendings.size()>0){
+                            pendingitemsCount.setText(String.valueOf(mPendings.size()));
+                            pendingitemsCountContainer.setVisibility(View.VISIBLE);
+                        }
+
+                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings,new ReceiptsRecyclerViewAdapter.OnItemClickListener() {
+                            @Override public synchronized void onItemClick(int i,int type) {
+                                switch (type){
+                                    case 0:
+                                        Util.saveInSharedPreferences("pay_image_url",mPendings.get(i).getPhoto_url());
+                                        Util.saveInSharedPreferences("pay_entity_name",mPendings.get(i).getName());
+                                        Util.goToActivitySlide(
+                                                act,
+                                                PayActivity.class);
+                                        break;
+                                }
+                            }
+                        }));
                     }
 
                     @Override
@@ -159,5 +199,10 @@ public class PayUsers extends BaseActivity {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    @OnClick(R.id.btn_back)
+    public void goToPay(){
+    this.finish();
     }
 }

@@ -21,4 +21,7 @@
     <string name="pay_label">PAGAR</string>
     <string name="car_item_count_placeholder">0 items en tu carrito de compras</string>
     <string name="dummy_pending_description">Last night, Darth Vader came down from planet Vulcan. And he told me that if I didn\'t take Lorraine, that he\'d melt my brain.</string>
+    <string name="title_activity_pay">PayActivity</string>
+    <string name="all_fields_required">Todos los campos son requeridos</string>
+    <string name="continue_pay">CONTINUAR PAGO</string>
 </resources>

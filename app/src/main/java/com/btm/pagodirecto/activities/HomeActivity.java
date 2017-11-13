@@ -43,15 +43,14 @@ public class HomeActivity extends BaseActivity {
     @OnClick(R.id.btn_pay)
     public void goToPay(){
         Util.goToActivitySlide(
-                Util.getActivity(),
-                PayUsers.class,
-                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                this,
+                PayUsers.class);
     }
 
     @OnClick(R.id.btn_commerces)
     public void goToCommerce(){
         Util.goToActivitySlide(
-                Util.getActivity(),
+                this,
                 CommerceActivity.class,
                 Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     }
