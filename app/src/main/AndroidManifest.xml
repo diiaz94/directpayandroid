@@ -44,7 +44,8 @@
             android:label="@string/title_activity_commerce"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.PayUsers" />
-        <activity android:name=".activities.PayResume"></activity>
+        <activity android:name=".activities.PayResume" />
+        <activity android:name=".activities.PayMethod"></activity>
     </application>
 
 </manifest>
