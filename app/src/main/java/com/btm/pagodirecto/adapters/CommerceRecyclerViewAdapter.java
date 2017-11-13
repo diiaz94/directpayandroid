@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -77,12 +78,27 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
                 Util.goToActivitySlide(
                     Util.getActivity(),
                     CommerceProducts.class,
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 //Long id = (Long) v.getTag();
                 // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
             }
         });
 
+        //Heart click
+        holder.btnHeart.setTag(position);
+        holder.btnHeart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Change heart Status
+                if (items.get((Integer) v.getTag()).getFavorite()){
+                    holder.btnHeart.setImageResource(R.drawable.heart_icon);
+                    items.get((Integer) v.getTag()).setFavorite(false);
+                }else{
+                    holder.btnHeart.setImageResource(R.drawable.heart_icon_active);
+                    items.get((Integer) v.getTag()).setFavorite(true);
+                }
+            }
+        });
     }
 
     @Override
@@ -96,6 +112,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
         public final TextView comerceTittle;
         public final TextView comerceDescription;
         public final TextView comerceDistance;
+        public final ImageButton btnHeart;
 
         public Commerce mItem;
 
@@ -106,6 +123,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
             comerceTittle = (TextView) view.findViewById(R.id.comerce_tittle);
             comerceDescription = (TextView) view.findViewById(R.id.commerce_description);
             comerceDistance = (TextView) view.findViewById(R.id.comerce_distance);
+            btnHeart = (ImageButton) view.findViewById(R.id.heart_image);
         }
     }
 

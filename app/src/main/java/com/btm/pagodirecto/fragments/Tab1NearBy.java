@@ -55,9 +55,9 @@ public class Tab1NearBy extends Fragment {
         ArrayList<Commerce> commerces = new ArrayList<Commerce>();
 
         //Add comerces to an array
-        Commerce commerce1 = new Commerce("0001","Lodge Restaurant", "https://image.ibb.co/hf2rvw/image_3.png", "Lodge Restaurant", "Comida Meditarranea", "Active", "1");
-        Commerce commerce2 = new Commerce("0002","Pizzeria Venezia", "https://image.ibb.co/dCmUhb/image_1.png", "Pizzeria Venezia", "Comida italiana", "Active", "5");
-        Commerce commerce3 = new Commerce("0003","Cafe Habu", "https://image.ibb.co/cVUAoG/image_2.png", "Cafe Habu", "Cafe&lunch bar", "Active", "10");
+        Commerce commerce1 = new Commerce("0001","Lodge Restaurant", "https://image.ibb.co/hf2rvw/image_3.png", "Lodge Restaurant", "Comida Meditarranea", "Active", "1",false);
+        Commerce commerce2 = new Commerce("0002","Pizzeria Venezia", "https://image.ibb.co/dCmUhb/image_1.png", "Pizzeria Venezia", "Comida italiana", "Active", "5", false);
+        Commerce commerce3 = new Commerce("0003","Cafe Habu", "https://image.ibb.co/cVUAoG/image_2.png", "Cafe Habu", "Cafe&lunch bar", "Active", "10", false);
 
         commerces.add(commerce1);
         commerces.add(commerce2);

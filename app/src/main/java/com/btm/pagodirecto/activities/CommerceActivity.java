@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,14 +18,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.fragments.Tab1NearBy;
 import com.btm.pagodirecto.fragments.Tab2CommerceList;
 import com.btm.pagodirecto.fragments.Tab3FavCommerce;
+import com.btm.pagodirecto.util.Util;
 
-public class CommerceActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class CommerceActivity extends BaseActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -36,6 +44,9 @@ public class CommerceActivity extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private TabLayout tabLayout;
+
+    @Bind(R.id.btn_back)
+    Button btnBack;
 
     private int[] tabIcons = {
             R.drawable.mapsandflags,
@@ -52,6 +63,7 @@ public class CommerceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commerce);
+        ButterKnife.bind(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -177,4 +189,11 @@ public class CommerceActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    @OnClick(R.id.btn_back)
+    public void goBack(){
+        // code here to show dialog
+        this.finish();
+    }
+
 }
