@@ -52,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="7"/>
                 <TextView
-                    android:id="@+id/titleView"
+                    android:id="@+id/user_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="587"
@@ -208,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray"
                         android:text="T. CREDITO"
-                        android:textSize="@dimen/xxsmall"/>
+                        android:textSize="@dimen/xsmall"/>
                 </LinearLayout>
             </LinearLayout>
             <View
@@ -244,7 +244,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray"
                         android:text="S. PREPAGADO"
-                        android:textSize="@dimen/xxsmall"/>
+                        android:textSize="@dimen/xsmall"/>
                 </LinearLayout>
             </LinearLayout>
             <View
@@ -281,7 +281,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray"
                         android:text="TRANSACCIONES"
-                        android:textSize="@dimen/xxsmall"/>
+                        android:textSize="@dimen/xsmall"/>
                 </LinearLayout>
             </LinearLayout>
 

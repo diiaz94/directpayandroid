@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import com.btm.pagodirecto.R;
@@ -55,6 +57,7 @@ public class PayUsers extends AppCompatActivity {
 
         loadUsers();
         loadPendings();
+        hideSoftKeyboard();
     }
 
 
@@ -145,4 +148,11 @@ public class PayUsers extends AppCompatActivity {
         pendingList.setVisibility(View.VISIBLE);
     }
 
+    public void hideSoftKeyboard() {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 }

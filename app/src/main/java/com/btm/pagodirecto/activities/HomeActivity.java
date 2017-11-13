@@ -43,7 +43,7 @@ public class HomeActivity extends BaseActivity {
     public void goToPay(){
         Util.goToActivitySlide(
                 Util.getActivity(),
-                CommerceProducts.class,
+                PayUsers.class,
                 Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     }
 

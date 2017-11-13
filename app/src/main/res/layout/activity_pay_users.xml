@@ -161,7 +161,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="360"
-                android:background="@drawable/tabs_select_state"
                 android:orientation="horizontal"
                 android:gravity="center">
                 <TextView
@@ -183,7 +182,7 @@
         app:spanCount="2"
         tools:context="com.btm.pagodirecto.activities.PayUsers"
         tools:listitem="@layout/grid_item_user"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pending_list"
         android:layout_width="match_parent"
@@ -192,5 +191,6 @@
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
         tools:context="com.btm.pagodirecto.activities.PayUsers"
-        tools:listitem="@layout/list_item_pending"/>
+        tools:listitem="@layout/list_item_pending"
+        android:visibility="gone"/>
 </LinearLayout>
