@@ -120,6 +120,12 @@ public class CommerceProducts extends BaseActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setActivity(this);
+    }
+
     private void initCartList() {
 
         cartItems= new ArrayList<Product>();

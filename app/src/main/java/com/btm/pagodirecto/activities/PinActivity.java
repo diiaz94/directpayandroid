@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -83,6 +84,11 @@ public class PinActivity extends AppCompatActivity {
                     break;
                 case 4:
                     mPin4.setVisibility(View.VISIBLE);
+                    //Go to listo
+                    Util.goToActivitySlide(
+                            Util.getActivity(),
+                            PayAccepted.class,
+                            Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     break;
             }
         }

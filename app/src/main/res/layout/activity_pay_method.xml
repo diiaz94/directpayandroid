@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,8 +60,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
+        android:layout_height="0dp"
+        android:layout_weight="41"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,10 +77,11 @@
             android:layout_weight="720"
             android:orientation="horizontal"
             android:weightSum="720"
+            android:clickable="true"
             android:background="@drawable/tabs">
 
             <LinearLayout
-                android:id="@+id/users_tab"
+                android:id="@+id/card_tab"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="360"
@@ -89,17 +91,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tarjeta de Credito"
+                    android:text="Tarjeta de credito"
                     android:textColor="@color/white"
                     android:textSize="@dimen/medium"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/pending_tab"
+                android:id="@+id/p2p_tab"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="360"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:clickable="true">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,119 +113,379 @@
         </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="125dp"/>
-
     <LinearLayout
+        android:id="@+id/card_method"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Bs. 15.500"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/xxlarge"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="119dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="400"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/white_rounder_corner">
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="109dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="180"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:weightSum="750">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:text="PAGAR"
-            android:layout_weight="298"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:id="@+id/btn_pay"
-            android:textColor="@color/white"
-            android:background="@drawable/main_button"/>
+        android:layout_weight="994"
+        android:visibility="visible"
+        android:orientation="vertical">
 
         <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="44"></View>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="125"/>
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="100"
-            android:textSize="15sp"
-            android:padding="10dp"
-            android:id="@+id/btn_sell"
-            android:textColor="@color/white"
-            android:src="@drawable/group_people"
-            android:background="@drawable/main_button">
-        </ImageButton>
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Bs. 15.500"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/xxlarge"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="119"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="360"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:weightSum="360"
+            android:background="@drawable/white_rounder_corner">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="120"
+                android:weightSum="120"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="40"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="Numero de Tarjeta"
+                    android:textSize="@dimen/small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="8465   -   6892   -   0852   -   2452"
+                    android:textSize="@dimen/large"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="120"
+                android:weightSum="710"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="355"
+                    android:orientation="vertical"
+                    android:weightSum="120">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="40"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Dia de Expiracion"
+                        android:textSize="@dimen/small"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="04 / 17"
+                        android:textSize="@dimen/large"
+                        android:textColor="@color/black"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="355"
+                    android:orientation="vertical"
+                    android:weightSum="120">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="40"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Codigo de Seguridad"
+                        android:textSize="@dimen/small"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="526"
+                        android:textSize="@dimen/large"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="120"
+                android:weightSum="120"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="40"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="Nombre en Tarjeta"
+                    android:textSize="@dimen/small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Richard Bailey"
+                    android:textSize="@dimen/large"
+                    android:textColor="@color/black"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="109"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="101"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_pay"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/main_button"
+                android:gravity="center"
+                android:text="PAGAR"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                ></View>
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textSize="@dimen/medium"
+                android:padding="10dp"
+                android:id="@+id/btn_sell"
+                android:textColor="@color/white"
+                android:src="@drawable/group_people"
+                android:background="@drawable/main_button">
+            </ImageButton>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"/>
 
     </LinearLayout>
 
-    
+    <LinearLayout
+        android:id="@+id/p2p_method"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="994"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="120"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="210"
+            android:weightSum="750"
+            android:gravity="center">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="210"
+                android:src="@drawable/trump"
+                android:id="@+id/image_profile"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#26FFFFFF"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="35"
+            android:text="Richard Bailey"
+            android:textSize="@dimen/large"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"/>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="70"
+            android:background="@drawable/main_edit_text"
+            android:hint="0424546875"
+            android:padding="5dp"
+            android:enabled="false"
+            android:textSize="@dimen/medium" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="100"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="101"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="750">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="PAGAR"
+                android:layout_weight="295"
+                android:textSize="@dimen/medium"
+                android:gravity="center"
+                android:id="@+id/btn_pay_p2p"
+                android:textColor="@color/white"
+                android:background="@drawable/main_button"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="100"
         android:orientation="horizontal"
         android:weightSum="750"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:gravity="center_vertical">
 
-        <TextView
+        <View
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"/>
+
+        <TextView
+            android:id="@+id/footer_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="300"
-            android:text="Guardar Metodo de Pago"
+            android:layout_weight="450"
+            android:textSize="@dimen/small"
+            android:text="Guardar Método de Pago"
             android:textColor="@color/white"/>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="220"/>
+
         <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:textSize="15sp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textSize="@dimen/small"
             android:padding="10dp"
-            android:id="@+id/btn_help"
+            android:id="@+id/btn_help_card"
             android:textColor="@color/white"
             android:src="@drawable/help"
             android:background="@drawable/main_button">
         </ImageButton>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="320"/>
+
 
     </LinearLayout>
+
 
 
 </LinearLayout>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1291"
-    android:orientation="vertical"
+    tools:context="com.btm.pagodirecto.activities.PayMethod"
     android:background="@drawable/background"
-    tools:context="com.btm.pagodirecto.activities.P2PActivity">
+    android:weightSum="1291"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"
+        android:layout_weight="88"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="750">
@@ -23,7 +24,7 @@
             android:layout_weight="690"
             android:gravity="center"
             android:orientation="vertical"
-            android:weightSum="100">
+            android:weightSum="88">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +34,6 @@
                 android:weightSum="690">
 
                 <Button
-                    android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="48"
@@ -43,19 +43,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="594"
-                    android:text="Pago"
+                    android:text="Metodo de pago"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/medium"
                     android:textColor="@color/white"/>
-                <Button
-                    android:id="@+id/btn_shop"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="48"
-                    android:background="@drawable/cart"
-                    android:gravity="center"
-                    android:visibility="gone"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -64,95 +56,111 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/whiteTransparent"/>
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"></View>
+        android:layout_weight="41"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="45"
-        android:orientation="vertical"
+        android:layout_weight="68"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="720"
+            android:orientation="horizontal"
+            android:weightSum="720"
+            android:background="@drawable/tabs">
+
+            <LinearLayout
+                android:id="@+id/users_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:background="@drawable/tabs"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarjeta de credito"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/pending_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:orientation="horizontal"
+                android:background="@drawable/tabs_select_state"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P2P"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="161"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="210"
+        android:weightSum="750"
         android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monto a Pagar"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:textSize="25sp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="80"></View>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="120"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bs. 15.500"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:textSize="45sp"
-            android:textStyle="bold" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="210"
+            android:src="@drawable/trump"
+            android:id="@+id/image_profile"
+            app:civ_border_width="1dp"
+            app:civ_border_color="#26FFFFFF"/>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"></View>
+        android:layout_weight="31"/>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="213"
-        android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:weightSum="213"
-        android:paddingRight="30dp">
+        android:layout_weight="35"
+        android:text="Richard Bailey"
+        android:textSize="@dimen/large"
+        android:gravity="center"
+        android:textColor="@color/white"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="93"
-            android:padding="20dp"
-            android:background="@drawable/main_edit_text"
-            android:hint="Numero telefonico"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="27"></View>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="93"
-            android:padding="20dp"
-            android:background="@drawable/main_edit_text"
-            android:hint="Concepto"/>
-
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="150"></View>
+        android:layout_weight="114"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="180"
+        android:layout_weight="101"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:orientation="horizontal"
@@ -170,25 +178,48 @@
             android:textColor="@color/white"
             android:background="@drawable/main_button"/>
 
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:orientation="horizontal"
+        android:weightSum="750"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="300"
+            android:text="Guardar Metodo de Pago"
+            android:textColor="@color/white"/>
+
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="44"></View>
+            android:layout_weight="480"/>
 
         <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="100"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:textSize="15sp"
             android:padding="10dp"
-            android:id="@+id/btn_sell"
+            android:id="@+id/btn_help"
             android:textColor="@color/white"
-            android:src="@drawable/group_people"
+            android:src="@drawable/help"
             android:background="@drawable/main_button">
         </ImageButton>
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -46,10 +46,12 @@
         <activity android:name=".activities.PayUsers" />
         <activity android:name=".activities.PayResume" />
         <activity android:name=".activities.PayMethod" />
+
         <activity
             android:name=".activities.PayActivity"
-            android:label="@string/title_activity_pay"
-            android:theme="@style/AppTheme"></activity>
+            android:label="@string/title_activity_pay"></activity>
+
+        <activity android:name=".activities.PayAccepted"></activity>
     </application>
 
 </manifest>
