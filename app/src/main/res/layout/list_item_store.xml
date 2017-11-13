@@ -57,7 +57,8 @@
                 <TextView
                     android:id="@+id/comerce_tittle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="60"
                     android:text="Lodge Restaurant"
                     android:textColor="@color/black"
                     android:textSize="@dimen/medium" />
@@ -65,7 +66,8 @@
                 <TextView
                     android:id="@+id/commerce_description"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="40"
                     android:text="Comida Mediterranea"
                     android:textSize="@dimen/small" />
 
@@ -78,7 +80,7 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:text="1 m"
-                android:textSize="@dimen/medium" />
+                android:textSize="@dimen/small" />
 
             <ImageButton
                 android:layout_width="18dp"

@@ -43,6 +43,9 @@ public class PayMethod extends BaseActivity {
     @Bind(R.id.footer_text)
     TextView textFooter;
 
+    @Bind(R.id.back_button)
+    Button btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +64,14 @@ public class PayMethod extends BaseActivity {
     public void payP2PAction(){
         Util.goToActivitySlide(
                 Util.getActivity(),
-                PinActivity.class,
-                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                PinActivity.class);
     }
 
     @OnClick(R.id.btn_pay)
     public void payCardAction(){
         Util.goToActivitySlide(
                 Util.getActivity(),
-                PinActivity.class,
-                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                PinActivity.class);
     }
 
     @OnClick(R.id.card_tab)
@@ -110,6 +111,11 @@ public class PayMethod extends BaseActivity {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    @OnClick(R.id.back_button)
+    public void actionBack(){
+        this.finish();
     }
 
 }

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.util.Util;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PinActivity extends AppCompatActivity {
+public class PinActivity extends BaseActivity {
 
     @Bind(R.id.number1)
     LinearLayout number1;
@@ -57,6 +58,9 @@ public class PinActivity extends AppCompatActivity {
     @Bind(R.id.pin4)
     LinearLayout mPin4;
 
+    @Bind(R.id.btn_back)
+    Button btnBack;
+
 
     String mPin;
     @Override
@@ -65,6 +69,12 @@ public class PinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pin);
         ButterKnife.bind(this);
         mPin = "";
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setActivity(this);
     }
 
     public void addNumber(String n){
@@ -87,8 +97,7 @@ public class PinActivity extends AppCompatActivity {
                     //Go to listo
                     Util.goToActivitySlide(
                             Util.getActivity(),
-                            PayAccepted.class,
-                            Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            PayAccepted.class);
                     break;
             }
         }
@@ -169,5 +178,10 @@ public class PinActivity extends AppCompatActivity {
     @OnClick(R.id.delete_option)
     public void delete() {
         deleteNumber();
+    }
+
+    @OnClick(R.id.btn_back)
+    public void actionBack(){
+        this.finish();
     }
 }

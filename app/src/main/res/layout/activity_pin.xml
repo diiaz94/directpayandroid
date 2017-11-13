@@ -33,6 +33,7 @@
                 android:weightSum="690">
 
                 <Button
+                    android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="48"

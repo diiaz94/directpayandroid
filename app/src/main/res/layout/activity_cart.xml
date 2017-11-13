@@ -108,6 +108,7 @@
             android:layout_weight="588"
             android:weightSum="647">
             <Button
+                android:id="@+id/btn_card_send"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/grid_button"
@@ -132,6 +133,7 @@
             android:layout_weight="588"
             android:weightSum="647">
             <Button
+                android:id="@+id/btn_card_pay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/sell_button"

@@ -56,8 +56,7 @@ public class HomeActivity extends BaseActivity {
     public void goToCommerce(){
         Util.goToActivitySlide(
                 this,
-                CommerceActivity.class,
-                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                CommerceActivity.class);
     }
 
     public void setUserAttributes(){
