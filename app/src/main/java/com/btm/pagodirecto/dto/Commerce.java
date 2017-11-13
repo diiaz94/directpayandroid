@@ -1,5 +1,7 @@
 package com.btm.pagodirecto.dto;
 
+import android.text.BoringLayout;
+
 /**
  * Created by edwinalvarado on 11/7/17.
  */
@@ -13,8 +15,9 @@ public class Commerce {
     String description;
     String status;
     String distance;
+    Boolean favorite;
 
-    public Commerce(String _id, String name, String photo_url, String title, String description, String status, String distance) {
+    public Commerce(String _id, String name, String photo_url, String title, String description, String status, String distance, Boolean favorite) {
         this._id = _id;
         this.name = name;
         this.photo_url = photo_url;
@@ -22,6 +25,7 @@ public class Commerce {
         this.description = description;
         this.status = status;
         this.distance = distance;
+        this.favorite = favorite;
     }
 
     public String getTitle() {
@@ -78,6 +82,14 @@ public class Commerce {
 
     public void setDistance(String distance) {
         this.distance = distance;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
 }

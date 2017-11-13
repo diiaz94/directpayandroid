@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,11 +10,13 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
@@ -22,7 +25,14 @@ import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
+import com.btm.pagodirecto.transforms.RoundedCornersTransformation;
 import com.btm.pagodirecto.util.Util;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,7 +42,9 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class CommerceProducts extends AppCompatActivity {
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+
+public class CommerceProducts extends BaseActivity {
 
 
     @Bind(R.id.btn_back)
@@ -61,11 +73,33 @@ public class CommerceProducts extends AppCompatActivity {
     @Bind(R.id.sub_total_amount)
     TextView subTotalAmount;
 
+    //Detail items
+    @Bind(R.id.product_detail)
+    LinearLayout linearDetailProduct;
+
+    @Bind(R.id.product_image)
+    ImageView productImage;
+
+    @Bind(R.id.product_name)
+    TextView productName;
+
+    @Bind(R.id.product_description)
+    TextView productDescription;
+
+    @Bind(R.id.product_price)
+    TextView productPrice;
+
+    @Bind(R.id.btn_main)
+    Button mainButton;
+
     private boolean carOpen;
+    private boolean detailOpen;
     private Double subTotal;
 
     private  ArrayList<Product> cartItems;
     private RecyclerView.Adapter cartListAdapter;
+
+    private Product currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +163,18 @@ public class CommerceProducts extends AppCompatActivity {
                         ArrayList<Product> products = responseProducts.getProducts();
 
                         recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getApplicationContext(),products,new ProductsRecyclerViewAdapter.OnItemClickListener() {
-                            @Override public void onItemClick(Product item) {
-                                Util.showMessage(item.getPrice());
-                                attemptAddProduct(item);
+                            @Override public void onItemClick(Product item, int option) {
+                                switch (option){
+                                    case 0:
+                                        Util.showMessage(item.getPrice());
+                                        attemptAddProduct(item);
+                                        break;
+                                    case 1:
+                                        //Util.showMessage(item.getPrice());
+                                        showProductDetail(item);
+                                        break;
+
+                                }
                             }
                         }));
                     }
@@ -184,18 +227,46 @@ public class CommerceProducts extends AppCompatActivity {
 
     @OnClick(R.id.btn_back)
     public void goBack(){
-
-        this.finish();
+        if (detailOpen){
+            recyclerView.setVisibility(View.VISIBLE);
+            linearDetailProduct.setVisibility(View.GONE);
+            detailOpen = false;
+        }else{
+            this.finish();
+        }
     }
 
     @OnClick(R.id.shop_container_icon)
     public void goToShop(){
 
-        if(carOpen)
+        if(!carOpen)
             scrollContainer.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
         else
             scrollContainer.fullScroll(HorizontalScrollView.FOCUS_LEFT);
 
         carOpen = !carOpen;
+    }
+
+    private void  showProductDetail(Product item){
+        currentProduct = item;
+        GlideUrl glideUrl = new GlideUrl(item.getPhoto_url(), new LazyHeaders.Builder()
+                .build());
+
+        Glide.with(Util.getContext()).load(glideUrl).into(productImage);
+
+        productName.setText(item.getName());
+        productDescription.setText(item.getDescription());
+        productPrice.setText(item.getPrice());
+        mainButton.setText("COMPRAR");
+        detailOpen = true;
+
+        linearDetailProduct.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.btn_main)
+    public void mainButton(){
+        //Util.showMessage(item.getPrice());
+        attemptAddProduct(currentProduct);
     }
 }

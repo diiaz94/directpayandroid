@@ -113,7 +113,7 @@ public class ProductsFragment extends Fragment {
                         ArrayList<Product> products = responseProducts.getProducts();
 
                         recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getContext(),products,new ProductsRecyclerViewAdapter.OnItemClickListener() {
-                            @Override public void onItemClick(Product item) {
+                            @Override public void onItemClick(Product item, int option) {
                                 Util.showMessage(item.getPrice());
                             }
                         }));

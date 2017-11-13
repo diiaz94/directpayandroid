@@ -3,12 +3,14 @@ package com.btm.pagodirecto.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
@@ -78,8 +80,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Long id = (Long) v.getTag();
-                // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
+                Log.d("Flag", "onClick all row");
+                listener.onItemClick(items.get(position),1);
             }
         });
 
@@ -100,7 +102,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
                         ProductDetailActivity.class,
                         Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
                 );*/
-                listener.onItemClick(items.get(position));
+                listener.onItemClick(items.get(position), 0);
             }
         });
     }
@@ -111,7 +113,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Product item);
+        void onItemClick(Product item, int option);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

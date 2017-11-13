@@ -87,8 +87,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
                 Util.goToActivitySlide(
                         Util.getActivity(),
                         HomeActivity.class,
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-                );
+                        Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             }
         });
     }

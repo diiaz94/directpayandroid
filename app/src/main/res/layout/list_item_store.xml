@@ -13,13 +13,29 @@
         android:layout_weight="100"
         android:background="@drawable/border">
 
-        <ImageView
-            android:id="@+id/commerce_image"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="80"
-            android:scaleType="centerCrop"
-            android:src="@drawable/image"/>
+            android:layout_weight="80">
+
+            <ImageView
+                android:id="@+id/commerce_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image"/>
+
+            <ImageButton
+                android:id="@+id/heart_image"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/commerce_image"
+                android:src="@drawable/heart_icon"
+                android:background="@color/transparent"
+                android:layout_alignRight="@id/commerce_image" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -42,17 +42,17 @@ public class HomeActivity extends BaseActivity {
     @OnClick(R.id.btn_pay)
     public void goToPay(){
         Util.goToActivitySlide(
-                this,
+                Util.getActivity(),
                 CommerceProducts.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     }
 
     @OnClick(R.id.btn_commerces)
     public void goToCommerce(){
         Util.goToActivitySlide(
-                this,
+                Util.getActivity(),
                 CommerceActivity.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     }
 
     public void setUserAttributes(){
@@ -64,13 +64,4 @@ public class HomeActivity extends BaseActivity {
         Glide.with(Util.getContext()).load(glideUrl).into(userImage);
     }
 
-    @Override
-    public void onBackPressed() {
-        // code here to show dialog
-        Util.goToActivitySlideBack(
-                Util.getActivity(),
-                MainActivity.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );
-    }
 }
