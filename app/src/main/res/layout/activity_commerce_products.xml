@@ -59,9 +59,8 @@
                                     android:gravity="center">
                                     <Button
                                         android:id="@+id/btn_back"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="48"
+                                        android:layout_width="36dp"
+                                        android:layout_height="match_parent"
                                         android:background="@drawable/back"
                                         android:gravity="center" />
                                 </LinearLayout>
@@ -148,7 +147,6 @@
 
                     </LinearLayout>
 
-                    <include layout="@layout/activity_product_detail"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/grid"
@@ -161,7 +159,6 @@
                         tools:listitem="@layout/list_item_product" />
                 </LinearLayout>
             </LinearLayout>
-            <include layout="@layout/activity_cart"/>
 
         </LinearLayout>
 

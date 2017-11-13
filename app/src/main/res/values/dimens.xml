@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="xxlarge">45dp</dimen>
+    <dimen name="xLarge">35dp</dimen>
     <dimen name="large">20sp</dimen>
     <dimen name="small">12sp</dimen>
     <dimen name="medium">16sp</dimen>
