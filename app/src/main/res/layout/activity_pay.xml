@@ -124,7 +124,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="120"></LinearLayout>
+            android:layout_weight="120"
+            android:weightSum="750"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="720">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
+                    android:textSize="@dimen/medium"
+                    android:hint="Monto"/>
+            </LinearLayout>
+
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -132,7 +149,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="120"></LinearLayout>
+            android:layout_weight="120"
+            android:weightSum="750"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="720">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:textSize="@dimen/medium"
+                    android:hint="Concepto"/>
+            </LinearLayout>
+
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -140,7 +173,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="120"></LinearLayout>
+            android:layout_weight="120"
+            android:weightSum="750"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="680">
+                <TextView
+                    android:id="@+id/debit_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:textSize="@dimen/medium"
+                    android:gravity="center_vertical"
+                    android:hint="Cuenta a debitar"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:weightSum="120"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/arrows"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60"
+                    android:background="@color/transparent"
+                    android:src="@drawable/arrows_icon_xhdpi"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -162,6 +228,7 @@
                 android:layout_weight="690"
                 android:weightSum="647">
                 <Button
+                    android:id="@+id/continue_pay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/continue_pay_button"
