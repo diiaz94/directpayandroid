@@ -51,7 +51,7 @@ public class CommerceActivity extends BaseActivity {
     private int[] tabIcons = {
             R.drawable.mapsandflags,
             R.drawable.list,
-            R.drawable.like
+            R.drawable.heart
     };
 
     /**
