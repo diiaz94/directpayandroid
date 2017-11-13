@@ -36,8 +36,13 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        Util.setActivity(this);
         this.setUserAttributes();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setActivity(this);
     }
 
     @OnClick(R.id.btn_pay)

@@ -24,7 +24,7 @@
             android:layout_weight="690"
             android:gravity="center"
             android:orientation="vertical"
-            android:weightSum="107">
+            android:weightSum="88">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,20 +34,22 @@
                 android:weightSum="690">
 
                 <Button
+                    android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="34"
+                    android:layout_weight="48"
                     android:background="@drawable/back"
                     android:gravity="center" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="594"
-                    android:text="Pago"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:text="PAGAR"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/medium"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

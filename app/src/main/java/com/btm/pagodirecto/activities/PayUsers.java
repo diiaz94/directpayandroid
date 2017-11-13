@@ -76,7 +76,11 @@ public class PayUsers extends BaseActivity {
     }
 
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setActivity(this);
+    }
 
     private void loadUsers() {
 
@@ -202,7 +206,7 @@ public class PayUsers extends BaseActivity {
     }
 
     @OnClick(R.id.btn_back)
-    public void goToPay(){
-    this.finish();
+    public void goToBack(){
+        this.finish();
     }
 }
