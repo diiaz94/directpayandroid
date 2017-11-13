@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1291"
+    tools:context="com.btm.pagodirecto.activities.PayAccepted"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="52"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="750"
+        android:layout_weight="76"
+        android:orientation="horizontal"
+        android:gravity="end">
+        <Button
+            android:id="@+id/btn_go_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="284"
+            android:layout_gravity="top"
+            android:background="@drawable/main_button"
+            android:gravity="center"
+            android:text="IR A INICIO"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="37"></View>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="300"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="350"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="157dp"
+            android:layout_height="106dp"
+            android:src="@drawable/checked"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listo"
+            android:textSize="@dimen/xLarge"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="190"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="327"
+        android:weightSum="327"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="32"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notificación de Pago"
+            android:textSize="@dimen/medium"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="32"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="750">
+            
+            <ImageView
+                android:layout_width="49dp"
+                android:layout_height="34dp"
+                android:src="@drawable/contact"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un recibo digital ha sido enviado a su correo"
+                android:textSize="@dimen/small"
+                android:textColor="@color/black"/>
+            
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:weightSum="750"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="700"
+                android:layout_height="match_parent"
+                android:text="Recibos digitales entregados por Pago Directo. Revise su recibo digital para
+conocer las politicas de privacidad además de los términos y condiciones."
+                android:textSize="@dimen/xxsmall"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
