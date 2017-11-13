@@ -110,7 +110,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
             mView = view;
             userImage = (CircleImageView) view.findViewById(R.id.user_image);
             userName = (TextView) view.findViewById(R.id.user_name);
-            btnSell = (Button) view.findViewById(R.id.btn_sell);
+            btnSell = (Button) view.findViewById(R.id.btn_pay);
         }
     }
 
