@@ -91,10 +91,10 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
             public void onClick(View v) {
                 //Change heart Status
                 if (items.get((Integer) v.getTag()).getFavorite()){
-                    holder.btnHeart.setImageResource(R.drawable.heart_icon);
+                    holder.btnHeart.setImageResource(R.drawable.unlike);
                     items.get((Integer) v.getTag()).setFavorite(false);
                 }else{
-                    holder.btnHeart.setImageResource(R.drawable.heart_icon_active);
+                    holder.btnHeart.setImageResource(R.drawable.like);
                     items.get((Integer) v.getTag()).setFavorite(true);
                 }
             }
