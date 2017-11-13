@@ -43,13 +43,18 @@
             android:id="@+id/user_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="350"
+            android:layout_weight="400"
             android:gravity="center"
             android:text="Resumen de Compra"
             android:textColor="@color/white"
             android:textSize="@dimen/large" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"></View>
 
     <LinearLayout
         android:id="@+id/products_container"
@@ -75,18 +80,18 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="97"></View>
+        android:layout_weight="85"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="30"
+        android:layout_weight="45"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="match_parent"
             android:text="SUBTOTAL"
             android:textColor="@color/white"
             android:textAlignment="center"
@@ -102,13 +107,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="110"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Bs. 15.500"
             android:textColor="@color/white"
             android:textAlignment="center"
@@ -120,7 +125,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="84"></View>
+        android:layout_weight="64"></View>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -77,8 +77,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
                 Log.i("FLAG", "onClick: main button");
                 Util.goToActivitySlide(
                     Util.getActivity(),
-                    CommerceProducts.class,
-                    Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    CommerceProducts.class);
                 //Long id = (Long) v.getTag();
                 // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
             }

@@ -92,6 +92,12 @@ public class CommerceProducts extends BaseActivity {
     @Bind(R.id.btn_main)
     Button mainButton;
 
+    @Bind(R.id.btn_card_send)
+    Button btnCardSent;
+
+    @Bind(R.id.btn_card_pay)
+    Button btnCardPay;
+
     private boolean carOpen;
     private boolean detailOpen;
     private Double subTotal;
@@ -275,4 +281,19 @@ public class CommerceProducts extends BaseActivity {
         //Util.showMessage(item.getPrice());
         attemptAddProduct(currentProduct);
     }
+
+    @OnClick(R.id.btn_card_pay)
+    public void goToResume(){
+        Util.goToActivitySlide(
+                Util.getActivity(),
+                PayResume.class);
+    }
+
+    @OnClick(R.id.btn_card_send)
+    public void sendToCommerce(){
+        Util.goToActivitySlide(
+                Util.getActivity(),
+                PayAccepted.class);
+    }
+
 }

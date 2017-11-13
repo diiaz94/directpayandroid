@@ -147,6 +147,7 @@
 
                     </LinearLayout>
 
+                    <include layout="@layout/activity_product_detail"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/grid"
@@ -159,6 +160,8 @@
                         tools:listitem="@layout/list_item_product" />
                 </LinearLayout>
             </LinearLayout>
+
+            <include layout="@layout/activity_cart"/>
 
         </LinearLayout>
 
