@@ -26,15 +26,26 @@
         <activity android:name=".activities.SellActivity" />
         <activity android:name=".activities.ProductDetailActivity" />
         <activity
-            android:name=".CartActivity"
+            android:name=".activities.CartActivity"
             android:label="@string/title_activity_cart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PinActivity"
+            android:name=".activities.PinActivity"
             android:label="@string/title_activity_pin"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.P2PActivity" />
-        <activity android:name=".activities.SplitPaymentActivity"></activity>
+        <activity android:name=".activities.SplitPaymentActivity" />
+        <activity
+            android:name=".activities.CommerceProducts"
+            android:label="@string/title_activity_commerce"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.CommerceActivity"
+            android:label="@string/title_activity_commerce"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.PayUsers" />
+        <activity android:name=".activities.PayResume" />
+        <activity android:name=".activities.PayMethod"></activity>
     </application>
 
 </manifest>

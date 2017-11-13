@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.btm.pagodirecto.CartActivity;
+import com.btm.pagodirecto.activities.CartActivity;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.SelectUserActivity_;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
@@ -112,7 +112,11 @@ public class ProductsFragment extends Fragment {
                         ResponseProducts responseProducts = (ResponseProducts) response;
                         ArrayList<Product> products = responseProducts.getProducts();
 
-                        recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getContext(),products));
+                        recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getContext(),products,new ProductsRecyclerViewAdapter.OnItemClickListener() {
+                            @Override public void onItemClick(Product item, int option) {
+                                Util.showMessage(item.getPrice());
+                            }
+                        }));
                     }
 
                     @Override

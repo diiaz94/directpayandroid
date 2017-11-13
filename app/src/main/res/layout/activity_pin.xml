@@ -5,14 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1291"
-    tools:context="com.btm.pagodirecto.PinActivity"
+    tools:context="com.btm.pagodirecto.activities.PinActivity"
     android:orientation="vertical"
     android:background="@drawable/background">
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="82"></LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="690"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="48"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/back"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="594"
+                    android:gravity="center"
+                    android:text="@string/title_activity_pin"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,6 +67,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/security_pin_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/security_pin_label"
@@ -127,12 +171,14 @@
                         android:orientation="horizontal"
                         android:gravity="center">
                         <LinearLayout
+                            android:id="@+id/pin1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
                             android:weightSum="57"
                             android:orientation="horizontal"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:visibility="invisible">
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -140,12 +186,14 @@
                                 android:background="@drawable/dot_filled_xhdpi"></LinearLayout>
                         </LinearLayout>
                         <LinearLayout
+                            android:id="@+id/pin2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
                             android:weightSum="57"
                             android:orientation="horizontal"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:visibility="invisible">
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -153,12 +201,14 @@
                                 android:background="@drawable/dot_filled_xhdpi"></LinearLayout>
                         </LinearLayout>
                         <LinearLayout
+                            android:id="@+id/pin3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
                             android:weightSum="57"
                             android:orientation="horizontal"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:visibility="invisible">
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -166,6 +216,7 @@
                                 android:background="@drawable/dot_filled_xhdpi"></LinearLayout>
                         </LinearLayout>
                         <LinearLayout
+                            android:id="@+id/pin4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
@@ -229,7 +280,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -250,7 +301,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -271,7 +322,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -304,7 +355,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -325,7 +376,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -346,7 +397,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -379,7 +430,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -400,7 +451,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -421,7 +472,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -457,6 +508,7 @@
                             android:gravity="center">
 
                             <TextView
+                                android:id="@+id/reset_option"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/pin_reset_label"
@@ -473,7 +525,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="152"
-                            android:background="@drawable/empty_pin_pad_circle"
+                            android:background="@drawable/circle_pin_pad"
                             android:clickable="true"
                             android:gravity="center">
 
@@ -497,6 +549,7 @@
                             android:gravity="center">
 
                             <TextView
+                                android:id="@+id/delete_option"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/pin_delete_label"

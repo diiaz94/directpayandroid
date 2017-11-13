@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.btm.pagodirecto.PinActivity;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.util.Util;
@@ -20,8 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends BaseActivity {
 
-    @Bind(R.id.btn_sell)
-    Button btnSell;
+    @Bind(R.id.btn_commerces)
+    Button btnCommerces;
+
+    @Bind(R.id.btn_pay)
+    Button btnPay;
 
     @Bind(R.id.user_name)
     TextView userName;
@@ -34,20 +36,24 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        Util.setActivity(this);
         this.setUserAttributes();
     }
 
-    @OnClick(R.id.btn_sell)
-    public void goToSell(){
-        /*Util.goToActivitySlide(
-            this,
-            SelectUserActivity_.class,
-            Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );*/
+    @OnClick(R.id.btn_pay)
+    public void goToPay(){
         Util.goToActivitySlide(
-                this,
-                PinActivity.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Util.getActivity(),
+                PayUsers.class,
+                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+    }
+
+    @OnClick(R.id.btn_commerces)
+    public void goToCommerce(){
+        Util.goToActivitySlide(
+                Util.getActivity(),
+                CommerceActivity.class,
+                Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     }
 
     public void setUserAttributes(){
@@ -59,13 +65,4 @@ public class HomeActivity extends BaseActivity {
         Glide.with(Util.getContext()).load(glideUrl).into(userImage);
     }
 
-    @Override
-    public void onBackPressed() {
-        // code here to show dialog
-        Util.goToActivitySlideBack(
-                Util.getActivity(),
-                MainActivity.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );
-    }
 }

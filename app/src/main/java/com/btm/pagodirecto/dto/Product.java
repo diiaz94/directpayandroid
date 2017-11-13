@@ -13,6 +13,28 @@ public class Product {
     String description;
     String status;
 
+    int cartQty;
+    double cartPrice;
+    public double getCartPrice() {
+        return cartPrice;
+    }
+
+    public void setCartPrice(double price) {
+        this.cartPrice = price;
+    }
+    public Product(){
+        cartQty = 1;
+        cartPrice = 0;
+    }
+
+    public int getCartQty() {
+        return cartQty;
+    }
+
+    public void setCartQty(int qty) {
+        this.cartQty = qty;
+    }
+
     public String getRating() {
         return rating;
     }
@@ -68,4 +90,5 @@ public class Product {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

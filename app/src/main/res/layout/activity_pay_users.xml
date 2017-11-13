@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.btm.pagodirecto.activities.PayUsers"
+    android:background="@drawable/background"
+    android:weightSum="1291"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="88"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="690"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="88">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="48"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/back"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="594"
+                    android:text="PAGAR"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/medium"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/whiteTransparent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="112"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="720"
+            android:orientation="vertical"
+            android:weightSum="112">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="33"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="55"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:width="10dp"
+                        android:background="@drawable/input_text"
+                        android:gravity="center"
+                        android:hint="Buscar"
+                        android:textColorHint="@color/opaque_blue"
+                        android:textSize="14sp"
+                        android:enabled="false"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="750">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="600"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/search" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="68"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="720"
+            android:orientation="horizontal"
+            android:weightSum="720"
+            android:background="@drawable/tabs">
+
+            <LinearLayout
+                android:id="@+id/users_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:background="@drawable/tabs_select_state"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuarios"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/pending_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pendientes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/users_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1024"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
+        tools:context="com.btm.pagodirecto.activities.PayUsers"
+        tools:listitem="@layout/grid_item_user"
+        android:visibility="visible"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pending_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1024"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="1"
+        tools:context="com.btm.pagodirecto.activities.PayUsers"
+        tools:listitem="@layout/list_item_pending"
+        android:visibility="gone"/>
+</LinearLayout>

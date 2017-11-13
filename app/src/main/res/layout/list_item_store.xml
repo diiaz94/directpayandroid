@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="100"
+        android:background="@drawable/border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80">
+
+            <ImageView
+                android:id="@+id/commerce_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image"/>
+
+            <ImageButton
+                android:id="@+id/heart_image"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/commerce_image"
+                android:src="@drawable/unlike"
+                android:background="@color/transparent"
+                android:layout_alignRight="@id/commerce_image" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/comerce_tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lodge Restaurant"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium" />
+
+                <TextView
+                    android:id="@+id/commerce_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comida Mediterranea"
+                    android:textSize="@dimen/small" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/comerce_distance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="1 m"
+                android:textSize="@dimen/medium" />
+
+            <ImageButton
+                android:layout_width="18dp"
+                android:layout_height="15dp"
+                android:src="@drawable/arrow_right"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

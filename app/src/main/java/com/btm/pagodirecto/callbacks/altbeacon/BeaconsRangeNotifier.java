@@ -87,7 +87,7 @@ public class BeaconsRangeNotifier implements RangeNotifier {
                     beacon.setOutStatus();
                     beacon.setArrive(false);
                     //Emit exit region from that beacon
-
+                    this.emitExitRegion(beacon);
                 }
             }
         }catch (Exception e) {
@@ -155,10 +155,26 @@ public class BeaconsRangeNotifier implements RangeNotifier {
 
     public void emitEnterRegion(Beacons beacon) throws JSONException {
 
-        //JSONObject data = new JSONObject(Util.getFromSharedPreferences("user"));
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon", "1");
+            json.put("user", Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        SocketHandle.emitEvent("enter region", json);
 
-        //SocketHandle.emitEvent("",user);
+    }
 
+    public void emitExitRegion(Beacons beacon) throws JSONException {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon","1");
+            json.put("user",Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        SocketHandle.emitEvent("exit region", json);
     }
 
     /*

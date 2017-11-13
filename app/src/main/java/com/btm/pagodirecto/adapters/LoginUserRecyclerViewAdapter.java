@@ -87,8 +87,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
                 Util.goToActivitySlide(
                         Util.getActivity(),
                         HomeActivity.class,
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-                );
+                        Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             }
         });
     }
@@ -111,7 +110,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
             mView = view;
             userImage = (CircleImageView) view.findViewById(R.id.user_image);
             userName = (TextView) view.findViewById(R.id.user_name);
-            btnSell = (Button) view.findViewById(R.id.btn_sell);
+            btnSell = (Button) view.findViewById(R.id.btn_pay);
         }
     }
 

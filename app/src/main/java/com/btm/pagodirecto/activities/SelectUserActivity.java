@@ -122,7 +122,20 @@ public class SelectUserActivity extends BeaconScanner {
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
-        if (Util.getFromSharedPreferences("user_role").equals("customer")){loadUsers();}
+        if (Util.getFromSharedPreferences("user_role").equals("customer")){
+            loadUsers();
+        }else {
+
+            JSONObject json = new JSONObject();
+            try {
+                json.put("beacon", "1");
+                json.put("user", Util.getFromSharedPreferences("user_id"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            SocketHandle.emitEvent("enter region", json);
+
+        }
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ADD_USER);
@@ -131,16 +144,6 @@ public class SelectUserActivity extends BeaconScanner {
                 filter);
 
         hideSoftKeyboard();
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("beacon", "1");
-            json.put("user", Util.getFromSharedPreferences("user_id"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        this.enterRegion = true;
-        SocketHandle.emitEvent("enter region", json);
 
     }
 
@@ -161,15 +164,7 @@ public class SelectUserActivity extends BeaconScanner {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        JSONObject json = new JSONObject();
-        try {
-            json.put("beacon","1");
-            json.put("user",Util.getFromSharedPreferences("user_id"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        this.enterRegion = false;
-        SocketHandle.emitEvent("exit region", json);
+
     }
 
     //Buetooth permission and activate
