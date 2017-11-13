@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.btm.pagodirecto.activities.PayMethod"
+    android:background="@drawable/background"
+    android:weightSum="1291"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="88"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="690"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="88">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="48"
+                android:orientation="horizontal"
+                android:weightSum="690">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:background="@drawable/back"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="594"
+                    android:text="PAGAR"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/medium"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/whiteTransparent"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="68"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="750">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="720"
+            android:orientation="horizontal"
+            android:weightSum="720"
+            android:background="@drawable/tabs">
+
+            <LinearLayout
+                android:id="@+id/users_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:background="@drawable/tabs_select_state"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarjeta de Credito"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/pending_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P2P"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="125dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Bs. 15.500"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xxlarge"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="119dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="400"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/white_rounder_corner">
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="109dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="180"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="750">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:text="PAGAR"
+            android:layout_weight="298"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:id="@+id/btn_pay"
+            android:textColor="@color/white"
+            android:background="@drawable/main_button"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="44"></View>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="100"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:id="@+id/btn_sell"
+            android:textColor="@color/white"
+            android:src="@drawable/group_people"
+            android:background="@drawable/main_button">
+        </ImageButton>
+
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:orientation="horizontal"
+        android:weightSum="750"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="300"
+            android:text="Guardar Metodo de Pago"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:id="@+id/btn_help"
+            android:textColor="@color/white"
+            android:src="@drawable/help"
+            android:background="@drawable/main_button">
+        </ImageButton>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
