@@ -110,14 +110,14 @@
                         android:weightSum="345">
 
                         <Button
-                            android:id="@+id/btn_sell"
+                            android:id="@+id/btn_pay"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="top"
                             android:layout_weight="140"
                             android:background="@drawable/grid_button"
                             android:gravity="center"
-                            android:text="Vender"
+                            android:text="Pagar"
                             android:textColor="@color/gray"
                             android:textSize="12sp" />
 

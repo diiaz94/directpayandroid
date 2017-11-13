@@ -10,10 +10,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import com.btm.pagodirecto.R;
+import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.adapters.ReceiptsRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.UsersRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.responses.ResponseReceipts;
 import com.btm.pagodirecto.responses.ResponseUsers;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
@@ -29,7 +33,7 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class PayUsers extends AppCompatActivity {
+public class PayUsers extends BaseActivity {
 
     @Bind(R.id.users_grid)
     RecyclerView usersGrid;
@@ -45,12 +49,13 @@ public class PayUsers extends AppCompatActivity {
 
 
     private ArrayList<User> mUsers = new ArrayList<User>();
-    private ArrayList<User> mPendings = new ArrayList<User>();
+    private ArrayList<Receipt> mPendings = new ArrayList<Receipt>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_users);
         ButterKnife.bind(this);
+        Util.setActivity(this);
 
         usersGrid.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         pendingList.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
@@ -94,18 +99,18 @@ public class PayUsers extends AppCompatActivity {
 
     private void loadPendings() {
         Map<String,String> map = new HashMap<>();
-        map.put("role", "commerce");
-        map.put("user_id", Util.getFromSharedPreferences("user_id"));
+        map.put("status", "pending");
+        //map.put("user_id", Util.getFromSharedPreferences("user_id"));
 
         ServiceGenerator.getService(ApiService.class)
-                .users(map)
-                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
+                .receipts(map)
+                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseReceipts>>() {
 
                     @Override
                     public void handleSuccess(Object response) {
-                        ResponseUsers responseUsers = (ResponseUsers) response;
-                        mPendings = responseUsers.getUsers();
-                        pendingList.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),mPendings));
+                        ResponseReceipts responseReceipts = (ResponseReceipts) response;
+                        mPendings = responseReceipts.getReceipts();
+                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings));
                     }
 
                     @Override
@@ -114,7 +119,7 @@ public class PayUsers extends AppCompatActivity {
                     }
 
                     @Override
-                    public void handleFailError(Call<CustomResponse<ResponseUsers>> call, Throwable t) {
+                    public void handleFailError(Call<CustomResponse<ResponseReceipts>> call, Throwable t) {
 
                     }
                 });

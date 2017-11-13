@@ -77,16 +77,12 @@ private LayoutInflater inflater;
             }
         });
 
-        holder.btnSell.setTag(items.get(position).getId());
-        holder.btnSell.setOnClickListener(new View.OnClickListener() {
+        holder.btnPay.setTag(items.get(position).getId());
+        holder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Open sell activity
-                Util.goToActivitySlide(
-                        Util.getActivity(),
-                        SellActivity.class,
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-                );
+
             }
         });
     }
@@ -100,7 +96,7 @@ private LayoutInflater inflater;
         public final View mView;
         public final CircleImageView userImage;
         public final TextView userName;
-        public final Button btnSell;
+        public final Button btnPay;
 
         public User mItem;
 
@@ -109,7 +105,7 @@ private LayoutInflater inflater;
             mView = view;
             userImage = (CircleImageView) view.findViewById(R.id.user_image);
             userName = (TextView) view.findViewById(R.id.user_name);
-            btnSell = (Button) view.findViewById(R.id.btn_sell);
+            btnPay = (Button) view.findViewById(R.id.btn_pay);
         }
     }
 }
