@@ -20,6 +20,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.btm.pagodirecto.R;
@@ -71,6 +73,9 @@ public class SelectUserActivity extends BeaconScanner {
     @Bind(R.id.pending_tab)
     LinearLayout pendingTab;
 
+    @Bind(R.id.btn_back)
+    Button btnBack;
+
 
     // Permisos que debe autorizar el usuario
     // TODO: Deben mejorarse, sobre todo el de BT, quizas crear una clase aparte de manejo de permisos
@@ -78,7 +83,7 @@ public class SelectUserActivity extends BeaconScanner {
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
     private ArrayList<User> users = new ArrayList<User>();
-    private ArrayList<User> pendint_users = new ArrayList<User>();
+    private ArrayList<User> pendintUsers = new ArrayList<User>();
     public Boolean enterRegion = false;
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -144,7 +149,7 @@ public class SelectUserActivity extends BeaconScanner {
         ButterKnife.bind(this);
 
         usersGrid.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-        pendingList.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
+        pendingList.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
         JSONObject json = new JSONObject();
         try {
@@ -220,7 +225,7 @@ public class SelectUserActivity extends BeaconScanner {
     private void loadPendingUsers() {
 
         Map<String,String> map = new HashMap<>();
-        map.put("role", Util.getFromSharedPreferences(Constants.TAG_USER_ROLE));
+        map.put("role", Util.getFromSharedPreferences(Constants.ROLE_COMMERCE));
         map.put("user_id", Util.getFromSharedPreferences(Constants.TAG_USER_ID));
 
         ServiceGenerator.getService(ApiService.class)
@@ -230,11 +235,17 @@ public class SelectUserActivity extends BeaconScanner {
                     @Override
                     public void handleSuccess(Object response) {
                         ResponseUsers responseUsers = (ResponseUsers) response;
-                        users = responseUsers.getUsers();
+                        pendintUsers = responseUsers.getUsers();
 
-                       pendingList.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                       pendingList.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),pendintUsers,new UsersRecyclerViewAdapter.OnItemClickListener() {
                            @Override public synchronized void onItemClick(int i,int type) {
+                               Log.d("FLAG", "onItemClick: "+i+" type: "+type);
 
+                               Util.saveInSharedPreferences(Constants.TAG_PAY_USER_ID,pendintUsers.get(i).getId());
+
+                               Util.goToActivitySlide(
+                                       Util.getActivity(),
+                                       SellActivity.class);
                            }
                        }));
                     }
@@ -274,11 +285,7 @@ public class SelectUserActivity extends BeaconScanner {
     @Override
     public void onBackPressed() {
         // code here to show dialog
-        Util.goToActivitySlideBack(
-                Util.getActivity(),
-                HomeActivity.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );
+        this.finish();
     }
 
     @OnClick(R.id.sell_tab)
@@ -307,6 +314,11 @@ public class SelectUserActivity extends BeaconScanner {
         }
         usersGrid.setVisibility(View.GONE);
         pendingList.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.btn_back)
+    public void actionBack(){
+        this.finish();
     }
 
 }

@@ -20,4 +20,5 @@ public class Constants {
     public static final String TAG_USER_ID = "user_id";
     public static final String TAG_USER_ROLE = "user_role";
     public static final String ROLE_COMMERCE = "commerce";
+    public static final String TAG_PAY_USER_ID = "pay_user_id";
 }
