@@ -23,4 +23,5 @@ public class Constants {
     public static final String TAG_IMAGE_URL = "image_url";
     public static final String TAG_ENTITY_NAME = "entity_name";
     public static final String TAG_PAY_TYPE = "pay_type";
+    public static final String TAG_PAY_USER_ID = "pay_user_id";
 }

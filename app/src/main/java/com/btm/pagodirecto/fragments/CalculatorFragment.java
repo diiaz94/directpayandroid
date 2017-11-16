@@ -6,6 +6,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -219,16 +220,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         formatText(result,0,inputResult.getText().toString().length()-1,inputResult.getText().toString().length());
     }
 
-    @OnClick(R.id.btn_delete)
-    public void clearLastDigit(){
-        if(inputResult.getText().toString().length() > 1 || !inputResult.getText().toString().isEmpty()){
-            inputResult.setText(inputResult.getText().toString().substring(1, inputResult.length()-1));
-            formatText(inputResult.getText().toString(),0,inputResult.getText().length()-1,inputResult.getText().length());
-        }else{
-            inputResult.setText("Bs.0,00");
-        }
-    }
-
     @OnClick(R.id.btn_c)
     public void clearAll(){
         this.clearOperators();
@@ -252,66 +243,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    @OnClick(R.id.btn_plus)
-    public void sum(){
-        this.oper[1] = "+";
-        if (!emptyText()){
-            if (this.oper[0].isEmpty()){
-                this.oper[0] = getTextWithoutFormat();
-                inputResult.setText("Bs.0,00");
-            }else {
-                this.oper[2] = getTextWithoutFormat();
-                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
-            }
-        }
-    }
-
-    @OnClick(R.id.btn_sustract)
-    public void sustract(){
-        this.oper[1] = "-";
-        if (!emptyText()){
-            if (this.oper[0].isEmpty()){
-                this.oper[0] = getTextWithoutFormat();
-                inputResult.setText("Bs.0,00");
-            }else {
-                this.oper[2] = getTextWithoutFormat();
-                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
-            }
-        }
-    }
-
-    @OnClick(R.id.btn_mult)
-    public void mult(){
-        this.oper[1] = "*";
-        if (!emptyText()){
-            if (this.oper[0].isEmpty()){
-                this.oper[0] = getTextWithoutFormat();
-                inputResult.setText("Bs.0,00");
-            }else {
-                this.oper[2] = getTextWithoutFormat();
-                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
-            }
-        }
-    }
-
-    @OnClick(R.id.btn_div)
-    public void div(){
-        this.oper[1] = "/";
-        if (!emptyText()){
-            if (this.oper[0].isEmpty()){
-                this.oper[0] = getTextWithoutFormat();
-                inputResult.setText("Bs.0,00");
-            }else {
-                this.oper[2] = getTextWithoutFormat();
-                this.doOperation(this.oper[0],this.oper[1],this.oper[2]);
-            }
-        }
-    }
-
     @OnClick(R.id.btn_equal)
     public void equal(){
-        this.oper[2] = this.getTextWithoutFormat();
-        doOperation(this.oper[0],this.oper[1],this.oper[2]);
+        //Send like a new product and clear text
+        Log.d("FLAG", "equal: ");
     }
 
     public void doOperation(String firstValue, String operator, String secondValue){ // 0 + 10

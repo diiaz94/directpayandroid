@@ -37,7 +37,6 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell);
-        Util.setActivity(this);
         mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -60,7 +59,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     @Override
     protected void onResume() {
         super.onResume();
-
+        Util.setActivity(this);
 
     }
 
@@ -123,11 +122,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     @Override
     public void onBackPressed() {
         // code here to show dialog
-        Util.goToActivitySlideBack(
-                Util.getActivity(),
-                SelectUserActivity_.class,
-                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-        );
+        this.finish();
     }
 
     }
