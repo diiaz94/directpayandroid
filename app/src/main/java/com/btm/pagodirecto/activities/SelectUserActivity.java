@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
@@ -50,14 +52,25 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @EActivity
 public class SelectUserActivity extends BeaconScanner {
 
-    @Bind(R.id.grid)
-    RecyclerView recyclerView;
+    @Bind(R.id.users_grid)
+    RecyclerView usersGrid;
+
+    @Bind(R.id.pending_list)
+    RecyclerView pendingList;
+
+    @Bind(R.id.sell_tab)
+    LinearLayout sellTab;
+
+    @Bind(R.id.pending_tab)
+    LinearLayout pendingTab;
+
 
     // Permisos que debe autorizar el usuario
     // TODO: Deben mejorarse, sobre todo el de BT, quizas crear una clase aparte de manejo de permisos
@@ -65,6 +78,7 @@ public class SelectUserActivity extends BeaconScanner {
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
     private ArrayList<User> users = new ArrayList<User>();
+    private ArrayList<User> pendint_users = new ArrayList<User>();
     public Boolean enterRegion = false;
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -81,7 +95,7 @@ public class SelectUserActivity extends BeaconScanner {
                 //ADD USER IN LIST
                 if (!ifExists(user)){
                     users.add(users.size()-(users.size()>0?1:0),user);
-                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                    usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
                         @Override public synchronized void onItemClick(int i,int type) {
 
                         }
@@ -93,7 +107,7 @@ public class SelectUserActivity extends BeaconScanner {
                 //REMOVE USER IN LIST
                 if (users.size() > 0) {
                     users.remove(this.getIndexFromUser(user));
-                    recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                    usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
                         @Override public synchronized void onItemClick(int i,int type) {
 
                         }
@@ -128,22 +142,18 @@ public class SelectUserActivity extends BeaconScanner {
         setContentView(R.layout.activity_select_user);
         Util.setActivity(this);
         ButterKnife.bind(this);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
-        if (Util.getFromSharedPreferences("user_role").equals("customer")){
-            loadUsers();
-        }else {
+        usersGrid.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        pendingList.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
 
-            JSONObject json = new JSONObject();
-            try {
-                json.put("beacon", "1");
-                json.put("user", Util.getFromSharedPreferences("user_id"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            SocketHandle.emitEvent("enter region", json);
-
+        JSONObject json = new JSONObject();
+        try {
+            json.put("beacon", "1");
+            json.put("user", Util.getFromSharedPreferences("user_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        SocketHandle.emitEvent("enter region", json);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ADD_USER);
@@ -151,6 +161,7 @@ public class SelectUserActivity extends BeaconScanner {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 filter);
 
+        loadPendingUsers();
         hideSoftKeyboard();
 
     }
@@ -158,6 +169,7 @@ public class SelectUserActivity extends BeaconScanner {
     @Override
     protected void onResume(){
         super.onResume();
+        Util.setActivity(this);
 
         if (Util.getFromSharedPreferences("user_role").equals("customer")) {
             Util.setThreadPolicy();
@@ -205,13 +217,11 @@ public class SelectUserActivity extends BeaconScanner {
             }
         }
     }
-
-
-    private void loadUsers() {
+    private void loadPendingUsers() {
 
         Map<String,String> map = new HashMap<>();
-        map.put("role", Util.getFromSharedPreferences("user_role"));
-        map.put("user_id", Util.getFromSharedPreferences("user_id"));
+        map.put("role", Util.getFromSharedPreferences(Constants.TAG_USER_ROLE));
+        map.put("user_id", Util.getFromSharedPreferences(Constants.TAG_USER_ID));
 
         ServiceGenerator.getService(ApiService.class)
                 .users(map)
@@ -222,7 +232,7 @@ public class SelectUserActivity extends BeaconScanner {
                         ResponseUsers responseUsers = (ResponseUsers) response;
                         users = responseUsers.getUsers();
 
-                       recyclerView.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                       pendingList.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
                            @Override public synchronized void onItemClick(int i,int type) {
 
                            }
@@ -269,6 +279,34 @@ public class SelectUserActivity extends BeaconScanner {
                 HomeActivity.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
+    }
+
+    @OnClick(R.id.sell_tab)
+    public void showUserGrid(){
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            sellTab.setBackgroundDrawable( getResources().getDrawable(R.drawable.tabs_select_state) );
+            pendingTab.setBackgroundDrawable(null);
+        } else {
+            sellTab.setBackground( getResources().getDrawable(R.drawable.tabs_select_state));
+            pendingTab.setBackground(null);
+        }
+        pendingList.setVisibility(View.GONE);
+        usersGrid.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.pending_tab)
+    public void showPendingList(){
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            pendingTab.setBackgroundDrawable( getResources().getDrawable(R.drawable.tabs_select_state) );
+            sellTab.setBackgroundDrawable(null);
+        } else {
+            pendingTab.setBackground( getResources().getDrawable(R.drawable.tabs_select_state));
+            sellTab.setBackground(null);
+        }
+        usersGrid.setVisibility(View.GONE);
+        pendingList.setVisibility(View.VISIBLE);
     }
 
 }
