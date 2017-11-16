@@ -13,6 +13,7 @@ import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.HomeActivity;
 import com.btm.pagodirecto.activities.SellActivity;
 import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -79,10 +80,10 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
             @Override
             public void onClick(View v) {
                 //Open home activity
-                Util.saveInSharedPreferences("user_name",items.get(position).getName());
-                Util.saveInSharedPreferences("user_url_image",items.get(position).getPhoto_url());
-                Util.saveInSharedPreferences("user_id", items.get(position).getId());
-                Util.saveInSharedPreferences("user_role", items.get(position).getRole());
+                Util.saveInSharedPreferences(Constants.TAG_USER_NAME,items.get(position).getName());
+                Util.saveInSharedPreferences(Constants.TAG_USER_URL_IMAGE,items.get(position).getPhoto_url());
+                Util.saveInSharedPreferences(Constants.TAG_USER_ID, items.get(position).getId());
+                Util.saveInSharedPreferences(Constants.TAG_USER_ROLE, items.get(position).getRole());
 
                 Util.goToActivitySlide(
                         Util.getActivity(),

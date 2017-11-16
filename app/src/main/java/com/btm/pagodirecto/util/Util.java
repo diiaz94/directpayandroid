@@ -21,8 +21,11 @@ import android.widget.Toast;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
+import com.btm.pagodirecto.activities.baseActivities.BeaconScanner_;
 import com.google.gson.Gson;
 
+import org.altbeacon.beacon.Beacon;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -50,6 +53,7 @@ public class Util {
     private static final String TAG_MAX_ROL = "USER_MAX_ROLE";
     private static final String TAG_PREFERENCES = "PREFERENCES_CUSTOMER";
     protected static BaseActivity activity;
+    protected static BeaconScanner_ activityBeacon;
     protected static SharedPreferences sharedPreferences;
     private static Long intervalTime = Long.valueOf(86400000);
     public static ProgressDialog progress;
@@ -71,6 +75,10 @@ public class Util {
 
     public static void setActivity(BaseActivity _activity) {
         activity = _activity;
+    }
+
+    public static void setBeaconActivity(BeaconScanner_ _activity) {
+        activityBeacon = _activity;
     }
 
     public static Activity getActivity() {
