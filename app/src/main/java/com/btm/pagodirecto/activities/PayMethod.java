@@ -43,7 +43,7 @@ public class PayMethod extends BaseActivity {
     @Bind(R.id.footer_text)
     TextView textFooter;
 
-    @Bind(R.id.back_button)
+    @Bind(R.id.btn_back)
     Button btnBack;
 
     @Override
@@ -113,8 +113,8 @@ public class PayMethod extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.back_button)
-    public void actionBack(){
+    @OnClick(R.id.btn_back)
+    public void goToBack(){
         this.finish();
     }
 

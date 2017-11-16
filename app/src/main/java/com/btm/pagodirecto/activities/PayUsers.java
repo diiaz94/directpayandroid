@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,6 +24,7 @@ import com.btm.pagodirecto.responses.ResponseReceipts;
 import com.btm.pagodirecto.responses.ResponseUsers;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 
 import java.util.ArrayList;
@@ -101,11 +103,14 @@ public class PayUsers extends BaseActivity {
                             @Override public synchronized void onItemClick(int i,int type) {
                                 switch (type){
                                     case 0:
-                                        Util.saveInSharedPreferences("pay_image_url",mUsers.get(i).getPhoto_url());
-                                        Util.saveInSharedPreferences("pay_entity_name",mUsers.get(i).getName());
-                                        Util.goToActivitySlide(
-                                                act,
-                                                PayActivity.class);
+
+                                        Intent intent = new Intent(act,PayActivity.class);
+                                        //intent.putExtra(Constants.TAG_IMAGE_URL, mUsers.get(i).getPhoto_url());
+                                        //intent.putExtra(Constants.TAG_ENTITY_NAME, mUsers.get(i).getName());
+                                        //intent.putExtra(Constants.TAG_PAY_TYPE, "user");
+                                        act.startActivity(intent);
+                                        act.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+
                                         break;
                                 }
                             }
@@ -150,7 +155,7 @@ public class PayUsers extends BaseActivity {
                                         Util.saveInSharedPreferences("pay_entity_name",mPendings.get(i).getName());
                                         Util.goToActivitySlide(
                                                 act,
-                                                PayActivity.class);
+                                                PayResume.class);
                                         break;
                                 }
                             }

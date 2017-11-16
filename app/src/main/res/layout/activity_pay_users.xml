@@ -14,57 +14,110 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="88"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="750">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="690"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="88">
-
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="48"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="690">
+                android:weightSum="750">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="686"
+                    android:orientation="horizontal"
+                    android:weightSum="686">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="18"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="650"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pagar"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xmedium"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="18"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="750"
+                android:id="@+id/linearLayout">
                 <Button
                     android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="48"
-                    android:background="@drawable/back"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="594"
-                    android:gravity="center"
-                    android:text="PAGAR"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/medium"
-                    android:textStyle="bold" />
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
             </LinearLayout>
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/whiteTransparent"/>
-
+        android:layout_height="0dp"
+        android:layout_weight="33"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="112"
+        android:layout_weight="55"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="750">
@@ -74,11 +127,8 @@
             android:layout_height="match_parent"
             android:layout_weight="720"
             android:orientation="vertical"
-            android:weightSum="112">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="33"/>
+            android:weightSum="55">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -125,7 +175,10 @@
 
         </LinearLayout>
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -215,11 +268,10 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="54"/>
+        android:layout_weight="55"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/users_grid"
         android:layout_width="match_parent"
@@ -230,6 +282,11 @@
         app:spanCount="2"
         tools:context="com.btm.pagodirecto.activities.PayUsers"
         tools:listitem="@layout/grid_item_user" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="55"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pending_list"

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -51,12 +52,18 @@ public class PayActivity extends BaseActivity {
 
 
     final Context context = this;
+    private String mImageUrl;
+    private String mEntityName;
+    private String mPayType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
+       // mImageUrl = getIntent().getStringExtra(Constants.TAG_IMAGE_URL);
+        //mEntityName = getIntent().getStringExtra(Constants.TAG_ENTITY_NAME);
+        //mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
         setUserAttributes();
     }
 
@@ -67,22 +74,19 @@ public class PayActivity extends BaseActivity {
     }
 
     private void setUserAttributes() {
-        userName.setText(Util.getFromSharedPreferences("pay_entity_name"));
-        GlideUrl glideUrl = new GlideUrl(Util.getFromSharedPreferences("pay_image_url"), new LazyHeaders.Builder()
+        userName.setText(mEntityName);
+        GlideUrl glideUrl = new GlideUrl(mImageUrl, new LazyHeaders.Builder()
                 .build());
 
         Glide.with(Util.getContext()).load(glideUrl).into(userImage);
     }
 
-    @OnClick(R.id.btn_back)
-    public void goToBack(){
-        this.finish();
-    }
     @OnClick(R.id.continue_pay)
     public void continuePay(){
         Util.goToActivitySlide(
                 this,
-                PayResume.class);
+                PayMethod.class);
+
     }
 
     @OnClick(R.id.arrows)
@@ -129,4 +133,10 @@ public class PayActivity extends BaseActivity {
         alertDialog.show();
 
     }
+
+    @OnClick(R.id.btn_back)
+    public void goToBack(){
+        this.finish();
+    }
+
 }

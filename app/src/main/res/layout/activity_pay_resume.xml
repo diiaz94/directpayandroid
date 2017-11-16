@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1302"
+    android:weightSum="1291"
     android:background="@drawable/background"
     android:orientation="vertical"
     tools:context="com.btm.pagodirecto.activities.PayResume">
@@ -13,96 +13,153 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="115"
-        android:orientation="horizontal"
-        android:weightSum="750">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="228"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="228">
-
-            <View
-                android:layout_width="0dp"
+        android:layout_weight="88"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="30"></View>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="750">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="686"
+                    android:orientation="horizontal"
+                    android:weightSum="686">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="18"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_back"
-                android:layout_width="21dp"
-                android:layout_height="25dp"
-                android:background="@drawable/back"
-                android:gravity="center" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="650"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Resumen de compra"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xmedium"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="18"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
 
-        </LinearLayout>
+                    </LinearLayout>
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="400"
-            android:gravity="center"
-            android:text="Resumen de Compra"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large" />
 
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="750"
+                android:id="@+id/linearLayout">
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"></View>
+        android:layout_weight="14"></View>
 
     <LinearLayout
         android:id="@+id/products_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="710"
-        android:background="@drawable/white_rounder_corner"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/grid"
-            android:layout_width="match_parent"
+        android:layout_weight="759"
+        android:weightSum="750"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layoutManager="GridLayoutManager"
-            app:spanCount="1"
-            android:scrollbars="vertical"
-            tools:context="com.btm.pagodirecto.activities.CommerceProducts"
-            tools:listitem="@layout/list_item_pay_resume" />
-
+            android:layout_weight="710"
+            android:background="@drawable/white_rounder_corner">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="GridLayoutManager"
+                app:spanCount="1"
+                android:scrollbars="vertical"
+                tools:context="com.btm.pagodirecto.activities.CommerceProducts"
+                tools:listitem="@layout/list_item_pay_resume" />
+        </LinearLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="85"></View>
+        android:layout_weight="97"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="45"
+        android:layout_weight="32"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="SUBTOTAL"
             android:textColor="@color/white"
             android:textAlignment="center"
-            android:textSize="@dimen/medium" />
+            android:textSize="@dimen/xxsmall" />
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="28"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,7 +182,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="64"></View>
+        android:layout_weight="54"></View>
 
     <LinearLayout
         android:layout_width="match_parent"

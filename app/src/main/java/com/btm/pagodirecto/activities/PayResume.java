@@ -40,7 +40,7 @@ public class PayResume extends BaseActivity {
     Button btnPay;
 
     @Bind(R.id.btn_back)
-    Button brnBack;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class PayResume extends BaseActivity {
     }
 
     @OnClick(R.id.btn_back)
-    public void actionBack(){
+    public void goToBack(){
         this.finish();
     }
 
