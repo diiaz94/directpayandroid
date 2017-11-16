@@ -49,6 +49,7 @@
 
         <activity
             android:name=".activities.PayActivity"
+            android:windowSoftInputMode="stateVisible"
             android:label="@string/title_activity_pay"></activity>
 
         <activity android:name=".activities.PayAccepted"></activity>

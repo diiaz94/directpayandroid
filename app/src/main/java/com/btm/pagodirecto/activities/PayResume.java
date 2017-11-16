@@ -67,7 +67,6 @@ public class PayResume extends BaseActivity {
                     public void handleSuccess(Object response) {
                         ResponseProducts responseProducts = (ResponseProducts) response;
                         ArrayList<Product> products = responseProducts.getProducts();
-
                         recyclerView.setAdapter(new ProductsResumeRecyclerViewAdapter(getApplicationContext(),products));
                     }
 

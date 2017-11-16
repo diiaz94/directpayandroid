@@ -61,9 +61,9 @@ public class PayActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
-       // mImageUrl = getIntent().getStringExtra(Constants.TAG_IMAGE_URL);
-        //mEntityName = getIntent().getStringExtra(Constants.TAG_ENTITY_NAME);
-        //mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
+        mImageUrl = getIntent().getStringExtra(Constants.TAG_IMAGE_URL);
+        mEntityName = getIntent().getStringExtra(Constants.TAG_ENTITY_NAME);
+        mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
         setUserAttributes();
     }
 

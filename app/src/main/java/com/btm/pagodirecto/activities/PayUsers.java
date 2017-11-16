@@ -105,9 +105,9 @@ public class PayUsers extends BaseActivity {
                                     case 0:
 
                                         Intent intent = new Intent(act,PayActivity.class);
-                                        //intent.putExtra(Constants.TAG_IMAGE_URL, mUsers.get(i).getPhoto_url());
-                                        //intent.putExtra(Constants.TAG_ENTITY_NAME, mUsers.get(i).getName());
-                                        //intent.putExtra(Constants.TAG_PAY_TYPE, "user");
+                                        intent.putExtra(Constants.TAG_IMAGE_URL, mUsers.get(i).getPhoto_url());
+                                        intent.putExtra(Constants.TAG_ENTITY_NAME, mUsers.get(i).getName());
+                                        intent.putExtra(Constants.TAG_PAY_TYPE, "user");
                                         act.startActivity(intent);
                                         act.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
 

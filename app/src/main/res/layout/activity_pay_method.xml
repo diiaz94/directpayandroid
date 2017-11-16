@@ -60,7 +60,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pagar"
+                            android:text="Método de Pago"
                             android:textColor="@color/white"
                             android:textSize="@dimen/xmedium"
                             android:textStyle="bold" />
@@ -113,7 +113,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="41"/>
+        android:layout_weight="14"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -127,10 +127,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="720"
-            android:orientation="horizontal"
-            android:weightSum="720"
+            android:background="@drawable/tabs"
             android:clickable="true"
-            android:background="@drawable/tabs">
+            android:orientation="horizontal"
+            android:weightSum="720">
 
             <LinearLayout
                 android:id="@+id/card_tab"
@@ -138,29 +138,32 @@
                 android:layout_height="match_parent"
                 android:layout_weight="360"
                 android:background="@drawable/tabs_select_state"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tarjeta de credito"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium"/>
+                    android:textSize="@dimen/xxmedium" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/p2p_tab"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="360"
-                android:orientation="horizontal"
+                android:clickable="true"
                 android:gravity="center"
-                android:clickable="true">
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="P2P"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium"/>
+                    android:textSize="@dimen/xxmedium" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -173,34 +176,23 @@
         android:visibility="visible"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="125"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="120"
+            android:layout_weight="312"
             android:orientation="vertical"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Bs. 15.500"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/xxlarge"/>
+                android:textSize="@dimen/xlarge"/>
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="119"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -223,27 +215,24 @@
                     android:layout_height="0dp"
                     android:layout_weight="40"
                     android:gravity="bottom|center_horizontal"
-                    android:text="Numero de Tarjeta"
-                    android:textSize="@dimen/small"/>
+                    android:text="Número de Tarjeta"
+                    android:textSize="@dimen/xsmall"/>
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="80"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="8465   -   6892   -   0852   -   2452"
-                    android:textSize="@dimen/large"
-                    android:textColor="@color/black"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/gray"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xmedium" />
 
             </LinearLayout>
-
-
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -259,12 +248,13 @@
                     android:weightSum="120">
 
                     <TextView
+                        android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="40"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dia de Expiracion"
-                        android:textSize="@dimen/small"/>
+                        android:textSize="@dimen/xsmall" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -272,7 +262,7 @@
                         android:layout_weight="80"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="04 / 17"
-                        android:textSize="@dimen/large"
+                        android:textSize="@dimen/xxmedium"
                         android:textColor="@color/black"/>
 
 
@@ -296,7 +286,7 @@
                         android:layout_weight="40"
                         android:gravity="bottom|center_horizontal"
                         android:text="Codigo de Seguridad"
-                        android:textSize="@dimen/small"/>
+                        android:textSize="@dimen/xsmall"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -304,19 +294,17 @@
                         android:layout_weight="80"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="526"
-                        android:textSize="@dimen/large"
+                        android:textSize="@dimen/xxmedium"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
 
 
             </LinearLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/gray"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -330,7 +318,7 @@
                     android:layout_weight="40"
                     android:gravity="bottom|center_horizontal"
                     android:text="Nombre en Tarjeta"
-                    android:textSize="@dimen/small"/>
+                    android:textSize="@dimen/xsmall"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -338,7 +326,7 @@
                     android:layout_weight="80"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Richard Bailey"
-                    android:textSize="@dimen/large"
+                    android:textSize="@dimen/xxmedium"
                     android:textColor="@color/black"/>
 
 
@@ -355,15 +343,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="101"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:weightSum="750">
 
             <Button
                 android:id="@+id/btn_pay"
-                android:layout_width="100dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="291"
                 android:background="@drawable/main_button"
                 android:gravity="center"
                 android:text="PAGAR"
@@ -371,20 +359,30 @@
                 android:textSize="@dimen/medium" />
 
             <View
-                android:layout_width="40dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                ></View>
+                android:layout_weight="45"></View>
 
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:textSize="@dimen/medium"
-                android:padding="10dp"
-                android:id="@+id/btn_sell"
-                android:textColor="@color/white"
-                android:src="@drawable/group_people"
-                android:background="@drawable/main_button">
-            </ImageButton>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="101">
+
+                <ImageButton
+                    android:id="@+id/btn_sell"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="90"
+                    android:background="@drawable/main_button"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/group_people"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium"></ImageButton>
+            </LinearLayout>
+
 
         </LinearLayout>
 

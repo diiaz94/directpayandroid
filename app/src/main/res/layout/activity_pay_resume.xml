@@ -134,7 +134,7 @@
                 app:layoutManager="GridLayoutManager"
                 app:spanCount="1"
                 android:scrollbars="vertical"
-                tools:context="com.btm.pagodirecto.activities.CommerceProducts"
+                tools:context="com.btm.pagodirecto.activities.PayResume"
                 tools:listitem="@layout/list_item_pay_resume" />
         </LinearLayout>
     </LinearLayout>
@@ -174,7 +174,7 @@
             android:text="Bs. 15.500"
             android:textColor="@color/white"
             android:textAlignment="center"
-            android:textSize="@dimen/xLarge"
+            android:textSize="@dimen/xlarge"
             android:textStyle="bold" />
 
     </LinearLayout>

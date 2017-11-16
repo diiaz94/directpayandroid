@@ -6,293 +6,294 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.btm.pagodirecto.activities.PayActivity"
-    android:background="@drawable/background"
-    android:weightSum="1291"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="88"
-        android:orientation="vertical">
-        <RelativeLayout
+    android:background="@drawable/background">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:weightSum="1291"
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="750">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="686"
-                    android:orientation="horizontal"
-                    android:weightSum="686">
+                android:layout_height="0dp"
+                android:layout_weight="88"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:orientation="vertical"
-                        android:weightSum="88"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="750">
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="34"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="686"
                             android:orientation="horizontal"
-                            android:weightSum="18">
-                            <ImageButton
+                            android:weightSum="686">
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="18"
-                                android:background="@color/transparent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/back" />
-                        </LinearLayout>
+                                android:orientation="vertical"
+                                android:weightSum="88"
+                                android:gravity="center">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="34"
+                                    android:orientation="horizontal"
+                                    android:weightSum="18">
+                                    <ImageButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="18"
+                                        android:background="@color/transparent"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/back" />
+                                </LinearLayout>
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="650"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pago"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/xmedium"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:orientation="vertical"
-                        android:weightSum="88"
-                        android:gravity="center">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="34"
-                            android:orientation="horizontal"
-                            android:weightSum="18">
-                            <ImageButton
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="650"
+                                android:gravity="center">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pago"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/xmedium"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:visibility="gone"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="18"
-                                android:background="@color/transparent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/back" />
+                                android:orientation="vertical"
+                                android:weightSum="88"
+                                android:gravity="center">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="34"
+                                    android:orientation="horizontal"
+                                    android:weightSum="18">
+                                    <ImageButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="18"
+                                        android:background="@color/transparent"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/back" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
                         </LinearLayout>
-
                     </LinearLayout>
-
-
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="750"
+                        android:id="@+id/linearLayout">
+                        <Button
+                            android:id="@+id/btn_back"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="82"
+                            android:background="@color/transparent"/>
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="750"
-                android:id="@+id/linearLayout">
-                <Button
-                    android:id="@+id/btn_back"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="82"
-                    android:background="@color/transparent"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_height="0dp"
+                android:layout_weight="497"
+                android:weightSum="497"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="497"
-        android:weightSum="497"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="90"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="200"
-            android:weightSum="750"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="200"
-                android:src="@drawable/trump"
-                android:id="@+id/image_profile"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#26FFFFFF"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="30"/>
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Donal Trump"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="@dimen/xxmedium"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="707"
-        android:weightSum="707"
-        android:orientation="vertical"
-        android:background="@color/white">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="90"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/small"
-                android:textColor="@color/black"
-                android:text="@string/all_fields_required"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/gray02"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="120"
-            android:weightSum="750"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="720">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:inputType="number"
-                    android:textSize="@dimen/medium"
-                    android:hint="Monto"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/gray02"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="120"
-            android:weightSum="750"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="720">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:textSize="@dimen/medium"
-                    android:hint="Concepto"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/gray02"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="120"
-            android:weightSum="750"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:visibility="invisible">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="680">
-                <TextView
-                    android:id="@+id/debit_account"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:textSize="@dimen/medium"
-                    android:gravity="center_vertical"
-                    android:hint="Cuenta a debitar"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
-                android:weightSum="120"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageButton
-                    android:id="@+id/arrows"
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="60"
-                    android:background="@color/transparent"
-                    android:src="@drawable/arrows_icon_xhdpi"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/gray02"
-            android:visibility="invisible"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="87"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="90"
-            android:weightSum="750"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="690"
-                android:weightSum="647">
-                <Button
-                    android:id="@+id/continue_pay"
+                    android:layout_weight="90"/>
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/continue_pay_button"
-                    android:text="@string/continue_pay"
-                    android:textColor="@color/white"/>
+                    android:layout_height="0dp"
+                    android:layout_weight="200"
+                    android:weightSum="750"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="200"
+                        android:src="@drawable/trump"
+                        android:id="@+id/image_profile"
+                        app:civ_border_width="1dp"
+                        app:civ_border_color="#26FFFFFF"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="30"/>
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Donal Trump"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="@dimen/xxmedium"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="707"
+                android:weightSum="707"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="90"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/small"
+                        android:textColor="@color/black"
+                        android:text="@string/all_fields_required"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray02"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="120"
+                    android:weightSum="750"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="720">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:inputType="number"
+                            android:textSize="@dimen/xxmedium"
+                            android:hint="Monto"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray02"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="120"
+                    android:weightSum="750"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="720">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:textSize="@dimen/xxmedium"
+                            android:hint="Concepto"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray02"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="120"
+                    android:weightSum="750"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="invisible">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="680">
+                        <TextView
+                            android:id="@+id/debit_account"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:textSize="@dimen/medium"
+                            android:gravity="center_vertical"
+                            android:hint="Cuenta a debitar"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="40"
+                        android:weightSum="120"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageButton
+                            android:id="@+id/arrows"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="60"
+                            android:background="@color/transparent"
+                            android:src="@drawable/arrows_icon_xhdpi"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray02"
+                    android:visibility="invisible"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="87"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="90"
+                    android:weightSum="750"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="690"
+                        android:weightSum="647">
+                        <Button
+                            android:id="@+id/continue_pay"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/continue_pay_button"
+                            android:text="@string/continue_pay"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
 </LinearLayout>
 
