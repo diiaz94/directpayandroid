@@ -1,10 +1,13 @@
 package com.btm.pagodirecto.activities;
 
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -48,8 +51,10 @@ public class PayResume extends BaseActivity {
         setContentView(R.layout.activity_pay_resume);
         ButterKnife.bind(this);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         loadProducts();
+
+
     }
 
     @Override
@@ -67,7 +72,24 @@ public class PayResume extends BaseActivity {
                     public void handleSuccess(Object response) {
                         ResponseProducts responseProducts = (ResponseProducts) response;
                         ArrayList<Product> products = responseProducts.getProducts();
+
                         recyclerView.setAdapter(new ProductsResumeRecyclerViewAdapter(getApplicationContext(),products));
+                        recyclerView.post(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                Display display = getWindowManager().getDefaultDisplay();
+                                Point sizeP = new Point();
+                                display.getSize(sizeP);
+                                int width = sizeP.x;
+                                int totalHeight = sizeP.y;
+
+
+
+                                recyclerView.setLayoutParams(new LinearLayout.LayoutParams((new Double(width * 0.946)).intValue(),productsContainer.getMeasuredHeight()));
+
+                            }
+                        });
                     }
 
                     @Override

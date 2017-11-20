@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context="com.btm.pagodirecto.activities.PayResume">
 
-    <!--Include header-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -122,21 +121,123 @@
         android:layout_weight="759"
         android:weightSum="750"
         android:gravity="center">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="710"
-            android:background="@drawable/white_rounder_corner">
-            <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
                 android:id="@+id/grid"
+                android:visibility="gone"
                 android:layout_width="match_parent"
+                android:background="@drawable/white_rounder_corner"
                 android:layout_height="match_parent"
+                android:layout_weight="710"
                 app:layoutManager="GridLayoutManager"
                 app:spanCount="1"
                 android:scrollbars="vertical"
                 tools:context="com.btm.pagodirecto.activities.PayResume"
                 tools:listitem="@layout/list_item_pay_resume" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="710"
+            android:weightSum="759"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="749"
+                android:weightSum="750"
+                android:orientation="vertical"
+                android:background="@drawable/white_rounder_ticket"
+                android:gravity="center_horizontal">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="48"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="242"
+                    android:weightSum="750"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="229"
+                        android:src="@drawable/vector_smart_object_xhdpi"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="41"/>
+                <TextView
+                    android:id="@+id/ticket_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="91"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/large"
+                    android:text="Ticket Digital\n Estacionamiento C.C.C.T."/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="34"/>
+                <TextView
+                    android:id="@+id/ticket_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="51"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small"
+                    android:text="Avenida La Estancia C/C Calle Ernesto Blohm,\n Urbanizacion Chuao, Caracas, Venezuela"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="58"/>
+                <TextView
+                    android:id="@+id/ticket_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="56"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/xlarge"
+                    android:text="ASD452"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="62"/>
+                <TextView
+                    android:id="@+id/ticket_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="29"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small"
+                    android:text="23/11/20117 12:20:59 am"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="29"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bottom_ticket"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="38"
+                android:weightSum="750"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="710"
+                    android:background="@drawable/objeto_inteligente_vectorial_xhdpi"/>
+
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
     <View

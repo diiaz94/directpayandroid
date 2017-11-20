@@ -30,7 +30,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="514"
-                android:background="@drawable/product_list_bg"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="516">
