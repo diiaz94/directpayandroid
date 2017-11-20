@@ -19,7 +19,9 @@ import com.btm.pagodirecto.util.Util;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Locale;
 
@@ -216,14 +218,13 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 break;
         }
         String result = inputResult.getText().toString();
-        result.replace("Bs","");
-        formatText(result,0,inputResult.getText().toString().length()-1,inputResult.getText().toString().length());
+        formatText(result.replace("Bs.","").trim(),0,inputResult.getText().toString().length()-1,inputResult.getText().toString().length());
     }
 
     @OnClick(R.id.btn_c)
     public void clearAll(){
         this.clearOperators();
-        inputResult.setText("Bs.0,00");
+        inputResult.setText("Bs. 0,00");
     }
 
     public void clearOperators(){
@@ -235,11 +236,16 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     private String current = "";
     public void formatText(CharSequence s, int start, int before, int count) {
         if(!s.toString().equals(current)){
-            String cleanString = s.toString().replaceAll("[Bs,.]", "");
-            double parsed = Double.parseDouble(cleanString);
-            String formatted = NumberFormat.getCurrencyInstance().format((parsed/100));
+            String cleanNumber = s.toString().replaceAll("[Bs,.]", "").trim();
+
+            DecimalFormatSymbols simbolo=new DecimalFormatSymbols();
+            simbolo.setDecimalSeparator(',');
+            simbolo.setGroupingSeparator('.');
+            DecimalFormat formateador = new DecimalFormat("###,###.##",simbolo);
+
+            String formatted = formateador.format(Double.valueOf(cleanNumber));
             current = formatted;
-            inputResult.setText(formatted);
+            inputResult.setText("Bs. ".concat(formatted));
         }
     }
 
@@ -287,12 +293,12 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     public boolean emptyText(){
-        return (getTextWithoutFormat().equals("0.00"));
+        return (getTextWithoutFormat().equals("0,00"));
     }
 
-    double roundTwoDecimals(double d) {
-        DecimalFormat twoDForm = new DecimalFormat("###################.##");
-        return Double.valueOf(twoDForm.format(d));
+    String roundTwoDecimals(double d) {
+        DecimalFormat twoDForm = new DecimalFormat("###################,##");
+        return String.valueOf(twoDForm.format(d));
     }
 
     @OnClick(R.id.btn_back)

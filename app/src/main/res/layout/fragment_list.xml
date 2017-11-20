@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:weightSum="1200"
+    android:weightSum="1291"
     android:orientation="vertical"
     android:id="@+id/fragment_content"
     android:background="@drawable/background"
@@ -12,68 +12,120 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="750">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="690"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="100">
-
+        android:layout_weight="88"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="48"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="690">
+                android:weightSum="750">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="686"
+                    android:orientation="horizontal"
+                    android:weightSum="686">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="23"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="640"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="VENTA EN CURSO"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xmedium"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="23"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="34">
+                            <ImageButton
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/cart_icon_xhdpi" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="750"
+                android:id="@+id/linearLayout">
                 <Button
                     android:id="@+id/btn_back"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="48"
-                    android:background="@drawable/back"
-                    android:gravity="center" />
-                <TextView
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
+                <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="594"
-                    android:text="VENDER"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:textColor="@color/white"/>
+                    android:layout_weight="586"/>
                 <Button
                     android:id="@+id/btn_shop"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="48"
-                    android:background="@drawable/cart"
-                    android:gravity="center" />
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
             </LinearLayout>
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1100"
+        android:layout_weight="1203"
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
         tools:context="com.btm.pagodirecto.activities.SellActivity"
         tools:listitem="@layout/list_item_product" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/whiteTransparent"/>
 
 </LinearLayout>

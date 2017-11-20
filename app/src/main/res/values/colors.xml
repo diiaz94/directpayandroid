@@ -33,7 +33,8 @@
     <color name="pd_red">#e33d51ff</color>
 
     <color name="light_blue">#01234d</color>
-    <color name="dark_blue_container">#011d40</color>
+    <color name="dark_blue_container">#121a29</color>
     <color name="pd_blue">#067ce2</color>
+    <color name="tab_selected_icon_color">#f4141b2c</color>
 
 </resources>

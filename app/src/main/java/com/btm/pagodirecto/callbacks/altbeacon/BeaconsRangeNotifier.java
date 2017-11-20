@@ -47,7 +47,7 @@ import retrofit2.Response;
 public class BeaconsRangeNotifier implements RangeNotifier {
 
     private static final String TAG = "BeaconsRangeNotifier";
-    private static final double MAX_REGION_DISTANCE = 3;
+    private static final double MAX_REGION_DISTANCE = 1;
     private Beacons currentBeacon;
 
     private List<Beacons> beaconList = new ArrayList<Beacons>();

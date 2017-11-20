@@ -145,7 +145,6 @@ public class SelectUserActivity extends BeaconScanner {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user);
-        Util.setActivity(this);
         ButterKnife.bind(this);
 
         usersGrid.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));

@@ -51,7 +51,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_store, parent, false);
 
-        Double height = (new Double(parent.getMeasuredHeight() / 2.5));
+        Double height = (new Double(parent.getMeasuredHeight() / 2.2));
         int width = parent.getMeasuredWidth() / 1;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));
