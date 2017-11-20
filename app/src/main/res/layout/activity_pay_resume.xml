@@ -61,7 +61,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Resumen de compra"
+                            android:text="RESUMEN DE COMPRA"
                             android:textColor="@color/white"
                             android:textSize="@dimen/xmedium"
                             android:textStyle="bold" />

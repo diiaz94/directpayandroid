@@ -48,7 +48,7 @@ public class PayResume extends BaseActivity {
         setContentView(R.layout.activity_pay_resume);
         ButterKnife.bind(this);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
         loadProducts();
     }
 

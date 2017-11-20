@@ -52,7 +52,7 @@ private final UsersRecyclerViewAdapter.OnItemClickListener listener;
                 .inflate(R.layout.grid_item_user, parent, false);
 
 
-        Double height = new Double(parent.getMeasuredHeight() / 2.5);
+        Double height = new Double(parent.getMeasuredHeight() / 2.25);
         int width = parent.getMeasuredWidth() / 2;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));

@@ -9,138 +9,113 @@
     android:background="@drawable/background"
     android:baselineAligned="false"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="130"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="750">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="704"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="100">
-
+        android:layout_weight="88"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="56"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="704">
+                android:weightSum="750">
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="48"
-                    android:weightSum="56"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/btn_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                    android:layout_weight="690"
+                    android:orientation="horizontal"
+                    android:weightSum="690">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="48"
-                        android:background="@drawable/menu_icon_xhdpi"
-                        android:gravity="center" />
-                </LinearLayout>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="7"/>
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="587"
-                    android:gravity="center"
-                    android:text="Julia Mitchel"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:layout_weight="62">
-                    <RelativeLayout
-                        android:id="@+id/shop_container_icon"
-                        android:clickable="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="62"
-                            android:orientation="horizontal">
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="48">
+                            <ImageButton
+                                android:id="@+id/imageButton"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="48"
-                                android:weightSum="56"
-                                android:orientation="vertical"
-                                android:gravity="center">
-                                <Button
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="48"
-                                    android:background="@drawable/points"
-                                    android:gravity="center" />
-                            </LinearLayout>
+                                android:background="@color/transparent"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/menu_icon_xhdpi" />
                         </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="594"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Julia Mitchel"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xmedium"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="48"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
                         <LinearLayout
-                            android:id="@+id/container_item_count"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="62"
-                            android:gravity="end"
-                            android:visibility="gone">
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="111"
+                            android:orientation="horizontal"
+                            android:weightSum="48">
+                            <ImageButton
+                                android:id="@+id/imageButton2"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="50"
-                                android:weightSum="62"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="12dp"
-                                    android:layout_height="11dp"
-                                    android:layout_weight="50"
-                                    android:background="@drawable/dot_filled_xhdpi"
-                                    android:gravity="center">
-
-                                    <TextView
-                                        android:id="@+id/cart_items_count_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="9+"
-                                        android:textColor="@color/pd_blue"
-                                        android:textSize="@dimen/xsmall" />
-                                </LinearLayout>
-                            </LinearLayout>
-
+                                android:background="@color/transparent"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/points" />
                         </LinearLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="750"
+                android:id="@+id/linearLayout">
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="340"
-        android:weightSum="340"
+        android:layout_weight="310"
+        android:weightSum="310"
         android:orientation="vertical">
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="81"/>
+            android:layout_weight="54"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -157,12 +132,10 @@
                 app:civ_border_color="#26FFFFFF"/>
 
         </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="49"/>
-
+            android:layout_weight="49   "/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,7 +144,6 @@
         android:weightSum="750"
         android:orientation="horizontal"
         android:gravity="center">
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -286,18 +258,16 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="181"/>
+        android:layout_weight="173"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="137"
-        android:weightSum="137"
+        android:layout_weight="134"
+        android:weightSum="134"
         android:orientation="vertical"
         android:gravity="bottom">
         <LinearLayout
@@ -317,18 +287,18 @@
                 android:gravity="center"
                 android:text="PAGAR"
                 android:textColor="@color/white"
-                android:textSize="@dimen/medium" />
+                android:textSize="@dimen/xmedium" />
         </LinearLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="75"/>
+        android:layout_weight="38"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="137"
-        android:weightSum="137"
+        android:layout_weight="134"
+        android:weightSum="134"
         android:orientation="vertical"
         android:gravity="bottom">
         <LinearLayout
@@ -346,9 +316,9 @@
                 android:layout_gravity="top"
                 android:background="@drawable/main_button"
                 android:gravity="center"
-                android:text="COMERCIOS"
+                android:text="VER COMERCIOS"
                 android:textColor="@color/white"
-                android:textSize="@dimen/medium" />
+                android:textSize="@dimen/xmedium" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
