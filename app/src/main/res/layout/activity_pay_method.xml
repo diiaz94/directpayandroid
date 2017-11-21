@@ -60,7 +60,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Método de Pago"
+                            android:text="MÉTODO DE PAGO"
                             android:textColor="@color/white"
                             android:textSize="@dimen/xmedium"
                             android:textStyle="bold" />
@@ -144,7 +144,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tarjeta de credito"
+                    android:text="Tarjeta de Crédito"
                     android:textColor="@color/white"
                     android:textSize="@dimen/xxmedium" />
             </LinearLayout>
@@ -253,7 +253,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="40"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Dia de Expiracion"
+                        android:text="Dia de Expiración"
                         android:textSize="@dimen/xsmall" />
 
                     <TextView
@@ -285,7 +285,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="40"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Codigo de Seguridad"
+                        android:text="Código de Seguridad"
                         android:textSize="@dimen/xsmall"/>
 
                     <TextView
@@ -321,6 +321,7 @@
                     android:textSize="@dimen/xsmall"/>
 
                 <TextView
+                    android:id="@+id/tdcName"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="80"
@@ -429,6 +430,7 @@
             android:layout_weight="14"/>
 
         <TextView
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="35"
@@ -453,7 +455,7 @@
             android:hint="0424546875"
             android:padding="5dp"
             android:enabled="false"
-            android:textSize="@dimen/medium" />
+            android:textSize="@dimen/xmedium" />
 
         <View
             android:layout_width="match_parent"

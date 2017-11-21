@@ -63,11 +63,11 @@ public class HomeActivity extends BaseActivity {
         super.onResume();
 
         if (Util.getFromSharedPreferences("user_role").equals("customer")) {
-            Util.setThreadPolicy();
-            requestBluetoothPermission();
-            requestLocationAccessPermission();
-            BeaconUtil.setRegisteredBeacons();
-            BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
+            //Util.setThreadPolicy();
+            //requestBluetoothPermission();
+            //requestLocationAccessPermission();
+            //BeaconUtil.setRegisteredBeacons();
+            //BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
 
         }
     }

@@ -2,6 +2,7 @@ package com.btm.pagodirecto.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,11 +22,13 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.google.gson.Gson;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,16 +60,18 @@ public class PayActivity extends BaseActivity {
     private String mImageUrl;
     private String mEntityName;
     private String mPayType;
+    private User mUserSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
-        mImageUrl = getIntent().getStringExtra(Constants.TAG_IMAGE_URL);
-        mEntityName = getIntent().getStringExtra(Constants.TAG_ENTITY_NAME);
-        mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
+        Gson gson = new Gson();
+        mUserSelected= new User();
+        mUserSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
         setUserAttributes();
+        hideSoftKeyboard();
     }
 
     @Override
@@ -74,8 +81,8 @@ public class PayActivity extends BaseActivity {
     }
 
     private void setUserAttributes() {
-        userName.setText(mEntityName);
-        GlideUrl glideUrl = new GlideUrl(mImageUrl, new LazyHeaders.Builder()
+        userName.setText(mUserSelected.getName());
+        GlideUrl glideUrl = new GlideUrl(mUserSelected.getPhoto_url(), new LazyHeaders.Builder()
                 .build());
 
         Glide.with(Util.getContext()).load(glideUrl).into(userImage);
@@ -83,10 +90,12 @@ public class PayActivity extends BaseActivity {
 
     @OnClick(R.id.continue_pay)
     public void continuePay(){
-        Util.goToActivitySlide(
-                this,
-                PayMethod.class);
-
+        Gson g = new Gson();
+        Intent intent = new Intent(this,PayMethod.class);
+        intent.putExtra(Constants.TAG_PAY_TYPE,"user");
+        intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mUserSelected));
+        this.startActivity(intent);
+        this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
     }
 
     @OnClick(R.id.arrows)
@@ -139,4 +148,13 @@ public class PayActivity extends BaseActivity {
         this.finish();
     }
 
+
+    public void hideSoftKeyboard() {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 }
+

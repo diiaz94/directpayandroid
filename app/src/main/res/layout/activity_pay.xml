@@ -63,7 +63,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Pago"
+                                    android:text="PAGO"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/xmedium"
                                     android:textStyle="bold" />
@@ -192,6 +192,7 @@
                             android:background="@android:color/transparent"
                             android:inputType="number"
                             android:textSize="@dimen/xxmedium"
+                            android:imeOptions="actionNext"
                             android:hint="Monto"/>
                     </LinearLayout>
 
@@ -216,6 +217,8 @@
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
                             android:textSize="@dimen/xxmedium"
+                            android:inputType="text"
+                            android:imeOptions="actionDone"
                             android:hint="Concepto"/>
                     </LinearLayout>
 

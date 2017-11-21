@@ -59,10 +59,10 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
         holder.mItem = items.get(position);
 
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
-                .build());
+              .build());
         holder.userName.setText(items.get(position).getName());
-        holder.btnSell.setText("Select");
-        Glide.with(ctx).load(glideUrl).into(holder.userImage);
+        holder.btnSell.setText("Seleccionar");
+        Glide.with(ctx).load(glideUrl).into(holder.userImage).onLoadFailed(ctx.getResources().getDrawable(R.drawable.logo));
 
 
 

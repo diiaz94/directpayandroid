@@ -6,8 +6,8 @@ package com.btm.pagodirecto.util;
 
 public class Constants {
 
-    //public static final String SERVER_URL = "http://192.168.0.104:3002/v1/";
-    public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/v1/";
+    public static final String SERVER_URL = "http://192.168.0.106:3002/v1/";
+    //public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/v1/";
 
     //Internal Events
     public static final String ENTER_REGION = "enter region";
@@ -24,4 +24,6 @@ public class Constants {
     public static final String TAG_ENTITY_NAME = "entity_name";
     public static final String TAG_PAY_TYPE = "pay_type";
     public static final String TAG_PAY_USER_ID = "pay_user_id";
+    public static final String TAG_RECEIPT_OBJECT = "receipt";
+    public static final String TAG_USER_OBJECT = "user";
 }

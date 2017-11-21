@@ -12,13 +12,20 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PayMethod extends BaseActivity {
 
@@ -46,12 +53,36 @@ public class PayMethod extends BaseActivity {
     @Bind(R.id.btn_back)
     Button btnBack;
 
+    @Bind(R.id.image_profile)
+    CircleImageView imageProfile;
+
+    @Bind(R.id.user_name)
+    TextView userName;
+
+    @Bind(R.id.tdcName)
+    TextView tdcName;
+
+    private String mPayType;
+    private User mUserSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_method);
         ButterKnife.bind(this);
         hideSoftKeyboard();
+
+        tdcName.setText(Util.getFromSharedPreferences(Constants.TAG_USER_NAME));
+        mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
+        if(mPayType.equalsIgnoreCase("user")){
+            Gson gson = new Gson();
+            mUserSelected= new User();
+            mUserSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
+            userName.setText(mUserSelected.getName());
+            GlideUrl glideUrl = new GlideUrl(mUserSelected.getPhoto_url(), new LazyHeaders.Builder()
+                        .build());
+            Glide.with(this).load(glideUrl).into(imageProfile).onLoadFailed(this.getResources().getDrawable(R.drawable.logo));
+        }
     }
 
     @Override
@@ -92,17 +123,22 @@ public class PayMethod extends BaseActivity {
 
     @OnClick(R.id.p2p_tab)
     public void showP2PMethodContainer(){
-        final int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            p2pTab.setBackgroundDrawable( getResources().getDrawable(R.drawable.tabs_select_state) );
-            cardTab.setBackgroundDrawable(null);
-        } else {
-            p2pTab.setBackground( getResources().getDrawable(R.drawable.tabs_select_state));
-            cardTab.setBackground(null);
+
+        if(mPayType.equalsIgnoreCase("user")){
+            final int sdk = android.os.Build.VERSION.SDK_INT;
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                p2pTab.setBackgroundDrawable( getResources().getDrawable(R.drawable.tabs_select_state) );
+                cardTab.setBackgroundDrawable(null);
+            } else {
+                p2pTab.setBackground( getResources().getDrawable(R.drawable.tabs_select_state));
+                cardTab.setBackground(null);
+            }
+            cardMethodContainer.setVisibility(View.GONE);
+            p2pMetodContainer.setVisibility(View.VISIBLE);
+            textFooter.setText("Teléfono relacionado a registro de usuario");
+        }else{
+            Util.showMessage("Opción deshabilitada");
         }
-        cardMethodContainer.setVisibility(View.GONE);
-        p2pMetodContainer.setVisibility(View.VISIBLE);
-        textFooter.setText("Teléfono relacionado a registro de usuario");
     }
 
     public void hideSoftKeyboard() {
