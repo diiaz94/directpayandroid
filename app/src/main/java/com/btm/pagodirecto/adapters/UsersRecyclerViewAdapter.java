@@ -63,10 +63,10 @@ private final UsersRecyclerViewAdapter.OnItemClickListener listener;
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = items.get(position);
 
-        GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
-                .build());
+       GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
+               .build());
         holder.userName.setText(items.get(position).getName());
-        Glide.with(ctx).load(glideUrl).into(holder.userImage);
+        Glide.with(ctx).load(glideUrl).into(holder.userImage).onLoadFailed(ctx.getResources().getDrawable(R.drawable.logo));
 
 
 

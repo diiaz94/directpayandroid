@@ -11,6 +11,15 @@ public class Receipt {
     String photo_url;
     String status;
     String description;
+    String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String get_id() {
         return _id;

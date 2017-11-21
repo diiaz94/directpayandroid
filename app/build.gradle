@@ -65,4 +65,6 @@ dependencies {
     compile 'org.altbeacon:android-beacon-library:2.+@aar'
     compile 'com.github.bumptech.glide:glide:3.6.0'
     compile 'jp.wasabeef:glide-transformations:3.0.1'
+    compile 'me.grantland:autofittextview:0.2.+'
+
 }

@@ -76,7 +76,8 @@
                         android:id="@+id/user_image"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="120" />
+                        android:layout_weight="120"
+                        android:src="@drawable/image"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,15 +112,15 @@
 
                         <Button
                             android:id="@+id/btn_pay"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="top"
-                            android:layout_weight="140"
+                            android:layout_weight="240"
                             android:background="@drawable/grid_button"
                             android:gravity="center"
                             android:text="Pagar"
                             android:textColor="@color/gray"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/xxmedium" />
 
                     </LinearLayout>
                 </LinearLayout>

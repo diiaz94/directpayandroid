@@ -60,7 +60,7 @@ public class ReceiptsRecyclerViewAdapter extends RecyclerView.Adapter<ReceiptsRe
                 .build());
         holder.receiptTitle.setText(items.get(position).getName());
         holder.receiptDescription.setText(items.get(position).getDescription());
-        Glide.with(ctx).load(glideUrl).into(holder.receiptImage);
+        Glide.with(ctx).load(glideUrl).into(holder.receiptImage).onLoadFailed(ctx.getResources().getDrawable(R.drawable.logo));
 
 
 

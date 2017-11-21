@@ -26,6 +26,7 @@ import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -103,14 +104,11 @@ public class PayUsers extends BaseActivity {
                             @Override public synchronized void onItemClick(int i,int type) {
                                 switch (type){
                                     case 0:
-
+                                        Gson g = new Gson();
                                         Intent intent = new Intent(act,PayActivity.class);
-                                        intent.putExtra(Constants.TAG_IMAGE_URL, mUsers.get(i).getPhoto_url());
-                                        intent.putExtra(Constants.TAG_ENTITY_NAME, mUsers.get(i).getName());
-                                        intent.putExtra(Constants.TAG_PAY_TYPE, "user");
+                                        intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mUsers.get(i)));
                                         act.startActivity(intent);
                                         act.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-
                                         break;
                                 }
                             }
@@ -151,11 +149,11 @@ public class PayUsers extends BaseActivity {
                             @Override public synchronized void onItemClick(int i,int type) {
                                 switch (type){
                                     case 0:
-                                        Util.saveInSharedPreferences("pay_image_url",mPendings.get(i).getPhoto_url());
-                                        Util.saveInSharedPreferences("pay_entity_name",mPendings.get(i).getName());
-                                        Util.goToActivitySlide(
-                                                act,
-                                                PayResume.class);
+                                        Gson g = new Gson();
+                                        Intent intent = new Intent(act,PayResume.class);
+                                        intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(mPendings.get(i)));
+                                        act.startActivity(intent);
+                                        act.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
                                         break;
                                 }
                             }

@@ -66,7 +66,7 @@ public class ProductsResumeRecyclerViewAdapter extends RecyclerView.Adapter<Prod
 
         //Glide.with(ctx).load(glideUrl).apply(bitmapTransform(multi)).into(holder.productImage);
 
-        Glide.with(ctx).load(glideUrl).into(holder.productImage);
+        Glide.with(ctx).load(glideUrl).into(holder.productImage).onLoadFailed(ctx.getResources().getDrawable(R.drawable.logo));
 
         //holder.mView.setTag(items.get(position).getId());
         holder.mView.setOnClickListener(new View.OnClickListener() {

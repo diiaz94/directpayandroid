@@ -51,14 +51,14 @@ public class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (Util.getFromSharedPreferences(Constants.TAG_USER_ROLE).equals("customer")) {
+       /* if (Util.getFromSharedPreferences(Constants.TAG_USER_ROLE).equals("customer")) {
             Util.setThreadPolicy();
             requestBluetoothPermission();
             requestLocationAccessPermission();
             BeaconUtil.setRegisteredBeacons();
             BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
 
-        }
+        }*/
     }
 
     //Buetooth permission and activate

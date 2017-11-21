@@ -161,7 +161,7 @@ public class Util {
     }*/
 
     public static void showMessage(String message) {
-        //Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     // Return an instance of Shared Preference created only once
