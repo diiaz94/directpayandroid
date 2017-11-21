@@ -24,7 +24,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="193"
                 android:scaleType="centerCrop"
-                android:src="@drawable/trump" />
+                android:src="@drawable/trump"
+                android:background="@color/white"/>
 
             <LinearLayout
                 android:layout_width="0dp"

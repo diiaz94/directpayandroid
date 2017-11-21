@@ -22,15 +22,18 @@ import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.dto.Product;
+import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.transforms.RoundedCornersTransformation;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -194,7 +197,7 @@ public class CommerceProducts extends BaseActivity {
                             @Override public void onItemClick(Product item, int option) {
                                 switch (option){
                                     case 0:
-                                        Util.showMessage(item.getPrice());
+                                        //Util.showMessage(item.getPrice());
                                         attemptAddProduct(item);
                                         break;
                                     case 1:
@@ -324,9 +327,14 @@ public class CommerceProducts extends BaseActivity {
 
     @OnClick(R.id.btn_card_pay)
     public void goToResume(){
-        Util.goToActivitySlide(
-                Util.getActivity(),
-                PayResume.class);
+        Receipt r = new Receipt();
+        r.setType("order");
+
+        Gson g = new Gson();
+        Intent intent = new Intent(this,PayResume.class);
+        intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(r));
+        this.startActivity(intent);
+        this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
     }
 
     @OnClick(R.id.btn_card_send)
