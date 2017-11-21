@@ -3,157 +3,208 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:weightSum="1200"
+    android:weightSum="1291"
     android:orientation="vertical"
     android:id="@+id/fragment_content"
     android:background="@drawable/background"
     tools:context=".fragments.ProductsFragment">
+
     <HorizontalScrollView
         android:id="@+id/scroll_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:weightSum="750">
+
             <LinearLayout
                 android:id="@+id/products_container"
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_weight="750">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:weightSum="1200"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:weightSum="1291">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="100"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="750">
+                        android:layout_weight="88"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="704"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:weightSum="100">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="56"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="horizontal"
-                                android:weightSum="704">
+                                android:weightSum="750">
+
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="48"
-                                    android:weightSum="56"
-                                    android:orientation="vertical"
-                                    android:gravity="center">
-                                    <Button
-                                        android:id="@+id/btn_back"
-                                        android:layout_width="36dp"
+                                    android:layout_weight="686"
+                                    android:orientation="horizontal"
+                                    android:weightSum="686">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/back"
-                                        android:gravity="center" />
+                                        android:layout_weight="43"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:weightSum="88">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:layout_weight="34"
+                                            android:orientation="horizontal"
+                                            android:weightSum="18">
+
+                                            <ImageButton
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="18"
+                                                android:background="@color/transparent"
+                                                android:scaleType="centerCrop"
+                                                android:src="@drawable/back" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="590"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/textView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Lodge Restaurant"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/xmedium"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:clickable="true"
+                                        android:layout_weight="53">
+                                        <RelativeLayout
+                                            android:id="@+id/shop_container_icon"
+                                            android:clickable="true"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:weightSum="30"
+                                                android:orientation="horizontal">
+                                                <LinearLayout
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_weight="23"
+                                                    android:weightSum="56"
+                                                    android:orientation="vertical"
+                                                    android:gravity="center">
+                                                    <Button
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="30"
+                                                        android:background="@drawable/cart_icon_xhdpi"
+                                                        android:gravity="center" />
+                                                </LinearLayout>
+                                            </LinearLayout>
+                                            <LinearLayout
+                                                android:id="@+id/container_item_count"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:weightSum="30"
+                                                android:gravity="end"
+                                                android:visibility="gone">
+                                                <LinearLayout
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_weight="25"
+                                                    android:weightSum="30"
+                                                    android:gravity="end"
+                                                    android:orientation="vertical">
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="15"
+                                                        android:background="@drawable/dot_filled_xhdpi"
+                                                        android:gravity="center">
+                                                        <TextView
+                                                            android:id="@+id/cart_items_count_txt"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:textSize="@dimen/xsmall"
+                                                            android:text="0"
+                                                            android:textColor="@color/pd_blue"/>
+                                                    </LinearLayout>
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+                                        </RelativeLayout>
+                                    </LinearLayout>
+
+
                                 </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="750">
+
+                                <Button
+                                    android:id="@+id/btn_back"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="82"
+                                    android:background="@color/transparent" />
+
                                 <View
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="7"/>
-                                <TextView
-                                    android:id="@+id/textView"
+                                    android:layout_weight="586" />
+
+                                <Button
+                                    android:id="@+id/btn_shop"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="587"
-                                    android:gravity="center"
-                                    android:text="Lodge Restaurant"
-                                    android:textColor="@color/white"
-                                    android:textSize="18dp"
-                                    android:textStyle="bold" />
-
-                                <LinearLayout
-
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:clickable="true"
-                                    android:layout_weight="62">
-                                    <RelativeLayout
-                                        android:id="@+id/shop_container_icon"
-                                        android:clickable="true"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
-                                        <LinearLayout
-                                           android:layout_width="match_parent"
-                                           android:layout_height="match_parent"
-                                           android:weightSum="62"
-                                           android:orientation="horizontal">
-                                           <LinearLayout
-                                               android:layout_width="0dp"
-                                               android:layout_height="match_parent"
-                                               android:layout_weight="48"
-                                               android:weightSum="56"
-                                               android:orientation="vertical"
-                                               android:gravity="center">
-                                               <Button
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="0dp"
-                                                   android:layout_weight="48"
-                                                   android:background="@drawable/cart_icon_xhdpi"
-                                                   android:gravity="center" />
-                                           </LinearLayout>
-                                       </LinearLayout>
-                                        <LinearLayout
-                                            android:id="@+id/container_item_count"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:weightSum="62"
-                                            android:gravity="end"
-                                            android:visibility="gone">
-                                            <LinearLayout
-                                                android:layout_width="0dp"
-                                                android:layout_height="match_parent"
-                                                android:layout_weight="50"
-                                                android:weightSum="62"
-                                                android:orientation="vertical">
-                                                <LinearLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="50"
-                                                    android:background="@drawable/dot_filled_xhdpi"
-                                                    android:gravity="center">
-                                                    <TextView
-                                                        android:id="@+id/cart_items_count_txt"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:textSize="@dimen/xsmall"
-                                                        android:text="9+"
-                                                        android:textColor="@color/pd_blue"/>
-                                                </LinearLayout>
-                                            </LinearLayout>
-
-                                        </LinearLayout>
-                                    </RelativeLayout>
-                                </LinearLayout>
+                                    android:layout_weight="82"
+                                    android:background="@color/transparent" />
                             </LinearLayout>
-                        </LinearLayout>
-
+                        </RelativeLayout>
                     </LinearLayout>
 
-                    <include layout="@layout/activity_product_detail"/>
+
+                    <include layout="@layout/activity_product_detail" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/grid"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1100"
+                        android:layout_weight="1203"
                         app:layoutManager="GridLayoutManager"
                         app:spanCount="1"
                         tools:context="com.btm.pagodirecto.activities.CommerceProducts"
@@ -161,10 +212,10 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <include layout="@layout/activity_cart"/>
+            <include
+                layout="@layout/activity_cart" />
 
         </LinearLayout>
-
 
 
     </HorizontalScrollView>

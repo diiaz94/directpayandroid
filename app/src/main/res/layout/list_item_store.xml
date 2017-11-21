@@ -61,7 +61,7 @@
                     android:layout_weight="60"
                     android:text="Lodge Restaurant"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/medium" />
+                    android:textSize="@dimen/small" />
 
                 <TextView
                     android:id="@+id/commerce_description"
@@ -69,7 +69,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="40"
                     android:text="Comida Mediterranea"
-                    android:textSize="@dimen/small" />
+                    android:textSize="@dimen/xsmall" />
 
             </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.fragments;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -10,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
@@ -28,6 +32,7 @@ import java.util.Locale;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,6 +89,9 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     @Bind(R.id.btn_back)
     Button btnBack;
+
+    @Bind(R.id.image_animation)
+    ImageView animationElement;
 
     private OnFragmentInteractionListener mListener;
 
@@ -224,7 +232,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     @OnClick(R.id.btn_c)
     public void clearAll(){
         this.clearOperators();
-        inputResult.setText("Bs. 0,00");
+        inputResult.setText("Bs. 0");
     }
 
     public void clearOperators(){
@@ -250,9 +258,29 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     @OnClick(R.id.btn_equal)
-    public void equal(){
+    public void equal(View v){
         //Send like a new product and clear text
         Log.d("FLAG", "equal: ");
+        inputResult.setText("Bs. 0");
+        /*Animation movimiento;
+        movimiento = AnimationUtils.loadAnimation(getActivity(), R.anim.mover);
+        movimiento.reset();
+        movimiento.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+                animationElement.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+                animationElement.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                animationElement.setVisibility(View.GONE);
+            }
+        });
+        animationElement.startAnimation(movimiento);
+        */
     }
 
     public void doOperation(String firstValue, String operator, String secondValue){ // 0 + 10
@@ -293,7 +321,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     public boolean emptyText(){
-        return (getTextWithoutFormat().equals("0,00"));
+        return (getTextWithoutFormat().equals("0"));
     }
 
     String roundTwoDecimals(double d) {

@@ -98,6 +98,9 @@ public class CommerceProducts extends BaseActivity {
     @Bind(R.id.btn_card_pay)
     Button btnCardPay;
 
+    @Bind(R.id.textView)
+    TextView titleCommerce;
+
     private boolean carOpen;
     private boolean detailOpen;
     private Double subTotal;
@@ -137,6 +140,7 @@ public class CommerceProducts extends BaseActivity {
         cartItems= new ArrayList<Product>();
         cartListAdapter = new ProductsCartRecyclerViewAdapter(getApplicationContext(),cartItems,new ProductsCartRecyclerViewAdapter.OnItemClickListener() {
             @Override public synchronized void onItemClick(int i,int type) {
+                int actualSize = 0;
                 switch (type){
                     case 0://inc
                         subTotal+=Double.valueOf(cartItems.get(i).getPrice());
@@ -146,22 +150,34 @@ public class CommerceProducts extends BaseActivity {
                         cartListAdapter.notifyItemChanged(i);
                         break;
                     case 1://dec
+                        i = (i<=1)? 0:i;
                         subTotal-=Double.valueOf(cartItems.get(i).getPrice());
                         subTotalAmount.setText(String.valueOf(subTotal));
                         cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()-1);
                         cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
                         cartListAdapter.notifyItemChanged(i);
+
+                        actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                        actualSize -=1;
+                        cartItemsCountTxt.setText(String.valueOf(actualSize));
+
                         break;
                     case 2://delete
+                        i = (i<=1)? 0:i;
                         subTotal-=Double.valueOf(cartItems.get(i).getPrice());
                         subTotalAmount.setText(String.valueOf(subTotal));
                         cartItems.remove(i);
                         cartListAdapter.notifyItemRemoved(i);
+
+                        actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                        actualSize -=1;
+                        cartItemsCountTxt.setText(String.valueOf(actualSize));
                         break;
                 }
             }
         });
         carListRecyclerView.setAdapter(cartListAdapter);
+        titleCommerce.setText(Util.getFromSharedPreferences("COMMERCE_NAME"));
     }
 
     private void loadProducts() {
@@ -219,7 +235,28 @@ public class CommerceProducts extends BaseActivity {
 
             subTotal += Double.valueOf(item.getPrice());
             updateItemsCount();
+        }else{
+            int index = getIndexForItem(item.get_id());
+
+            subTotal+=Double.valueOf(cartItems.get(index).getPrice());
+            subTotalAmount.setText(String.valueOf(subTotal));
+            cartItems.get(index).setCartQty(cartItems.get(index).getCartQty()+1);
+            cartItems.get(index).setCartPrice(cartItems.get(index).getCartQty()*cartItems.get(index).getCartPrice());
+            cartListAdapter.notifyItemChanged(index);
+
+            int actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+            actualSize +=1;
+            cartItemsCountTxt.setText(String.valueOf(actualSize));
         }
+    }
+
+    private Integer getIndexForItem(String id ){
+        for (int i = 0; i < cartItems.size(); i++ ){
+            if (cartItems.get(i).get_id().equals(id)){
+                return i;
+            }
+        }
+        return 0;
     }
 
     private boolean exist(String id) {
@@ -231,7 +268,10 @@ public class CommerceProducts extends BaseActivity {
 
     private void updateItemsCount() {
 
-        cartItemsCountTxt.setText(String.valueOf(cartItems.size()));
+        int actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+        actualSize +=1;
+        cartItemsCountTxt.setText(String.valueOf(actualSize));
+
         carItemsCountLabel.setText(String.valueOf(cartItems.size())+" items en tu carrito de compras");
         subTotalAmount.setText(String.valueOf(subTotal));
         containerItemCount.setVisibility(cartItems.isEmpty()?View.GONE:View.VISIBLE);
@@ -291,6 +331,7 @@ public class CommerceProducts extends BaseActivity {
 
     @OnClick(R.id.btn_card_send)
     public void sendToCommerce(){
+        Util.saveInSharedPreferences("FROM","SEND_PAY");
         Util.goToActivitySlide(
                 Util.getActivity(),
                 PayAccepted.class);

@@ -29,9 +29,9 @@
             android:layout_gravity="top"
             android:background="@drawable/main_button"
             android:gravity="center"
-            android:text="IR A INICIO"
+            android:text="Ir a inicio"
             android:textColor="@color/white"
-            android:textSize="@dimen/medium" />
+            android:textSize="@dimen/small" />
 
         <View
             android:layout_width="0dp"
@@ -85,6 +85,7 @@
             android:layout_weight="32"/>
 
         <TextView
+            android:id="@+id/notification_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notificación de Pago"
@@ -125,6 +126,7 @@
                 android:layout_weight="50"/>
 
             <TextView
+                android:id="@+id/notification_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Un recibo digital ha sido enviado a su correo"
@@ -147,6 +149,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/terms"
                 android:layout_width="0dp"
                 android:layout_weight="700"
                 android:layout_height="match_parent"

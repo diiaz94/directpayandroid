@@ -45,8 +45,8 @@ public class Tab2CommerceList extends Fragment {
         ArrayList<Commerce> commerces = new ArrayList<Commerce>();
 
         //Add comerces to an array
-        Commerce commerce1 = new Commerce("0001","Lodge Restaurant", "https://image.ibb.co/hf2rvw/image_3.png", "Lodge Restaurant", "Comida Meditarranea", "Active", "1",false);
-        Commerce commerce2 = new Commerce("0002","Pizzeria Venezia", "https://image.ibb.co/dCmUhb/image_1.png", "Pizzeria Venezia", "Comida italiana", "Active", "5", false);
+        Commerce commerce1 = new Commerce("0001","Birras Bar", "https://image.ibb.co/hf2rvw/image_3.png", "Birras Bar", "Cerveza tradicional", "Active", "1",false);
+        Commerce commerce2 = new Commerce("0002","Avila Burger", "https://image.ibb.co/dCmUhb/image_1.png", "Avila Burger", "Hamburguesas y mas", "Active", "5", false);
         Commerce commerce3 = new Commerce("0003","Cafe Habu", "https://image.ibb.co/cVUAoG/image_2.png", "Cafe Habu", "Cafe&lunch bar", "Active", "10", false);
 
         commerces.add(commerce1);

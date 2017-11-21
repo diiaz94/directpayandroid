@@ -153,6 +153,7 @@
                     android:gravity="center"
                     android:text="Calificar"
                     android:textColor="@color/skyBlue"
+                    android:background="@color/transparent"
                     android:textSize="12sp" />
 
             </LinearLayout>

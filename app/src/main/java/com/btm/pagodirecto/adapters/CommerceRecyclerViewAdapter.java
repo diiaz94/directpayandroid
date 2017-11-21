@@ -75,6 +75,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
             @Override
             public void onClick(View v) {
                 Log.i("FLAG", "onClick: main button");
+                Util.saveInSharedPreferences("COMMERCE_NAME",items.get(position).getTitle());
                 Util.goToActivitySlide(
                     Util.getActivity(),
                     CommerceProducts.class);

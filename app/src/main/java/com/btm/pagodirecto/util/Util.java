@@ -94,6 +94,8 @@ public class Util {
     }
 
     public static void saveInSharedPreferences(String key, String value) {
+        getSharedPreferences().edit().remove(key);
+
         getSharedPreferences().          // get the unique instance for SP.
                 edit().putString(key, value). // set the information to store in form of key-value.
                 apply();                     // apply changes.
