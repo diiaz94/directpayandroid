@@ -96,10 +96,10 @@
 
                                     <LinearLayout
                                         android:id="@+id/item_inc2"
-                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
+                                        android:clickable="true"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
                                         android:weightSum="63">
@@ -132,8 +132,8 @@
                                             android:layout_height="match_parent"
                                             android:background="@drawable/delete_item_cart_bg"
                                             android:text="ELIMINAR"
-                                            android:textSize="@dimen/small"
-                                            android:textColor="@color/white" />
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/small" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -151,10 +151,10 @@
 
                                     <LinearLayout
                                         android:id="@+id/item_inc"
-                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
+                                        android:clickable="true"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
                                         android:weightSum="63">
@@ -196,10 +196,10 @@
 
                                     <LinearLayout
                                         android:id="@+id/item_dec"
-                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="51"
+                                        android:clickable="true"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
                                         android:weightSum="63">

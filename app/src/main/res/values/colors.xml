@@ -36,5 +36,6 @@
     <color name="dark_blue_container">#121a29</color>
     <color name="pd_blue">#067ce2</color>
     <color name="tab_selected_icon_color">#f4141b2c</color>
+    <color name="green_pd">#abc324</color>
 
 </resources>
