@@ -63,8 +63,6 @@ public class CommerceProductsActivity extends BaseActivity {
     @Bind(R.id.car_list)
     RecyclerView carListRecyclerView;
 
-    @Bind(R.id.shop_container_icon)
-    RelativeLayout shopContainerIcon;
     @Bind(R.id.container_item_count)
     LinearLayout containerItemCount;
     @Bind(R.id.cart_items_count_txt)
