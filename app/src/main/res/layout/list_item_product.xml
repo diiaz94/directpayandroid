@@ -20,6 +20,7 @@
 
             <ImageView
                 android:id="@+id/product_image"
+                android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="195"
@@ -28,6 +29,8 @@
                 android:src="@drawable/trump" />
 
             <LinearLayout
+                android:id="@+id/product_info"
+                android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="396"

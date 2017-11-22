@@ -77,14 +77,20 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         Glide.with(ctx).load(glideUrl).apply(bitmapTransform(multi)).into(holder.productImage);
 
         //holder.mView.setTag(items.get(position).getId());
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.productImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Flag", "onClick all row");
                 listener.onItemClick(items.get(position),1);
             }
         });
-
+        holder.productInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Flag", "onClick all row");
+                listener.onItemClick(items.get(position),1);
+            }
+        });
         holder.containerBtnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +117,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView productImage;
+        public final LinearLayout productInfo;
         public final TextView productPrice;;
         public final TextView productName;
         public final LinearLayout containerBtnBuy;
@@ -122,6 +129,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             super(view);
             mView = view;
             productImage = (ImageView) view.findViewById(R.id.product_image);
+            productInfo = (LinearLayout) view.findViewById(R.id.product_info);
             productPrice = (TextView) view.findViewById(R.id.product_price);
             productName = (TextView) view.findViewById(R.id.product_name);
             containerBtnBuy = (LinearLayout) view.findViewById(R.id.container_btn_buy);

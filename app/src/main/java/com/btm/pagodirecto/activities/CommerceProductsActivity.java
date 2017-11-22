@@ -144,35 +144,48 @@ public class CommerceProductsActivity extends BaseActivity {
                 int actualSize = 0;
                 switch (type){
                     case 0://inc
-                        subTotal+=Double.valueOf(cartItems.get(i).getPrice());
-                        subTotalAmount.setText(String.valueOf(subTotal));
-                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()+1);
-                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
-                        cartListAdapter.notifyItemChanged(i);
+                        if(cartItems.size()>0&&i<cartItems.size()) {
+                            subTotal += Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.get(i).setCartQty(cartItems.get(i).getCartQty() + 1);
+                            cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty() * cartItems.get(i).getCartPrice());
+                            cartListAdapter.notifyItemChanged(i);
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize += 1;
+                            cartItemsCountTxt.setText(String.valueOf(actualSize));
+                        }
                         break;
                     case 1://dec
-                        i = (i<=1)? 0:i;
-                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
-                        subTotalAmount.setText(String.valueOf(subTotal));
-                        cartItems.get(i).setCartQty(cartItems.get(i).getCartQty()-1);
-                        cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty()*cartItems.get(i).getCartPrice());
-                        cartListAdapter.notifyItemChanged(i);
+                       // i = (i<=1)? 0:i;
+                        if(cartItems.size()>0&&i<cartItems.size()) {
+                            subTotal -= Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.get(i).setCartQty(cartItems.get(i).getCartQty() - 1);
+                            cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty() * cartItems.get(i).getCartPrice());
+                            cartListAdapter.notifyItemChanged(i);
 
-                        actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
-                        actualSize -=1;
-                        cartItemsCountTxt.setText(String.valueOf(actualSize));
-
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize -= 1;
+                            cartItemsCountTxt.setText(String.valueOf(actualSize));
+                        }
                         break;
                     case 2://delete
-                        i = (i<=1)? 0:i;
-                        subTotal-=Double.valueOf(cartItems.get(i).getPrice());
-                        subTotalAmount.setText(String.valueOf(subTotal));
-                        cartItems.remove(i);
-                        cartListAdapter.notifyItemRemoved(i);
+                      //  i = (i<=1)? 0:i;
+                        if(cartItems.size()>0&&i<cartItems.size()) {
+                            subTotal-=Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.remove(i);
+                            cartListAdapter.notifyItemRemoved(i);
 
-                        actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
-                        actualSize -=1;
-                        cartItemsCountTxt.setText(String.valueOf(actualSize));
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize -=1;
+                            if(actualSize == 0){
+                               containerItemCount.setVisibility(View.GONE);
+                            }else {
+                                cartItemsCountTxt.setText(String.valueOf(actualSize));
+                            }
+                            carItemsCountLabel.setText(String.valueOf(cartItems.size())+" items en tu carrito de compras");
+                        }
                         break;
                 }
             }
@@ -196,6 +209,8 @@ public class CommerceProductsActivity extends BaseActivity {
                                 switch (option){
                                     case 0:
                                         //Util.showMessage(item.getPrice());
+                                        scrollContainer.fullScroll(HorizontalScrollView.FOCUS_LEFT);
+                                        carOpen = false;
                                         attemptAddProduct(item);
                                         break;
                                     case 1:
@@ -315,6 +330,7 @@ public class CommerceProductsActivity extends BaseActivity {
 
         linearDetailProduct.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+        scrollContainer.fullScroll(HorizontalScrollView.FOCUS_LEFT);
     }
 
     @OnClick(R.id.btn_main)
@@ -342,5 +358,4 @@ public class CommerceProductsActivity extends BaseActivity {
                 Util.getActivity(),
                 PayAcceptedActivity.class);
     }
-
 }

@@ -71,7 +71,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="63"
+                            android:layout_weight="83"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:weightSum="403">
@@ -79,27 +79,27 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="183"
+                                android:layout_weight="203"
                                 android:orientation="horizontal"
-                                android:weightSum="183">
+                                android:weightSum="203">
 
                                 <LinearLayout
                                     android:id="@+id/delete_view"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="183"
+                                    android:layout_weight="203"
                                     android:background="@drawable/border_qty_item_cart_bg"
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal"
                                     android:visibility="gone"
-                                    android:weightSum="183">
+                                    android:weightSum="203">
 
                                     <LinearLayout
                                         android:id="@+id/item_inc2"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="51"
-                                        android:clickable="true"
+                                        android:layout_weight="65"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
                                         android:weightSum="63">
@@ -107,15 +107,15 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="0dp"
-                                            android:layout_weight="27"
+                                            android:layout_weight="32"
                                             android:gravity="center"
                                             android:orientation="horizontal"
-                                            android:weightSum="51">
+                                            android:weightSum="65">
 
                                             <ImageButton
                                                 android:layout_width="0dp"
                                                 android:layout_height="match_parent"
-                                                android:layout_weight="27"
+                                                android:layout_weight="32"
                                                 android:background="@color/transparent"
                                                 android:src="@drawable/plus_icon__hdpi" />
                                         </LinearLayout>
@@ -124,7 +124,7 @@
                                     <LinearLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="132">
+                                        android:layout_weight="138">
 
                                         <Button
                                             android:id="@+id/item_delete"
@@ -132,8 +132,8 @@
                                             android:layout_height="match_parent"
                                             android:background="@drawable/delete_item_cart_bg"
                                             android:text="ELIMINAR"
-                                            android:textColor="@color/white"
-                                            android:textSize="@dimen/small" />
+                                            android:textSize="@dimen/small"
+                                            android:textColor="@color/white" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -142,35 +142,35 @@
                                     android:id="@+id/default_view"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="154"
+                                    android:layout_weight="170"
                                     android:background="@drawable/border_transparent"
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal"
                                     android:visibility="visible"
-                                    android:weightSum="154">
+                                    android:weightSum="170">
 
                                     <LinearLayout
                                         android:id="@+id/item_inc"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="51"
-                                        android:clickable="true"
+                                        android:layout_weight="65"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
-                                        android:weightSum="63">
+                                        android:weightSum="83">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="0dp"
-                                            android:layout_weight="27"
+                                            android:layout_weight="32"
                                             android:gravity="center"
                                             android:orientation="horizontal"
-                                            android:weightSum="51">
+                                            android:weightSum="65">
 
                                             <ImageButton
                                                 android:layout_width="0dp"
                                                 android:layout_height="match_parent"
-                                                android:layout_weight="27"
+                                                android:layout_weight="32"
                                                 android:background="@color/transparent"
                                                 android:src="@drawable/plus_icon__hdpi" />
                                         </LinearLayout>
@@ -179,10 +179,10 @@
                                     <LinearLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="52"
+                                        android:layout_weight="36"
                                         android:gravity="center"
                                         android:orientation="vertical"
-                                        android:weightSum="63">
+                                        android:weightSum="83">
 
                                         <TextView
                                             android:id="@+id/item_qty"
@@ -196,26 +196,26 @@
 
                                     <LinearLayout
                                         android:id="@+id/item_dec"
+                                        android:clickable="true"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="51"
-                                        android:clickable="true"
+                                        android:layout_weight="65"
                                         android:gravity="center_vertical"
                                         android:orientation="vertical"
-                                        android:weightSum="63">
+                                        android:weightSum="83">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="0dp"
-                                            android:layout_weight="27"
+                                            android:layout_weight="32"
                                             android:gravity="center"
                                             android:orientation="horizontal"
-                                            android:weightSum="51">
+                                            android:weightSum="65">
 
                                             <ImageButton
                                                 android:layout_width="0dp"
                                                 android:layout_height="match_parent"
-                                                android:layout_weight="27"
+                                                android:layout_weight="32"
                                                 android:background="@color/transparent"
                                                 android:src="@drawable/minus_icon__hdpi" />
                                         </LinearLayout>
@@ -227,7 +227,7 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="220"
+                                android:layout_weight="200"
                                 android:gravity="center_vertical|end">
 
                                 <TextView
