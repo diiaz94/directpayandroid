@@ -8,7 +8,7 @@
     android:weightSum="1291"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context="com.btm.pagodirecto.activities.PayResume">
+    tools:context="com.btm.pagodirecto.activities.PayResumeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                 app:layoutManager="GridLayoutManager"
                 app:spanCount="1"
                 android:scrollbars="vertical"
-                tools:context="com.btm.pagodirecto.activities.PayResume"
+                tools:context="com.btm.pagodirecto.activities.PayResumeActivity"
                 tools:listitem="@layout/list_item_pay_resume" />
 
     </LinearLayout>

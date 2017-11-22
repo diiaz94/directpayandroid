@@ -24,4 +24,5 @@
     <string name="title_activity_pay">PayActivity</string>
     <string name="all_fields_required">Todos los campos son requeridos</string>
     <string name="continue_pay">CONTINUAR PAGO</string>
+    <string name="security_cvv_label">Código de seguridad de TDC</string>
 </resources>

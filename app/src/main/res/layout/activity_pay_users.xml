@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.btm.pagodirecto.activities.PayUsers"
+    tools:context="com.btm.pagodirecto.activities.PayUsersActivity"
     android:background="@drawable/background"
     android:weightSum="1291"
     android:orientation="vertical">
@@ -280,7 +280,7 @@
         android:visibility="visible"
         app:layoutManager="GridLayoutManager"
         app:spanCount="2"
-        tools:context="com.btm.pagodirecto.activities.PayUsers"
+        tools:context="com.btm.pagodirecto.activities.PayUsersActivity"
         tools:listitem="@layout/grid_item_user" />
 
     <View
@@ -295,7 +295,7 @@
         android:layout_weight="970"
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
-        tools:context="com.btm.pagodirecto.activities.PayUsers"
+        tools:context="com.btm.pagodirecto.activities.PayUsersActivity"
         tools:listitem="@layout/list_item_pending"
         android:visibility="gone"/>
 </LinearLayout>

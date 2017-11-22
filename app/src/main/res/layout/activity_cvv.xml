@@ -60,7 +60,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PIN"
+                            android:text="CVV"
                             android:textColor="@color/white"
                             android:textSize="@dimen/xmedium"
                             android:textStyle="bold" />
@@ -116,12 +116,12 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/security_pin_label"
+            android:id="@+id/security_cvv_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/security_pin_label"
+            android:text="@string/security_cvv_label"
             android:textColor="@color/white"
-            android:textSize="@dimen/large"/>
+            android:textSize="@dimen/large" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,7 +134,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="244">
+            android:layout_weight="183">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -149,22 +149,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="32"
-                        android:weightSum="244"
+                        android:weightSum="183"
                         android:orientation="horizontal"
                         android:gravity="center">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="57"
-                            android:weightSum="57"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="32"
-                                android:background="@drawable/empty_pin_circle"></LinearLayout>
-                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -216,18 +203,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="54"
-                        android:weightSum="244"
+                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:weightSum="183">
                         <LinearLayout
                             android:id="@+id/pin1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
-                            android:weightSum="57"
-                            android:orientation="horizontal"
                             android:gravity="center"
-                            android:visibility="invisible">
+                            android:orientation="horizontal"
+                            android:visibility="invisible"
+                            android:weightSum="57">
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -239,10 +226,11 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
-                            android:weightSum="57"
-                            android:orientation="horizontal"
                             android:gravity="center"
-                            android:visibility="invisible">
+                            android:orientation="horizontal"
+                            android:visibility="invisible"
+                            android:weightSum="57">
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -254,25 +242,11 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="57"
-                            android:weightSum="57"
-                            android:orientation="horizontal"
                             android:gravity="center"
-                            android:visibility="invisible">
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="53"
-                                android:background="@drawable/dot_filled_xhdpi"></LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/pin4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="57"
-                            android:weightSum="57"
                             android:orientation="horizontal"
-                            android:gravity="center"
-                            android:visibility="invisible">
+                            android:visibility="invisible"
+                            android:weightSum="57">
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -609,5 +583,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

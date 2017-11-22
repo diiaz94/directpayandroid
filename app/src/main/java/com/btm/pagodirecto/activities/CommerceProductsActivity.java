@@ -47,7 +47,7 @@ import retrofit2.Response;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
-public class CommerceProducts extends BaseActivity {
+public class CommerceProductsActivity extends BaseActivity {
 
 
     @Bind(R.id.btn_back)
@@ -331,7 +331,7 @@ public class CommerceProducts extends BaseActivity {
         r.setType("order");
 
         Gson g = new Gson();
-        Intent intent = new Intent(this,PayResume.class);
+        Intent intent = new Intent(this,PayResumeActivity.class);
         intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(r));
         this.startActivity(intent);
         this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
@@ -342,7 +342,7 @@ public class CommerceProducts extends BaseActivity {
         Util.saveInSharedPreferences("FROM","SEND_PAY");
         Util.goToActivitySlide(
                 Util.getActivity(),
-                PayAccepted.class);
+                PayAcceptedActivity.class);
     }
 
 }

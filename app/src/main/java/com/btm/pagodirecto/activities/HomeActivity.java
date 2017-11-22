@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
-import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
-import com.btm.pagodirecto.util.BeaconUtil;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
@@ -81,7 +79,7 @@ public class HomeActivity extends BaseActivity {
         }else{
             Util.goToActivitySlide(
                     this,
-                    PayUsers.class);
+                    PayUsersActivity.class);
         }
     }
 

@@ -14,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PinActivity extends BaseActivity {
+public class CvvActivity extends BaseActivity {
 
     @Bind(R.id.number1)
     LinearLayout number1;
@@ -47,8 +47,6 @@ public class PinActivity extends BaseActivity {
     LinearLayout mPin2;
     @Bind(R.id.pin3)
     LinearLayout mPin3;
-    @Bind(R.id.pin4)
-    LinearLayout mPin4;
 
     @Bind(R.id.btn_back)
     Button btnBack;
@@ -58,7 +56,7 @@ public class PinActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pin);
+        setContentView(R.layout.activity_cvv);
         ButterKnife.bind(this);
         mPin = "";
     }
@@ -70,11 +68,11 @@ public class PinActivity extends BaseActivity {
     }
 
     public void addNumber(String n){
-        if(mPin.length()<4){
+        if(mPin.length()<3){
             mPin = mPin+ n;
             Util.showMessage(mPin);
 
-            switch (mPin.length()){
+            switch (mPin.length()) {
                 case 1:
                     mPin1.setVisibility(View.VISIBLE);
                     break;
@@ -83,9 +81,6 @@ public class PinActivity extends BaseActivity {
                     break;
                 case 3:
                     mPin3.setVisibility(View.VISIBLE);
-                    break;
-                case 4:
-                    mPin4.setVisibility(View.VISIBLE);
                     //Go to listo
                     Util.goToActivitySlide(
                             Util.getActivity(),
@@ -93,8 +88,8 @@ public class PinActivity extends BaseActivity {
                     break;
             }
         }
-
     }
+
     public void deleteNumber(){
         if(mPin.length()>0){
             mPin = mPin.substring(0,mPin.length()-1);
@@ -109,19 +104,14 @@ public class PinActivity extends BaseActivity {
                 case 2:
                     mPin3.setVisibility(View.INVISIBLE);
                     break;
-                case 3:
-                    mPin4.setVisibility(View.INVISIBLE);
-                    break;
             }
         }
-
     }
 
     @OnClick(R.id.number1)
     public void setNumber1() {
         this.addNumber("1");
     }
-
     @OnClick(R.id.number2)
     public void setNumber2() {
         this.addNumber("2");
@@ -165,7 +155,6 @@ public class PinActivity extends BaseActivity {
         mPin1.setVisibility(View.INVISIBLE);
         mPin2.setVisibility(View.INVISIBLE);
         mPin3.setVisibility(View.INVISIBLE);
-        mPin4.setVisibility(View.INVISIBLE);
     }
     @OnClick(R.id.delete_option)
     public void delete() {

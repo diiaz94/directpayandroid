@@ -207,7 +207,7 @@
                         android:layout_weight="1203"
                         app:layoutManager="GridLayoutManager"
                         app:spanCount="1"
-                        tools:context="com.btm.pagodirecto.activities.CommerceProducts"
+                        tools:context="com.btm.pagodirecto.activities.CommerceProductsActivity"
                         tools:listitem="@layout/list_item_product" />
                 </LinearLayout>
             </LinearLayout>

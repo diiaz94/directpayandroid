@@ -1,33 +1,24 @@
 package com.btm.pagodirecto.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
-import com.btm.pagodirecto.activities.CommerceActivity;
-import com.btm.pagodirecto.activities.CommerceProducts;
-import com.btm.pagodirecto.activities.ProductDetailActivity;
+import com.btm.pagodirecto.activities.CommerceProductsActivity;
 import com.btm.pagodirecto.dto.Commerce;
-import com.btm.pagodirecto.dto.Product;
-import com.btm.pagodirecto.transforms.RoundedCornersTransformation;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 
 import java.util.ArrayList;
-
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 /**
  * Created by edwinalvarado on 11/7/17.
@@ -78,7 +69,7 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
                 Util.saveInSharedPreferences("COMMERCE_NAME",items.get(position).getTitle());
                 Util.goToActivitySlide(
                     Util.getActivity(),
-                    CommerceProducts.class);
+                    CommerceProductsActivity.class);
                 //Long id = (Long) v.getTag();
                 // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
             }

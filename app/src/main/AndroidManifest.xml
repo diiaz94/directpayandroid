@@ -36,23 +36,22 @@
         <activity android:name=".activities.P2PActivity" />
         <activity android:name=".activities.SplitPaymentActivity" />
         <activity
-            android:name=".activities.CommerceProducts"
+            android:name=".activities.CommerceProductsActivity"
             android:label="@string/title_activity_commerce"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.CommerceActivity"
             android:label="@string/title_activity_commerce"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.PayUsers" />
-        <activity android:name=".activities.PayResume" />
-        <activity android:name=".activities.PayMethod" />
-
+        <activity android:name=".activities.PayUsersActivity" />
+        <activity android:name=".activities.PayResumeActivity" />
+        <activity android:name=".activities.PayMethodActivity" />
         <activity
             android:name=".activities.PayActivity"
-            android:windowSoftInputMode="stateVisible"
-            android:label="@string/title_activity_pay"></activity>
-
-        <activity android:name=".activities.PayAccepted"></activity>
+            android:label="@string/title_activity_pay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".activities.PayAcceptedActivity" />
+        <activity android:name=".activities.CvvActivity"></activity>
     </application>
 
 </manifest>

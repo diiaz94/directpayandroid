@@ -1,7 +1,6 @@
 package com.btm.pagodirecto.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +37,7 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class PayUsers extends BaseActivity {
+public class PayUsersActivity extends BaseActivity {
 
     @Bind(R.id.btn_back)
     Button btnBack;
@@ -150,7 +149,7 @@ public class PayUsers extends BaseActivity {
                                 switch (type){
                                     case 0:
                                         Gson g = new Gson();
-                                        Intent intent = new Intent(act,PayResume.class);
+                                        Intent intent = new Intent(act,PayResumeActivity.class);
                                         intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(mPendings.get(i)));
                                         act.startActivity(intent);
                                         act.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);

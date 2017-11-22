@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PayAccepted extends BaseActivity {
+public class PayAcceptedActivity extends BaseActivity {
 
     @Bind(R.id.btn_go_home)
     Button btnGoHome;

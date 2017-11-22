@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.btm.pagodirecto.activities.PayMethod"
+    tools:context="com.btm.pagodirecto.activities.PayMethodActivity"
     android:background="@drawable/background"
     android:weightSum="1291"
     android:orientation="vertical">

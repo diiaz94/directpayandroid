@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PayMethod extends BaseActivity {
+public class PayMethodActivity extends BaseActivity {
 
     @Bind(R.id.btn_pay_p2p)
     Button btnPayP2p;
@@ -102,7 +102,7 @@ public class PayMethod extends BaseActivity {
     public void payCardAction(){
         Util.goToActivitySlide(
                 Util.getActivity(),
-                PinActivity.class);
+                CvvActivity.class);
     }
 
     @OnClick(R.id.card_tab)
