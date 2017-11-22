@@ -23,55 +23,48 @@
 
             <LinearLayout
                 android:id="@+id/products_container"
-                android:layout_width="10dp"
+                android:layout_width="380dp"
                 android:layout_height="match_parent"
                 android:layout_weight="750">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:weightSum="1291">
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="88"
                         android:orientation="vertical">
-
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-
                             <LinearLayout
+                                android:visibility="visible"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="750">
-
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="686"
                                     android:orientation="horizontal"
                                     android:weightSum="686">
-
                                     <LinearLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="43"
-                                        android:gravity="center"
+                                        android:layout_weight="18"
                                         android:orientation="vertical"
-                                        android:weightSum="88">
-
+                                        android:weightSum="88"
+                                        android:gravity="center">
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="0dp"
                                             android:layout_weight="34"
                                             android:orientation="horizontal"
                                             android:weightSum="18">
-
                                             <ImageButton
                                                 android:layout_width="0dp"
                                                 android:layout_height="match_parent"
@@ -82,13 +75,11 @@
                                         </LinearLayout>
 
                                     </LinearLayout>
-
                                     <LinearLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="590"
+                                        android:layout_weight="650"
                                         android:gravity="center">
-
                                         <TextView
                                             android:id="@+id/textView"
                                             android:layout_width="wrap_content"
@@ -98,105 +89,101 @@
                                             android:textSize="@dimen/xmedium"
                                             android:textStyle="bold" />
                                     </LinearLayout>
-
-                                    <LinearLayout
-
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:clickable="true"
-                                        android:layout_weight="53">
-                                        <RelativeLayout
-                                            android:id="@+id/shop_container_icon"
-                                            android:clickable="true"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:weightSum="30"
-                                                android:orientation="horizontal">
-                                                <LinearLayout
-                                                    android:layout_width="0dp"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_weight="23"
-                                                    android:weightSum="56"
-                                                    android:orientation="vertical"
-                                                    android:gravity="center">
-                                                    <Button
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="0dp"
-                                                        android:layout_weight="30"
-                                                        android:background="@drawable/cart_icon_xhdpi"
-                                                        android:gravity="center" />
-                                                </LinearLayout>
-                                            </LinearLayout>
-                                            <LinearLayout
-                                                android:id="@+id/container_item_count"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:weightSum="30"
-                                                android:gravity="end"
-                                                android:visibility="gone">
-                                                <LinearLayout
-                                                    android:layout_width="0dp"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_weight="25"
-                                                    android:weightSum="30"
-                                                    android:gravity="end"
-                                                    android:orientation="vertical">
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="0dp"
-                                                        android:layout_weight="15"
-                                                        android:background="@drawable/dot_filled_xhdpi"
-                                                        android:gravity="center">
-                                                        <TextView
-                                                            android:id="@+id/cart_items_count_txt"
-                                                            android:layout_width="wrap_content"
-                                                            android:layout_height="wrap_content"
-                                                            android:textSize="@dimen/xsmall"
-                                                            android:text="0"
-                                                            android:textColor="@color/pd_blue"/>
-                                                    </LinearLayout>
-                                                </LinearLayout>
-
-                                            </LinearLayout>
-                                        </RelativeLayout>
-                                    </LinearLayout>
-
-
                                 </LinearLayout>
                             </LinearLayout>
-
                             <LinearLayout
-                                android:id="@+id/linearLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal"
-                                android:weightSum="750">
-
+                                android:weightSum="750"
+                                android:id="@+id/linearLayout">
                                 <Button
                                     android:id="@+id/btn_back"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="82"
-                                    android:background="@color/transparent" />
-
+                                    android:background="@color/transparent"/>
                                 <View
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="586" />
-
-                                <Button
-                                    android:id="@+id/btn_shop"
+                                    android:layout_weight="582"/>
+                                <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="82"
-                                    android:background="@color/transparent" />
+                                    android:layout_weight="82">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:weightSum="82"
+                                            android:orientation="horizontal">
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="58"
+                                                android:weightSum="88"
+                                                android:orientation="vertical"
+                                                android:gravity="center">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="58"
+                                                    android:background="@drawable/cart_icon_xhdpi"
+                                                    android:gravity="center" />
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:id="@+id/container_item_count"
+                                            android:visibility="gone"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:weightSum="82"
+                                            android:orientation="horizontal"
+                                            android:gravity="center">
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="48"
+                                                android:orientation="vertical"
+                                                android:weightSum="88">
+                                                <View
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="10"/>
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="48"
+                                                    android:background="@drawable/dot_filled_xhdpi"
+                                                    android:gravity="center">
+
+                                                    <TextView
+                                                        android:id="@+id/cart_items_count_txt"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="0"
+                                                        android:textColor="@color/pd_blue"
+                                                        android:textSize="@dimen/xsmall" />
+                                                </LinearLayout>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <Button
+                                            android:id="@+id/shop_container_icon"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/transparent"/>
+
+                                    </RelativeLayout>
+                                </LinearLayout>
                             </LinearLayout>
                         </RelativeLayout>
                     </LinearLayout>
-
 
                     <include layout="@layout/activity_product_detail" />
 
@@ -211,10 +198,7 @@
                         tools:listitem="@layout/list_item_product" />
                 </LinearLayout>
             </LinearLayout>
-
-            <include
-                layout="@layout/activity_cart" />
-
+            <include layout="@layout/activity_cart" />
         </LinearLayout>
 
 

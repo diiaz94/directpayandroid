@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -67,7 +68,6 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
                 .build());
         holder.productPrice.setText("Bs. "+items.get(position).getPrice());
-        holder.productRating.setText(items.get(position).getRating());
         holder.productName.setText(items.get(position).getName());
 
         MultiTransformation multi = new MultiTransformation(
@@ -85,23 +85,15 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             }
         });
 
-       holder.btnBuy.setTag(items.get(position).get_id());
+        holder.containerBtnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(items.get(position), 0);
+            }
+        });
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                Util.saveInSharedPreferences("product_name",items.get(position).getName());
-                Util.saveInSharedPreferences("product_description",items.get(position).getDescription());
-                Util.saveInSharedPreferences("product_url_image",items.get(position).getPhoto_url());
-                Util.saveInSharedPreferences("product_price",items.get(position).getPrice());
-                Util.saveInSharedPreferences("product_rating",items.get(position).getRating());
-
-                //Open product detail activity
-                Util.goToActivitySlide(
-                        Util.getActivity(),
-                        ProductDetailActivity.class,
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-                );*/
                 listener.onItemClick(items.get(position), 0);
             }
         });
@@ -119,10 +111,10 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView productImage;
-        public final TextView productPrice;
-        public final TextView productRating;
+        public final TextView productPrice;;
         public final TextView productName;
-        public final Button btnBuy;
+        public final LinearLayout containerBtnBuy;
+        public final ImageButton btnBuy;
 
         public Product mItem;
 
@@ -131,9 +123,9 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             mView = view;
             productImage = (ImageView) view.findViewById(R.id.product_image);
             productPrice = (TextView) view.findViewById(R.id.product_price);
-            productRating = (TextView) view.findViewById(R.id.product_rating);
             productName = (TextView) view.findViewById(R.id.product_name);
-            btnBuy = (Button) view.findViewById(R.id.btn_buy);
+            containerBtnBuy = (LinearLayout) view.findViewById(R.id.container_btn_buy);
+            btnBuy = (ImageButton) view.findViewById(R.id.btn_buy);
 
         }
     }

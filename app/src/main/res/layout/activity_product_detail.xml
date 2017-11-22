@@ -230,8 +230,7 @@
                     android:text="VENDER"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:background="@drawable/sell_button"
-                    />
+                    android:background="@drawable/sell_button"/>
 
             </LinearLayout>
 
