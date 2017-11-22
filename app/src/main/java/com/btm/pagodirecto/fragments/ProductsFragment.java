@@ -51,12 +51,6 @@ public class ProductsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    @Bind(R.id.btn_shop)
-    Button btnShop;
-
-    @Bind(R.id.btn_back)
-    Button btnBack;
-
     private OnFragmentInteractionListener mListener;
 
     public ProductsFragment() {
@@ -154,7 +148,7 @@ public class ProductsFragment extends Fragment {
         mListener = null;
     }
 
-    @OnClick(R.id.btn_shop)
+    /*@OnClick(R.id.btn_shop)
     public void goToShop(){
         Util.goToActivitySlide(
                 Util.getActivity(),
@@ -171,7 +165,7 @@ public class ProductsFragment extends Fragment {
                 SelectUserActivity_.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
-    }
+    }*/
 
     /**
      * This interface must be implemented by activities that contain this

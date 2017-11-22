@@ -87,9 +87,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.btn_zero)
     TextView btnZero;
 
-    @Bind(R.id.btn_back)
-    Button btnBack;
-
     @Bind(R.id.image_animation)
     ImageView animationElement;
 
@@ -329,7 +326,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         return String.valueOf(twoDForm.format(d));
     }
 
-    @OnClick(R.id.btn_back)
+    /*@OnClick(R.id.btn_back)
     public void goBack(){
             // code here to show dialog
         Util.goToActivitySlideBack(
@@ -337,6 +334,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 SelectUserActivity_.class,
                 Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
         );
-    }
+    }*/
 }
 
