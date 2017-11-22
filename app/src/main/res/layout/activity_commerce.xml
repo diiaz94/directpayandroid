@@ -63,7 +63,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="COMERCIOS"
+                            android:text="Comercios"
                             android:textColor="@color/white"
                             android:textSize="@dimen/xmedium"
                             android:textStyle="bold" />
@@ -89,10 +89,7 @@
                                 android:scaleType="centerInside"
                                 android:src="@drawable/cart_icon_xhdpi" />
                         </LinearLayout>
-
                     </LinearLayout>
-
-
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
