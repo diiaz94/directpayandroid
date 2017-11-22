@@ -17,19 +17,199 @@
         android:layout_weight="1161"
         android:background="#f1f1f1">
     </FrameLayout>-->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1161"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
+    <!--include header-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="130"
-        app:tabBackground="@drawable/tab_color_selector"
-        app:tabIndicatorColor="@color/transparent"/>
+        android:layout_weight="88"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="750">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="686"
+                    android:orientation="horizontal"
+                    android:weightSum="686">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="18"
+                        android:orientation="vertical"
+                        android:weightSum="88"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="34"
+                            android:orientation="horizontal"
+                            android:weightSum="18">
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18"
+                                android:background="@color/transparent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/back" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="650"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Venta en curso"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xmedium"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="750"
+                android:id="@+id/linearLayout">
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="82"
+                    android:background="@color/transparent"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="582"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="82">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="82"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="58"
+                                android:weightSum="88"
+                                android:orientation="vertical"
+                                android:gravity="center">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="58"
+                                    android:background="@drawable/cart_icon_xhdpi"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/container_item_count"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="82"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="48"
+                                android:orientation="vertical"
+                                android:weightSum="88">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="10"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="48"
+                                    android:background="@drawable/dot_filled_xhdpi"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/cart_items_count_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:textColor="@color/pd_blue"
+                                        android:textSize="@dimen/xsmall" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/shop_container_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/transparent"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sell_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1203"
+        android:weightSum="1203"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1073"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="130"
+            app:tabBackground="@drawable/tab_color_selector"
+            app:tabIndicatorColor="@color/transparent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cart_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1203"
+        android:weightSum="1291"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/activity_cart" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_content"
-    android:weightSum="1291"
+    android:weightSum="1203"
     android:orientation="vertical"
     android:background="@drawable/background"
     tools:context="com.btm.pagodirecto.fragments.CalculatorFragment">
@@ -11,139 +11,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1291">
+        android:layout_weight="1203">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="1291">
-
-            <!--include header-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="88"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="750">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="686"
-                            android:orientation="horizontal"
-                            android:weightSum="686">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="23"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:weightSum="88">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="34"
-                                    android:orientation="horizontal"
-                                    android:weightSum="18">
-
-                                    <ImageButton
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="18"
-                                        android:background="@color/transparent"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/back" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="640"
-                                android:gravity="center">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Venta en curso"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/xmedium"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="23"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:visibility="visible"
-                                android:weightSum="88">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="34"
-                                    android:orientation="horizontal"
-                                    android:weightSum="18">
-
-                                    <ImageButton
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="18"
-                                        android:background="@color/transparent"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/cart_icon_xhdpi" />
-                                </LinearLayout>
-
-                            </LinearLayout>
+            android:weightSum="1203">
 
 
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="750">
-
-                        <Button
-                            android:id="@+id/btn_back"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="82"
-                            android:background="@color/transparent" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="586" />
-
-                        <Button
-                            android:id="@+id/btn_shop"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="82"
-                            android:background="@color/transparent" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -486,12 +362,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom|end"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="bottom|end">
 
             <ImageView
                 android:id="@+id/image_animation"

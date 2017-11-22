@@ -52,6 +52,7 @@ public class PayAcceptedActivity extends BaseActivity {
             notificationDescription.setText("Un recibo digital ha sido enviado a su correo");
             terms.setVisibility(View.VISIBLE);
         }
+        Util.saveInSharedPreferences("FROM","");
 
     }
 

@@ -3,8 +3,10 @@ package com.btm.pagodirecto.activities;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.PersistableBundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -27,11 +29,13 @@ import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
 import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SellActivity extends BaseActivity implements CalculatorFragment.OnFragmentInteractionListener,
@@ -52,6 +56,12 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             R.drawable.calculator
     };
 
+    @Bind(R.id.cart_container)
+    LinearLayout cartContainer;
+
+    @Bind(R.id.sell_container)
+    LinearLayout sellContainer;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -61,7 +71,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell);
-
+        ButterKnife.bind(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -81,6 +91,13 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     protected void onResume() {
         super.onResume();
         Util.setActivity(this);
+
+    }
+
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        cartContainer.setVisibility(View.GONE);
 
     }
 
@@ -177,4 +194,22 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         this.finish();
     }
 
+    @OnClick(R.id.shop_container_icon)
+    public void goToShop(){
+        cartContainer.setVisibility(View.VISIBLE);
+        sellContainer.setVisibility(View.GONE);
     }
+
+    @OnClick(R.id.btn_back)
+    public void goBack(){
+        // code here to show dialog
+        if (cartContainer.getVisibility()  == View.VISIBLE){
+            cartContainer.setVisibility(View.GONE);
+            sellContainer.setVisibility(View.VISIBLE);
+        }else{
+            this.finish();
+        }
+    }
+
+
+}
