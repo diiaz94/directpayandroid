@@ -27,6 +27,7 @@ import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
 import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +53,12 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             R.drawable.calculator
     };
 
+    @Bind(R.id.cart_container)
+    LinearLayout cartContainer;
+
+    @Bind(R.id.sell_container)
+    LinearLayout sellContainer;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -66,6 +73,8 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        cartContainer.setVisibility(View.GONE);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
