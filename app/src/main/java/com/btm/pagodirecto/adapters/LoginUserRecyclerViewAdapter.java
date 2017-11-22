@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.HomeActivity;
+import com.btm.pagodirecto.activities.HomeActivity_;
 import com.btm.pagodirecto.activities.SellActivity;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.util.Constants;
@@ -87,7 +88,7 @@ public class LoginUserRecyclerViewAdapter extends RecyclerView.Adapter<LoginUser
 
                 Util.goToActivitySlide(
                         Util.getActivity(),
-                        HomeActivity.class,
+                        HomeActivity_.class,
                         Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             }
         });

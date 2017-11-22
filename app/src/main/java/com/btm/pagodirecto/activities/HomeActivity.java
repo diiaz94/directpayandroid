@@ -15,18 +15,22 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 
+import org.androidannotations.annotations.EActivity;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends BaseActivity {
+@EActivity
+public class HomeActivity extends BeaconScanner {
 
     @Bind(R.id.btn_commerces)
     Button btnCommerces;
@@ -79,7 +83,7 @@ public class HomeActivity extends BaseActivity {
         }else{
             Util.goToActivitySlide(
                     this,
-                    PayUsersActivity.class);
+                    PayUsersActivity_.class);
         }
     }
 

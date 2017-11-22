@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
 import com.btm.pagodirecto.adapters.ReceiptsRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.UsersRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
@@ -27,6 +28,8 @@ import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.google.gson.Gson;
 
+import org.androidannotations.annotations.EActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +40,8 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class PayUsersActivity extends BaseActivity {
+@EActivity
+public class PayUsersActivity extends BeaconScanner {
 
     @Bind(R.id.btn_back)
     Button btnBack;

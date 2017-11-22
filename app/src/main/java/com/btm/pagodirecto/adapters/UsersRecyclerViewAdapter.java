@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.ProductDetailActivity;
+import com.btm.pagodirecto.activities.SelectUserActivity_;
 import com.btm.pagodirecto.activities.SellActivity;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.util.Constants;
@@ -56,6 +57,7 @@ private final UsersRecyclerViewAdapter.OnItemClickListener listener;
         int width = parent.getMeasuredWidth() / 2;
 
         view.setLayoutParams(new RecyclerView.LayoutParams(width, height.intValue()));
+
         return new ViewHolder(view);
     }
 
@@ -68,7 +70,12 @@ private final UsersRecyclerViewAdapter.OnItemClickListener listener;
         holder.userName.setText(items.get(position).getName());
         Glide.with(ctx).load(glideUrl).into(holder.userImage).onLoadFailed(ctx.getResources().getDrawable(R.drawable.logo));
 
-
+        //Set text button value depends of another activity
+        if (Util.getActivity() instanceof SelectUserActivity_){
+            holder.btnPay.setText("VENDER");
+        }else{
+            holder.btnPay.setText("PAGAR");
+        }
 
         holder.mView.setTag(items.get(position).getId());
         holder.mView.setOnClickListener(new View.OnClickListener() {

@@ -47,6 +47,10 @@ public class PayAcceptedActivity extends BaseActivity {
             notificacionTitle.setText("Notificacion de envio");
             notificationDescription.setText("Se ha enviado su pedido al comercio");
             terms.setVisibility(View.GONE);
+        }else{
+            notificacionTitle.setText("Notificación de Pago");
+            notificationDescription.setText("Un recibo digital ha sido enviado a su correo");
+            terms.setVisibility(View.VISIBLE);
         }
 
     }
