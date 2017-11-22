@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.HomeActivity_" />
         <activity android:name=".activities.SelectUserActivity_" />
         <activity android:name=".activities.SellActivity" />
         <activity android:name=".activities.ProductDetailActivity" />
@@ -43,7 +43,7 @@
             android:name=".activities.CommerceActivity"
             android:label="@string/title_activity_commerce"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.PayUsersActivity" />
+        <activity android:name=".activities.PayUsersActivity_" />
         <activity android:name=".activities.PayResumeActivity" />
         <activity android:name=".activities.PayMethodActivity" />
         <activity

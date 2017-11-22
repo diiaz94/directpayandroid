@@ -102,7 +102,12 @@ public class SelectUserActivity extends BeaconScanner {
                     users.add(users.size()-(users.size()>0?1:0),user);
                     usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
                         @Override public synchronized void onItemClick(int i,int type) {
+                            Log.d("BEACON_FLAG", "onItemClick:: ");
+                            Util.saveInSharedPreferences(Constants.TAG_PAY_USER_ID,pendintUsers.get(i).getId());
 
+                            Util.goToActivitySlide(
+                                    Util.getActivity(),
+                                    SellActivity.class);
                         }
                     }));
                 }
@@ -175,14 +180,14 @@ public class SelectUserActivity extends BeaconScanner {
         super.onResume();
         Util.setActivity(this);
 
-        if (Util.getFromSharedPreferences("user_role").equals("customer")) {
+        /*if (Util.getFromSharedPreferences("user_role").equals("customer")) {
             Util.setThreadPolicy();
             requestBluetoothPermission();
             requestLocationAccessPermission();
             BeaconUtil.setRegisteredBeacons();
             BeaconUtil.getRegisteredBeacons();              // Download list of registered listPromotion
 
-        }
+        }*/
     }
 
     @Override
