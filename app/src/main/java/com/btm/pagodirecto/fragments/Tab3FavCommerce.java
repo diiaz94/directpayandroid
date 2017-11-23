@@ -52,6 +52,6 @@ public class Tab3FavCommerce extends Fragment {
         commerces.add(commerce2);
         commerces.add(commerce3);
 
-        recyclerView.setAdapter(new CommerceRecyclerViewAdapter(getContext(),commerces));
+        //recyclerView.setAdapter(new CommerceRecyclerViewAdapter(getContext(),commerces));
     }
 }

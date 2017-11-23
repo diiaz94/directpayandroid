@@ -2,6 +2,9 @@ package com.btm.pagodirecto.dto;
 
 import android.text.BoringLayout;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by edwinalvarado on 11/7/17.
  */
@@ -11,11 +14,24 @@ public class Commerce {
     String _id;
     String name;
     String photo_url;
+    String photo_url_large;
+    @SerializedName("users")
+    @Expose
     String title;
+    @SerializedName("short_description")
+    @Expose
     String description;
     String status;
     String distance;
     Boolean favorite;
+
+    public String getPhoto_url_large() {
+        return photo_url_large;
+    }
+
+    public void setPhoto_url_large(String photo_url_large) {
+        this.photo_url_large = photo_url_large;
+    }
 
     public Commerce(String _id, String name, String photo_url, String title, String description, String status, String distance, Boolean favorite) {
         this._id = _id;
@@ -77,6 +93,7 @@ public class Commerce {
     }
 
     public String getDistance() {
+        if(distance==null) return "";
         return distance;
     }
 
@@ -85,6 +102,7 @@ public class Commerce {
     }
 
     public Boolean getFavorite() {
+        if(favorite==null) return false;
         return favorite;
     }
 

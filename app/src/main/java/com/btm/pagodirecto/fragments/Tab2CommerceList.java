@@ -53,6 +53,6 @@ public class Tab2CommerceList extends Fragment {
         commerces.add(commerce2);
         commerces.add(commerce3);
 
-        recyclerView.setAdapter(new CommerceRecyclerViewAdapter(getContext(),commerces));
+       // recyclerView.setAdapter(new CommerceRecyclerViewAdapter(getContext(),commerces));
     }
 }

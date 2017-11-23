@@ -1,6 +1,7 @@
 package com.btm.pagodirecto.services;
 
 import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.responses.ResponseCommerces;
 import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.responses.ResponseReceipts;
 import com.btm.pagodirecto.responses.ResponseUsers;
@@ -8,8 +9,10 @@ import com.btm.pagodirecto.responses.ResponseUsers;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
 /**
@@ -28,4 +31,10 @@ public interface ApiService {
 
     @GET(BASE_URL+"/receipts")
     public Call<CustomResponse<ResponseReceipts>> receipts(@QueryMap Map<String,String> params);
+
+    @GET(BASE_URL+"/commerces")
+    public Call<CustomResponse<ResponseCommerces>> commerces(@QueryMap Map<String, String> map);
+
+  /*  @POST(BASE_URL+"/receipts")
+    public Call<CustomResponse<ResponseReceipts>> sendReceipt(@Body RegisterParameters param);*/
 }

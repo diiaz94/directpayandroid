@@ -28,12 +28,14 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
 
 
     private final Context ctx;
+    private final OnItemClickListener listener;
     private ArrayList<Commerce> items;
     private LayoutInflater inflater;
-    public CommerceRecyclerViewAdapter(Context ctx, ArrayList<Commerce> items) {
+    public CommerceRecyclerViewAdapter(Context ctx, ArrayList<Commerce> items,CommerceRecyclerViewAdapter.OnItemClickListener listener) {
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
+        this.listener = listener;
     }
 
 
@@ -54,9 +56,9 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
         holder.mItem = items.get(position);
 
         //set all values to row
-        GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url(), new LazyHeaders.Builder()
+        GlideUrl glideUrl = new GlideUrl(items.get(position).getPhoto_url_large(), new LazyHeaders.Builder()
                 .build());
-        holder.comerceTittle.setText(items.get(position).getTitle());
+        holder.comerceTittle.setText(items.get(position).getName());
         holder.comerceDescription.setText(items.get(position).getDescription());
 
         Glide.with(ctx).load(glideUrl).into(holder.comerceImage);
@@ -65,11 +67,12 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("FLAG", "onClick: main button");
+                listener.onItemClick(position,0);
+               /* Log.i("FLAG", "onClick: main button");
                 Util.saveInSharedPreferences("COMMERCE_NAME",items.get(position).getTitle());
                 Util.goToActivitySlide(
                     Util.getActivity(),
-                    CommerceProductsActivity.class);
+                    CommerceProductsActivity.class);*/
                 //Long id = (Long) v.getTag();
                 // Util.replaceFragment(((BaseActivity)ctx).getSupportFragmentManager(), PromotionDetailFragment.newInstance(id,false),R.id.fragment_container);
             }
@@ -95,6 +98,10 @@ public class CommerceRecyclerViewAdapter extends RecyclerView.Adapter<CommerceRe
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int i,int action);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
