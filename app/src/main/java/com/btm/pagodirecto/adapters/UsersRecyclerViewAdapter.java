@@ -39,7 +39,6 @@ private LayoutInflater inflater;
 private final UsersRecyclerViewAdapter.OnItemClickListener listener;
 
     public UsersRecyclerViewAdapter(Context ctx, ArrayList<User> items, UsersRecyclerViewAdapter.OnItemClickListener listener) {
-
         this.ctx = ctx;
         inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.items = items;
