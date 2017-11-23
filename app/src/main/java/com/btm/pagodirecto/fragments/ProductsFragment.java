@@ -7,14 +7,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.btm.pagodirecto.activities.CartActivity;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.SelectUserActivity_;
+import com.btm.pagodirecto.activities.SellActivity;
+import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
@@ -23,6 +29,9 @@ import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.util.Util;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 
 import java.util.ArrayList;
 
@@ -91,8 +100,10 @@ public class ProductsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_list, container, false);
 
         ButterKnife.bind(this,v);
+
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         loadProducts();
+
         return v;
     }
 
@@ -109,6 +120,17 @@ public class ProductsFragment extends Fragment {
                         recyclerView.setAdapter(new ProductsRecyclerViewAdapter(getContext(),products,new ProductsRecyclerViewAdapter.OnItemClickListener() {
                             @Override public void onItemClick(Product item, int option) {
                                 Util.showMessage(item.getPrice());
+                                switch (option){
+                                    case 0:
+                                        //Util.showMessage(item.getPrice());
+                                        ((SellActivity)getActivity()).attemptAddProduct(item);
+                                        break;
+                                    case 1:
+                                        //Util.showMessage(item.getPrice());
+                                        ((SellActivity)getActivity()).showProductDetail(item);
+                                        break;
+
+                                }
                             }
                         }));
                     }
@@ -124,6 +146,7 @@ public class ProductsFragment extends Fragment {
                     }
                 });
     }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -181,4 +204,13 @@ public class ProductsFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+    public interface InteractionListener {
+        void onFragmentInteraction(String string);
+    }
+
+
+
 }

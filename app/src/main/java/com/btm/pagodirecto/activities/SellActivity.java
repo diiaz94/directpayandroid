@@ -15,6 +15,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,15 +26,25 @@ import android.widget.Button;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.SocketHandle;
+import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
 import com.btm.pagodirecto.util.Util;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
+
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -56,11 +68,59 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             R.drawable.calculator
     };
 
-    @Bind(R.id.cart_container)
-    LinearLayout cartContainer;
-
     @Bind(R.id.sell_container)
     LinearLayout sellContainer;
+
+    //Variables for cart
+    private ArrayList<Product> cartItems;
+    private RecyclerView.Adapter cartListAdapter;
+    private Product currentProduct;
+
+    //Binds for views -- items detail
+    @Bind(R.id.sub_total_label)
+    TextView subTotalLabel;
+
+    @Bind(R.id.sub_total_amount)
+    TextView subTotalAmount;
+
+    @Bind(R.id.cart_items_count_txt)
+    TextView cartItemsCountTxt;
+
+    @Bind(R.id.car_list)
+    RecyclerView carListRecyclerView;
+
+    @Bind(R.id.textView)
+    TextView titleCommerce;
+
+    @Bind(R.id.car_container)
+    LinearLayout cartContainer;
+
+    @Bind(R.id.car_items_count_label)
+    TextView carItemsCountLabel;
+
+    @Bind(R.id.container_item_count)
+    LinearLayout containerItemCount;
+
+    @Bind(R.id.product_name)
+    TextView productName;
+
+    @Bind(R.id.product_description)
+    TextView productDescription;
+
+    @Bind(R.id.product_price)
+    TextView productPrice;
+
+    @Bind(R.id.btn_main)
+    Button mainButton;
+
+    @Bind(R.id.product_image)
+    ImageView productImage;
+
+    @Bind(R.id.product_detail)
+    LinearLayout linearDetailProduct;
+
+    private Double subTotal;
+
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -84,6 +144,16 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        subTotal=0.00;
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        //int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        cartContainer.setLayoutParams(new LinearLayout.LayoutParams((new Double(width)).intValue(), cartContainer.getLayoutParams().height ));
+
+        initCartList();
+
         setupTabIcons();
     }
 
@@ -98,7 +168,6 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onPostCreate(savedInstanceState, persistentState);
         cartContainer.setVisibility(View.GONE);
-
     }
 
     private void setupTabIcons(){
@@ -108,6 +177,167 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    private void initCartList() {
+
+        cartItems= new ArrayList<Product>();
+        cartListAdapter = new ProductsCartRecyclerViewAdapter(getApplicationContext(),cartItems,new ProductsCartRecyclerViewAdapter.OnItemClickListener() {
+            @Override public synchronized void onItemClick(int i,int type) {
+                int actualSize = 0;
+                switch (type){
+                    case 0://inc
+                        if(cartItems.size()>0&&i<cartItems.size()) {
+                            subTotal += Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.get(i).setCartQty(cartItems.get(i).getCartQty() + 1);
+                            cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty() * cartItems.get(i).getCartPrice());
+                            cartListAdapter.notifyItemChanged(i);
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize += 1;
+                            cartItemsCountTxt.setText(String.valueOf(actualSize));
+                        }
+                        break;
+                    case 1://dec
+                        // i = (i<=1)? 0:i;
+                        if(cartItems.size()>0&&i<cartItems.size()) {
+                            subTotal -= Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.get(i).setCartQty(cartItems.get(i).getCartQty() - 1);
+                            cartItems.get(i).setCartPrice(cartItems.get(i).getCartQty() * cartItems.get(i).getCartPrice());
+                            cartListAdapter.notifyItemChanged(i);
+
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize -= 1;
+                            cartItemsCountTxt.setText(String.valueOf(actualSize));
+                        }
+                        break;
+                    case 2://delete
+                        //  i = (i<=1)? 0:i;
+                        if(cartItems.size()>0 && i<cartItems.size()) {
+                            subTotal-=Double.valueOf(cartItems.get(i).getPrice());
+                            subTotalAmount.setText(String.valueOf(subTotal));
+                            cartItems.remove(i);
+                            cartListAdapter.notifyItemRemoved(i);
+
+                            actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+                            actualSize -=1;
+                            if(actualSize == 0){
+                                containerItemCount.setVisibility(View.GONE);
+                            }else {
+                                cartItemsCountTxt.setText(String.valueOf(actualSize));
+                            }
+                            carItemsCountLabel.setText(String.valueOf(cartItems.size())+" items en tu carrito de compras");
+                        }
+                        break;
+                }
+            }
+        });
+        carListRecyclerView.setAdapter(cartListAdapter);
+        titleCommerce.setText(Util.getFromSharedPreferences("COMMERCE_NAME"));
+    }
+
+    public synchronized void attemptAddProduct(Product item) {
+        Product p = new Product();
+        if(!exist(item.get_id())){
+            p.set_id(item.get_id());
+            p.setDescription(item.getDescription());
+            p.setName(item.getName());
+            p.setPhoto_url(item.getPhoto_url());
+            p.setPrice(item.getPrice());
+            p.setRating(item.getRating());
+            p.setStatus(item.getStatus());
+            cartItems.add(p);
+            cartListAdapter.notifyItemInserted(cartItems.size()-1);
+            carListRecyclerView.scrollToPosition(cartItems.size()-1);
+
+            subTotal += Double.valueOf(item.getPrice());
+            updateItemsCount();
+        }else{
+            int index = getIndexForItem(item.get_id());
+
+            subTotal+=Double.valueOf(cartItems.get(index).getPrice());
+            subTotalAmount.setText(String.valueOf(subTotal));
+            cartItems.get(index).setCartQty(cartItems.get(index).getCartQty()+1);
+            cartItems.get(index).setCartPrice(cartItems.get(index).getCartQty()*cartItems.get(index).getCartPrice());
+            cartListAdapter.notifyItemChanged(index);
+
+            int actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+            actualSize +=1;
+            cartItemsCountTxt.setText(String.valueOf(actualSize));
+        }
+    }
+
+    private Integer getIndexForItem(String id ){
+        for (int i = 0; i < cartItems.size(); i++ ){
+            if (cartItems.get(i).get_id().equals(id)){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private boolean exist(String id) {
+        for (int i = 0; i < cartItems.size(); i++) {
+            if(cartItems.get(i).get_id().equalsIgnoreCase(id)) return true;
+        }
+        return false;
+    }
+
+    private void updateItemsCount() {
+
+        int actualSize = Integer.parseInt((String) cartItemsCountTxt.getText());
+        actualSize +=1;
+        cartItemsCountTxt.setText(String.valueOf(actualSize));
+
+        carItemsCountLabel.setText(String.valueOf(cartItems.size())+" items en tu carrito de compras");
+        subTotalAmount.setText(String.valueOf(subTotal));
+        containerItemCount.setVisibility(cartItems.isEmpty()?View.GONE:View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // code here to show dialog
+        if (cartContainer.getVisibility() == View.VISIBLE){
+            cartContainer.setVisibility(View.GONE);
+            sellContainer.setVisibility(View.VISIBLE);
+        }else{
+            this.finish();
+        }
+    }
+
+    @OnClick(R.id.btn_back)
+    public void goBack(){
+        // code here to show dialog
+        if (cartContainer.getVisibility()  == View.VISIBLE){
+            cartContainer.setVisibility(View.GONE);
+            sellContainer.setVisibility(View.VISIBLE);
+        }else{
+            this.finish();
+        }
+    }
+
+    @OnClick(R.id.shop_container_icon)
+    public void goToShop(){
+        cartContainer.setVisibility(View.VISIBLE);
+        sellContainer.setVisibility(View.GONE);
+    }
+
+    public void  showProductDetail(Product item){
+        currentProduct = item;
+        GlideUrl glideUrl = new GlideUrl(item.getPhoto_url(), new LazyHeaders.Builder()
+                .build());
+
+        Glide.with(Util.getContext()).load(glideUrl).into(productImage);
+
+        productName.setText(item.getName());
+        productDescription.setText(item.getDescription());
+        productPrice.setText(item.getPrice());
+        mainButton.setText("COMPRAR");
+
+        linearDetailProduct.setVisibility(View.VISIBLE);
+        //cartContainer.setVisibility(View.GONE);
 
     }
 
@@ -187,29 +417,5 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             return null;
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        // code here to show dialog
-        this.finish();
-    }
-
-    @OnClick(R.id.shop_container_icon)
-    public void goToShop(){
-        cartContainer.setVisibility(View.VISIBLE);
-        sellContainer.setVisibility(View.GONE);
-    }
-
-    @OnClick(R.id.btn_back)
-    public void goBack(){
-        // code here to show dialog
-        if (cartContainer.getVisibility()  == View.VISIBLE){
-            cartContainer.setVisibility(View.GONE);
-            sellContainer.setVisibility(View.VISIBLE);
-        }else{
-            this.finish();
-        }
-    }
-
 
 }

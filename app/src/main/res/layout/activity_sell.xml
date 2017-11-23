@@ -204,11 +204,24 @@
         android:layout_height="0dp"
         android:layout_weight="1203"
         android:weightSum="1291"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="vertical">
 
         <include
             layout="@layout/activity_cart" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1203"
+        android:weightSum="1291"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_product_detail" />
 
     </LinearLayout>
 

@@ -14,11 +14,14 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.SelectUserActivity_;
+import com.btm.pagodirecto.activities.SellActivity;
+import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.util.Util;
 
 import java.lang.reflect.Array;
@@ -28,6 +31,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Locale;
+import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -89,6 +93,9 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     @Bind(R.id.image_animation)
     ImageView animationElement;
+
+    @Bind(R.id.item_description)
+    EditText itemDescrip;
 
     private OnFragmentInteractionListener mListener;
 
@@ -258,26 +265,24 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     public void equal(View v){
         //Send like a new product and clear text
         Log.d("FLAG", "equal: ");
+        Product item = new Product();
+
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString();
+
+        item.set_id(ts);
+        item.setCartQty(1);
+        item.setCartPrice(Double.parseDouble(inputResult.getText().toString().replaceAll("[Bs,.]", "").trim()));
+        item.setDescription(itemDescrip.getText().toString());
+        item.setName(itemDescrip.getText().toString());
+        item.setPhoto_url("https://imgur.com/a/E9LMd");
+        item.setPrice(inputResult.getText().toString().replaceAll("[Bs,.]", "").trim());
+        item.setRating("");
+        item.setStatus("");
+
+        ((SellActivity)getActivity()).attemptAddProduct(item);
         inputResult.setText("Bs. 0");
-        /*Animation movimiento;
-        movimiento = AnimationUtils.loadAnimation(getActivity(), R.anim.mover);
-        movimiento.reset();
-        movimiento.setAnimationListener(new Animation.AnimationListener(){
-            @Override
-            public void onAnimationStart(Animation arg0) {
-                animationElement.setVisibility(View.VISIBLE);
-            }
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-                animationElement.setVisibility(View.VISIBLE);
-            }
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                animationElement.setVisibility(View.GONE);
-            }
-        });
-        animationElement.startAnimation(movimiento);
-        */
+
     }
 
     public void doOperation(String firstValue, String operator, String secondValue){ // 0 + 10
