@@ -27,14 +27,21 @@ import android.widget.Button;
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
+import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.dto.Product;
+import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
 import com.btm.pagodirecto.fragments.ProductsFragment;
+import com.btm.pagodirecto.services.ApiService;
+import com.btm.pagodirecto.services.ServiceGenerator;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.google.gson.Gson;
 
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
@@ -45,10 +52,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class SellActivity extends BaseActivity implements CalculatorFragment.OnFragmentInteractionListener,
                                                             ProductsFragment.OnFragmentInteractionListener {
@@ -119,6 +130,9 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     @Bind(R.id.product_detail)
     LinearLayout linearDetailProduct;
 
+    @Bind(R.id.btn_card_pay)
+    Button btnCartPay;
+
     private Double subTotal;
 
 
@@ -126,6 +140,8 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private User mUserSelected;
+    public String cartMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +160,12 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        Gson gson = new Gson();
+        mUserSelected = new User();
+        mUserSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
         subTotal=0.00;
+
+        cartMode = getIntent().getStringExtra("CART_MODE");
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -162,12 +183,23 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         super.onResume();
         Util.setActivity(this);
 
+        btnCartPay.setVisibility(View.GONE);
+
+        if (cartMode.equals("PENDING")){
+            cartContainer.setVisibility(View.VISIBLE);
+            sellContainer.setVisibility(View.GONE);
+            addDummieItems();
+        }else{
+            sellContainer.setVisibility(View.VISIBLE);
+            cartContainer.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onPostCreate(savedInstanceState, persistentState);
-        cartContainer.setVisibility(View.GONE);
+
     }
 
     private void setupTabIcons(){
@@ -416,6 +448,89 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
             }*/
             return null;
         }
+    }
+
+    @OnClick(R.id.btn_card_send)
+    public void sendToCommerce() {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("sent_by", Util.getFromSharedPreferences(Constants.TAG_USER_ID));
+        map.put("sent_to", mUserSelected.getId());
+        map.put("type", "order");
+        map.put("total", subTotal.toString());
+
+        ServiceGenerator.getService(ApiService.class)
+                .sendReceipt(map)
+                .enqueue(new CustomRetrofitCallback<CustomResponse<Map<String,String>>>() {
+
+                    @Override
+                    public void handleSuccess(Object response) {
+                        Util.saveInSharedPreferences("FROM","SEND_PAY");
+                        Util.goToActivitySlide(
+                                Util.getActivity(),
+                                PayAcceptedActivity.class);
+                    }
+
+                    @Override
+                    public void handleResponseError(Response response) {
+
+                    }
+
+                    @Override
+                    public void handleFailError(Call<CustomResponse<Map<String, String>>> call, Throwable t) {
+
+                    }
+                });
+
+    }
+
+    public void addDummieItems(){
+
+        //Add first item
+        Product item = new Product();
+
+        item.set_id("59dd8fb30d5a9b00127a7cbc");
+        item.setCartQty(2);
+        item.setCartPrice(0.0);
+        item.setDescription("Einstein has just become the world's first time traveler. I sent him into the future.");
+        item.setName("Croissant");
+        item.setPhoto_url("http://i.imgur.com/eo4h3h3.png");
+        item.setPrice("4500");
+        item.setRating("");
+        item.setStatus("");
+
+        attemptAddProduct(item);
+
+        //Add second item
+        Product item2 = new Product();
+
+        item2.set_id("59dd902a0d5a9b00127a7cbd");
+        item2.setCartQty(1);
+        item2.setCartPrice(0.0);
+        item2.setDescription("Einstein has just become the world's first time traveler. I sent him into the future.");
+        item2.setName("Cupcake");
+        item2.setPhoto_url("http://i.imgur.com/zGquB7R.png");
+        item2.setPrice("2000");
+        item2.setRating("");
+        item2.setStatus("");
+
+        attemptAddProduct(item2);
+
+        //Add thrid item
+        Product item3 = new Product();
+
+        item3.set_id("59dd90600d5a9b00127a7cbe");
+        item3.setCartQty(2);
+        item3.setCartPrice(0.0);
+        item3.setDescription("Einstein has just become the world's first time traveler. I sent him into the future.");
+        item3.setName("Cafe Grande");
+        item3.setPhoto_url("http://i.imgur.com/bBfAjJ4.png");
+        item3.setPrice("2000");
+        item3.setRating("");
+        item3.setStatus("");
+
+        attemptAddProduct(item3);
+
     }
 
 }

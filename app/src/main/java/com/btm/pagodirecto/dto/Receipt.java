@@ -12,6 +12,15 @@ public class Receipt {
     String status;
     String description;
     String type;
+    String user_id;
+
+    public String get_user_id() {
+        return user_id;
+    }
+
+    public void set_user_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getType() {
         return type;

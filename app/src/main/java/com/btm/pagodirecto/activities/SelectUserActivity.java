@@ -112,9 +112,18 @@ public class SelectUserActivity extends BeaconScanner {
                         @Override public synchronized void onItemClick(int i,int type) {
                             Log.d("BEACON_FLAG", "onItemClick:: ");
 
-                            Util.goToActivitySlide(
+                            Gson g = new Gson();
+                            Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
+                            Intent intent = new Intent(Util.getActivity(), SellActivity.class);
+                            intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
+                            intent.putExtra("CART_MODE","SELL");
+                            Util.getActivity().startActivity(intent);
+                            Util.getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+
+                            /*Util.goToActivitySlide(
                                     Util.getActivity(),
                                     SellActivity.class);
+                            */
                         }
                     }));
                 }
@@ -254,9 +263,19 @@ public class SelectUserActivity extends BeaconScanner {
                            @Override public synchronized void onItemClick(int i,int type) {
                                Log.d("FLAG", "onItemClick: "+i+" type: "+type);
 
-                              Util.goToActivitySlide(
+                               Gson g = new Gson();
+                               Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
+                               Intent intent = new Intent(Util.getActivity(), SellActivity.class);
+                               mPendings.get(i).set_id(mPendings.get(i).get_user_id());
+                               intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
+                               intent.putExtra("CART_MODE","PENDING");
+                               Util.getActivity().startActivity(intent);
+                               Util.getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+
+                               /*Util.goToActivitySlide(
                                        Util.getActivity(),
                                        SellActivity.class);
+                               */
                            }
                        }));
                     }
