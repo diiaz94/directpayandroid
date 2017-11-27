@@ -264,7 +264,7 @@ public class SelectUserActivity extends BeaconScanner {
                                Log.d("FLAG", "onItemClick: "+i+" type: "+type);
 
                                Gson g = new Gson();
-                               Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
+                               Util.saveInSharedPreferences("COMMERCE_NAME",mPendings.get(i).getName());
                                Intent intent = new Intent(Util.getActivity(), SellActivity.class);
                                mPendings.get(i).set_id(mPendings.get(i).get_user_id());
                                intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
