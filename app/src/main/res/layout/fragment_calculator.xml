@@ -20,7 +20,6 @@
             android:weightSum="1203">
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -133,6 +132,7 @@
                             android:textStyle="bold" />
 
                         <EditText
+                            android:id="@+id/item_description"
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:layout_weight="30"
@@ -362,13 +362,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:gravity="bottom|end">
+            android:gravity="bottom|end"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/image_animation"
