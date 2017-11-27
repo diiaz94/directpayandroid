@@ -8,8 +8,7 @@ public class Constants {
 
     //public static final String SERVER_URL = "http://192.168.8.102:3002/";
     //public static final String SOCKET_URL = "http://192.168.8.102:3002/";
-    public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/v1/";
-    public static final String SOCKET_URL = "https://pagodirectoapi.herokuapp.com/";
+    public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/";
 
     //Internal Events
     public static final String ENTER_REGION = "enter region";
