@@ -59,10 +59,10 @@ public class PayUsersActivity extends BeaconScanner {
     LinearLayout pendingTab;
 
     @Bind(R.id.pending_items_count_container)
-    LinearLayout pendingitemsCountContainer;
+    LinearLayout pendingItemsCountContainer;
 
     @Bind(R.id.pending_items_count)
-    TextView pendingitemsCount;
+    TextView pendingItemsCount;
 
     private ArrayList<User> mUsers = new ArrayList<User>();
     private ArrayList<Receipt> mPendings = new ArrayList<Receipt>();
@@ -132,8 +132,7 @@ public class PayUsersActivity extends BeaconScanner {
 
     private void loadPendings() {
         Map<String,String> map = new HashMap<>();
-        map.put("status", "pending");
-        //map.put("user_id", Util.getFromSharedPreferences("user_id"));
+        map.put("user_id", Util.getFromSharedPreferences("user_id"));
         final BaseActivity act = this;
         ServiceGenerator.getService(ApiService.class)
                 .receipts(map)
@@ -143,12 +142,11 @@ public class PayUsersActivity extends BeaconScanner {
                     public void handleSuccess(Object response) {
                         ResponseReceipts responseReceipts = (ResponseReceipts) response;
                         mPendings = responseReceipts.getReceipts();
-                        if(mPendings.size()>0){
-                            pendingitemsCount.setText(String.valueOf(mPendings.size()));
-                            pendingitemsCountContainer.setVisibility(View.VISIBLE);
-                        }
+                        pendingItemsCount.setText(String.valueOf(mPendings.size()));
+                        pendingItemsCountContainer.setVisibility(View.VISIBLE);
 
-                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings,new ReceiptsRecyclerViewAdapter.OnItemClickListener() {
+                        int viewType = Util.getFromSharedPreferences(Constants.TAG_USER_ROLE).equalsIgnoreCase("customer")? 0:1;
+                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings,viewType,new ReceiptsRecyclerViewAdapter.OnItemClickListener() {
                             @Override public synchronized void onItemClick(int i,int type) {
                                 switch (type){
                                     case 0:

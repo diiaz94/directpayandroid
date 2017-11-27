@@ -35,6 +35,8 @@ public interface ApiService {
     @GET(BASE_URL+"/commerces")
     public Call<CustomResponse<ResponseCommerces>> commerces(@QueryMap Map<String, String> map);
 
-  /*  @POST(BASE_URL+"/receipts")
-    public Call<CustomResponse<ResponseReceipts>> sendReceipt(@Body RegisterParameters param);*/
+    @POST(BASE_URL+"/receipts")
+    public Call<CustomResponse<Map<String, String>>> sendReceipt(@Body Map<String, String>  params);
+
 }
+

@@ -60,4 +60,6 @@ public class Receipt {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }

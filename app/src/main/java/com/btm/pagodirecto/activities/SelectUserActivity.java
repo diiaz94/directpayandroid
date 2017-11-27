@@ -23,17 +23,21 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.activities.baseActivities.BeaconScanner;
+import com.btm.pagodirecto.adapters.ReceiptsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 
 import com.btm.pagodirecto.adapters.UsersRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.domain.beacons.RegisteredBeacons;
+import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.dto.User;
+import com.btm.pagodirecto.responses.ResponseReceipts;
 import com.btm.pagodirecto.responses.ResponseUsers;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
@@ -76,14 +80,18 @@ public class SelectUserActivity extends BeaconScanner {
     @Bind(R.id.btn_back)
     Button btnBack;
 
+    @Bind(R.id.pending_items_count_container)
+    LinearLayout pendingItemsCountContainer;
 
+    @Bind(R.id.pending_items_count)
+    TextView pendingItemsCount;
     // Permisos que debe autorizar el usuario
     // TODO: Deben mejorarse, sobre todo el de BT, quizas crear una clase aparte de manejo de permisos
     private final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private final int PERMISSION_REQUEST_ENABLE_BT = 2;
     private final String ERROR_SERVICE_LOG = "Error Service: ";
     private ArrayList<User> users = new ArrayList<User>();
-    private ArrayList<User> pendintUsers = new ArrayList<User>();
+    private ArrayList<Receipt> mPendings = new ArrayList<Receipt>();
     public Boolean enterRegion = false;
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -103,7 +111,6 @@ public class SelectUserActivity extends BeaconScanner {
                     usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
                         @Override public synchronized void onItemClick(int i,int type) {
                             Log.d("BEACON_FLAG", "onItemClick:: ");
-                            Util.saveInSharedPreferences(Constants.TAG_PAY_USER_ID,pendintUsers.get(i).getId());
 
                             Util.goToActivitySlide(
                                     Util.getActivity(),
@@ -229,25 +236,25 @@ public class SelectUserActivity extends BeaconScanner {
     private void loadPendingUsers() {
 
         Map<String,String> map = new HashMap<>();
-        map.put("role", Util.getFromSharedPreferences(Constants.ROLE_COMMERCE));
         map.put("user_id", Util.getFromSharedPreferences(Constants.TAG_USER_ID));
 
         ServiceGenerator.getService(ApiService.class)
-                .users(map)
-                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseUsers>>() {
+                .receipts(map)
+                .enqueue(new CustomRetrofitCallback<CustomResponse<ResponseReceipts>>() {
 
                     @Override
                     public void handleSuccess(Object response) {
-                        ResponseUsers responseUsers = (ResponseUsers) response;
-                        pendintUsers = responseUsers.getUsers();
+                        ResponseReceipts responseReceipts = (ResponseReceipts) response;
+                        mPendings = responseReceipts.getReceipts();
+                        pendingItemsCount.setText(String.valueOf(mPendings.size()));
+                        pendingItemsCountContainer.setVisibility(View.VISIBLE);
 
-                       pendingList.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),pendintUsers,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                        int viewType = Util.getFromSharedPreferences(Constants.TAG_USER_ROLE).equalsIgnoreCase("customer")? 0:1;
+                        pendingList.setAdapter(new ReceiptsRecyclerViewAdapter(getApplicationContext(),mPendings,viewType,new ReceiptsRecyclerViewAdapter.OnItemClickListener() {
                            @Override public synchronized void onItemClick(int i,int type) {
                                Log.d("FLAG", "onItemClick: "+i+" type: "+type);
 
-                               Util.saveInSharedPreferences(Constants.TAG_PAY_USER_ID,pendintUsers.get(i).getId());
-
-                               Util.goToActivitySlide(
+                              Util.goToActivitySlide(
                                        Util.getActivity(),
                                        SellActivity.class);
                            }
@@ -260,7 +267,7 @@ public class SelectUserActivity extends BeaconScanner {
                     }
 
                     @Override
-                    public void handleFailError(Call<CustomResponse<ResponseUsers>> call, Throwable t) {
+                    public void handleFailError(Call<CustomResponse<ResponseReceipts>> call, Throwable t) {
 
                     }
                 });

@@ -23,6 +23,7 @@ import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.dto.Receipt;
+import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.responses.ResponseProducts;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
@@ -38,6 +39,8 @@ import com.google.gson.Gson;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -110,12 +113,17 @@ public class CommerceProductsActivity extends BaseActivity {
     private RecyclerView.Adapter cartListAdapter;
 
     private Product currentProduct;
+    private User mCommerceSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commerce_products);
         ButterKnife.bind(this);
+        Gson gson = new Gson();
+        mCommerceSelected= new User();
+        mCommerceSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
+
         carOpen = false;
         subTotal=0.00;
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -352,10 +360,36 @@ public class CommerceProductsActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btn_card_send)
-    public void sendToCommerce(){
-        Util.saveInSharedPreferences("FROM","SEND_PAY");
-        Util.goToActivitySlide(
-                Util.getActivity(),
-                PayAcceptedActivity.class);
+    public void sendToCommerce() {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("sent_by", Util.getFromSharedPreferences(Constants.TAG_USER_ID));
+        map.put("sent_to", mCommerceSelected.getId());
+        map.put("type", "order");
+        map.put("total", subTotal.toString());
+
+        ServiceGenerator.getService(ApiService.class)
+                .sendReceipt(map)
+                .enqueue(new CustomRetrofitCallback<CustomResponse<Map<String,String>>>() {
+
+                    @Override
+                    public void handleSuccess(Object response) {
+                        Util.saveInSharedPreferences("FROM","SEND_PAY");
+                        Util.goToActivitySlide(
+                                Util.getActivity(),
+                                PayAcceptedActivity.class);
+                    }
+
+                    @Override
+                    public void handleResponseError(Response response) {
+
+                    }
+
+                    @Override
+                    public void handleFailError(Call<CustomResponse<Map<String, String>>> call, Throwable t) {
+
+                    }
+                });
+
     }
 }
