@@ -8,11 +8,23 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.custom.CustomResponse;
+import com.btm.pagodirecto.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.dto.Receipt;
+import com.btm.pagodirecto.services.ApiService;
+import com.btm.pagodirecto.services.ServiceGenerator;
+import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class CvvActivity extends BaseActivity {
 
@@ -53,12 +65,22 @@ public class CvvActivity extends BaseActivity {
 
 
     String mPin;
+    private String mPayType;
+    private Receipt mReceiptSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cvv);
         ButterKnife.bind(this);
         mPin = "";
+        Gson gson = new Gson();
+        mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
+
+        if(mPayType.equalsIgnoreCase("receipt")){
+            mReceiptSelected= new Receipt();
+            mReceiptSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_RECEIPT_OBJECT), Receipt.class);
+        }
     }
 
     @Override
@@ -82,12 +104,44 @@ public class CvvActivity extends BaseActivity {
                 case 3:
                     mPin3.setVisibility(View.VISIBLE);
                     //Go to listo
-                    Util.goToActivitySlide(
+                    if(mPayType.equalsIgnoreCase("receipt")){
+                        payReceipt();
+                    }else{
+                        Util.goToActivitySlide(
                             Util.getActivity(),
                             PayAcceptedActivity.class);
+                    }
                     break;
             }
         }
+    }
+
+    private void payReceipt() {
+        Map<String,String> map = new HashMap<>();
+        map.put("receipt", mReceiptSelected.get_id());
+        map.put("status", "paid");
+        ServiceGenerator.getService(ApiService.class)
+            .payReceipt(map)
+            .enqueue(new CustomRetrofitCallback<CustomResponse<Map<String,String>>>() {
+
+                @Override
+                public void handleSuccess(Object response) {
+                    Util.goToActivitySlide(
+                            Util.getActivity(),
+                            PayAcceptedActivity.class);
+                }
+
+                @Override
+                public void handleResponseError(Response response) {
+
+                }
+
+                @Override
+                public void handleFailError(Call<CustomResponse<Map<String, String>>> call, Throwable t) {
+
+                }
+
+            });
     }
 
     public void deleteNumber(){

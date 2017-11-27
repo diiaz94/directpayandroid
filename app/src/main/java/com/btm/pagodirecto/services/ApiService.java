@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -37,6 +38,9 @@ public interface ApiService {
 
     @POST(BASE_URL+"/receipts")
     public Call<CustomResponse<Map<String, String>>> sendReceipt(@Body Map<String, String>  params);
+
+    @PATCH(BASE_URL+"/receipts")
+    public Call<CustomResponse<Map<String, String>>> payReceipt(@Body Map<String, String>  params);
 
 }
 

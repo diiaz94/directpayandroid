@@ -83,7 +83,7 @@ public class PayResumeActivity extends BaseActivity {
     }
 
     private void loadTicket() {
-        title.setText("DETALLE PAGO PENDIENTE");
+        title.setText("Detalle de pago pendiente");
         productsContainer.setVisibility(View.GONE);
         ticketContainer.setVisibility(View.VISIBLE);
 
@@ -92,7 +92,7 @@ public class PayResumeActivity extends BaseActivity {
 
     private void loadProducts() {
 
-        title.setText("RESUMEN DE COMPRA");
+        title.setText("Resumen de compra");
 
 
 
@@ -143,6 +143,7 @@ public class PayResumeActivity extends BaseActivity {
         Gson g = new Gson();
         Intent intent = new Intent(this,PayMethodActivity.class);
         intent.putExtra(Constants.TAG_PAY_TYPE,"receipt");
+        intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(mReceiptSelected));
         this.startActivity(intent);
         this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
 

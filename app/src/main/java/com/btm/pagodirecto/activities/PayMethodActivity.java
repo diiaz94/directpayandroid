@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
+import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
@@ -64,6 +65,7 @@ public class PayMethodActivity extends BaseActivity {
 
     private String mPayType;
     private User mUserSelected;
+    private Receipt mReceiptSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +73,20 @@ public class PayMethodActivity extends BaseActivity {
         setContentView(R.layout.activity_pay_method);
         ButterKnife.bind(this);
         hideSoftKeyboard();
-
         tdcName.setText(Util.getFromSharedPreferences(Constants.TAG_USER_NAME));
+        Gson gson = new Gson();
         mPayType = getIntent().getStringExtra(Constants.TAG_PAY_TYPE);
         if(mPayType.equalsIgnoreCase("user")){
-            Gson gson = new Gson();
             mUserSelected= new User();
             mUserSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
             userName.setText(mUserSelected.getName());
             GlideUrl glideUrl = new GlideUrl(mUserSelected.getPhoto_url(), new LazyHeaders.Builder()
                         .build());
             Glide.with(this).load(glideUrl).into(imageProfile).onLoadFailed(this.getResources().getDrawable(R.drawable.logo));
+        }
+        if(mPayType.equalsIgnoreCase("receipt")){
+            mReceiptSelected= new Receipt();
+            mReceiptSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_RECEIPT_OBJECT), Receipt.class);
         }
     }
 
@@ -93,16 +98,26 @@ public class PayMethodActivity extends BaseActivity {
 
     @OnClick(R.id.btn_pay_p2p)
     public void payP2PAction(){
-        Util.goToActivitySlide(
-                Util.getActivity(),
-                PinActivity.class);
+        Intent intent = new Intent(this,PinActivity.class);
+        if(mPayType.equalsIgnoreCase("receipt")){
+            Gson g = new Gson();
+            intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(mReceiptSelected));
+        }
+        intent.putExtra(Constants.TAG_PAY_TYPE,mPayType);
+        this.startActivity(intent);
+        this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
     }
 
     @OnClick(R.id.btn_pay)
     public void payCardAction(){
-        Util.goToActivitySlide(
-                Util.getActivity(),
-                CvvActivity.class);
+        Intent intent = new Intent(this,CvvActivity.class);
+        if(mPayType.equalsIgnoreCase("receipt")){
+            Gson g = new Gson();
+            intent.putExtra(Constants.TAG_RECEIPT_OBJECT,g.toJson(mReceiptSelected));
+        }
+        intent.putExtra(Constants.TAG_PAY_TYPE,mPayType);
+        this.startActivity(intent);
+        this.overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
     }
 
     @OnClick(R.id.card_tab)
