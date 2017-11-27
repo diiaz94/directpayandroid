@@ -32,7 +32,7 @@ public class SocketHandle {
     public static void init(Context context) {
 
         try {
-            mSocket = IO.socket(Constants.SOCKET_URL);
+            mSocket = IO.socket(Constants.SERVER_URL);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
