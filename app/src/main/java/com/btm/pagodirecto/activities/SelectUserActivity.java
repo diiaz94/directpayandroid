@@ -112,13 +112,15 @@ public class SelectUserActivity extends BeaconScanner {
                         @Override public synchronized void onItemClick(int i,int type) {
                             Log.d("BEACON_FLAG", "onItemClick:: ");
 
-                            Gson g = new Gson();
-                            Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
-                            Intent intent = new Intent(Util.getActivity(), SellActivity.class);
-                            intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
-                            intent.putExtra("CART_MODE","SELL");
-                            Util.getActivity().startActivity(intent);
-                            Util.getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                            if (mPendings.size() > 0) {
+                                Gson g = new Gson();
+                                Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
+                                Intent intent = new Intent(Util.getActivity(), SellActivity.class);
+                                intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
+                                intent.putExtra("CART_MODE","SELL");
+                                Util.getActivity().startActivity(intent);
+                                Util.getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                            }
 
                             /*Util.goToActivitySlide(
                                     Util.getActivity(),
