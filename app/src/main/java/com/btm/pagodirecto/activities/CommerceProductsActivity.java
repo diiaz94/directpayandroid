@@ -21,6 +21,7 @@ import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.adapters.ProductsRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.dto.User;
@@ -36,6 +37,8 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -374,6 +377,12 @@ public class CommerceProductsActivity extends BaseActivity {
 
                     @Override
                     public void handleSuccess(Object response) {
+                        try {
+                            emitNewReceipt(mCommerceSelected.getId());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                         Util.saveInSharedPreferences("FROM","SEND_PAY");
                         Util.goToActivitySlide(
                                 Util.getActivity(),
@@ -388,6 +397,16 @@ public class CommerceProductsActivity extends BaseActivity {
                     @Override
                     public void handleFailError(Call<CustomResponse<Map<String, String>>> call, Throwable t) {
 
+                    }
+
+                    public void emitNewReceipt(String userId) throws JSONException {
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("user",userId);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        SocketHandle.emitEvent(Constants.NEW_RECEIPT, json);
                     }
                 });
 

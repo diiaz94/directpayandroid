@@ -148,7 +148,6 @@ public class SocketHandle {
             }
         }
 
-
     };
 
     private static Emitter.Listener onNewReceipt = new Emitter.Listener() {
