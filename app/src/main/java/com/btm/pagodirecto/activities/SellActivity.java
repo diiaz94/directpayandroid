@@ -30,6 +30,7 @@ import com.btm.pagodirecto.adapters.ProductsCartRecyclerViewAdapter;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
 import com.btm.pagodirecto.custom.SocketHandle;
+import com.btm.pagodirecto.domain.beacons.Beacons;
 import com.btm.pagodirecto.dto.Product;
 import com.btm.pagodirecto.dto.User;
 import com.btm.pagodirecto.fragments.CalculatorFragment;
@@ -133,6 +134,9 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
     @Bind(R.id.btn_card_pay)
     Button btnCartPay;
 
+    @Bind(R.id.btn_card_send)
+    Button btnCartSend;
+
     private Double subTotal;
 
 
@@ -184,7 +188,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
         Util.setActivity(this);
 
         btnCartPay.setVisibility(View.GONE);
-
+        btnCartSend.setText("ENVIAR COBRO");
         if (cartMode.equals("PENDING")){
             cartContainer.setVisibility(View.VISIBLE);
             sellContainer.setVisibility(View.GONE);
@@ -465,6 +469,13 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
 
                     @Override
                     public void handleSuccess(Object response) {
+                        //Emit sent receipt
+                        try {
+                            emitNewReceipt(mUserSelected.getId());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                         Util.saveInSharedPreferences("FROM","SEND_PAY");
                         Util.goToActivitySlide(
                                 Util.getActivity(),
@@ -479,6 +490,16 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
                     @Override
                     public void handleFailError(Call<CustomResponse<Map<String, String>>> call, Throwable t) {
 
+                    }
+
+                    public void emitNewReceipt(String userId) throws JSONException {
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("user",userId);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        SocketHandle.emitEvent(Constants.NEW_RECEIPT, json);
                     }
                 });
 

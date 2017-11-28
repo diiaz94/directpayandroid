@@ -46,6 +46,7 @@ public class SocketHandle {
         mSocket.on(Constants.EXIT_REGION, onExitRegion);
         mSocket.on(Constants.ADD_USER, onAddUser);
         mSocket.on(Constants.REMOVE_USER, onRemoveUser);
+        mSocket.on(Constants.NEW_RECEIPT, onNewReceipt);
         //mSocket.on("new message", onNewMessage);
         //mSocket.on("received message", onReceiveMessage);
         //mSocket.on("read message", onReadMessage);
@@ -147,6 +148,15 @@ public class SocketHandle {
             }
         }
 
+
+    };
+
+    private static Emitter.Listener onNewReceipt = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            Log.i(TAG,"onNewReceipt " );
+
+        }
 
     };
 }

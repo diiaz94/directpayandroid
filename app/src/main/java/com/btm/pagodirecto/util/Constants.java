@@ -6,15 +6,16 @@ package com.btm.pagodirecto.util;
 
 public class Constants {
 
-    //public static final String SERVER_URL = "http://192.168.8.102:3002/";
+    public static final String SERVER_URL = "http://192.168.0.106:3002/";
     //public static final String SOCKET_URL = "http://192.168.8.102:3002/";
-    public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/";
+    //public static final String SERVER_URL = "https://pagodirectoapi.herokuapp.com/";
 
     //Internal Events
     public static final String ENTER_REGION = "enter region";
     public static final String EXIT_REGION = "exit region";
     public static final String ADD_USER = "add user";
     public static final String REMOVE_USER = "remove user";
+    public static final String NEW_RECEIPT = "new receipt";
 
     public static final String TAG_USER_NAME = "user_name";
     public static final String TAG_USER_URL_IMAGE = "user_url_image";
@@ -27,4 +28,5 @@ public class Constants {
     public static final String TAG_PAY_USER_ID = "pay_user_id";
     public static final String TAG_RECEIPT_OBJECT = "receipt";
     public static final String TAG_USER_OBJECT = "user";
+
 }
