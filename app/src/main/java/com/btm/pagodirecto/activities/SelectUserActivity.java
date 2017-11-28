@@ -141,6 +141,11 @@ public class SelectUserActivity extends BeaconScanner {
                 }
             }
 
+            if (action.equalsIgnoreCase(Constants.NEW_RECEIPT)){
+                //CALL PENDING USERS IN LIST
+                loadPendingUsers();
+            }
+
         }
 
         private int getIndexFromUser(User user) {
@@ -183,6 +188,7 @@ public class SelectUserActivity extends BeaconScanner {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ADD_USER);
         filter.addAction(Constants.REMOVE_USER);
+        filter.addAction(Constants.NEW_RECEIPT);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 filter);
 
