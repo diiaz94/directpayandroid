@@ -163,6 +163,7 @@ public class SocketHandle {
                     intent.putExtra("userId", obj.getString("user").toString());
                     LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
