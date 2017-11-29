@@ -154,8 +154,18 @@ public class SocketHandle {
         @Override
         public void call(final Object... args) {
             Log.i(TAG,"onNewReceipt " );
+            try {
+                JSONObject obj = (JSONObject) args[0];
+                String userId = obj.getString("user").toString();
 
+                if(userId.equalsIgnoreCase(Util.getFromSharedPreferences("user_id"))){
+                    Intent intent = new Intent(Constants.NEW_RECEIPT);
+                    intent.putExtra("userId", obj.getString("user").toString());
+                    LocalBroadcastManager.getInstance(Util.getContext()).sendBroadcast(intent);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-
     };
 }

@@ -55,7 +55,7 @@ public class ReceiptsRecyclerViewAdapter extends RecyclerView.Adapter<ReceiptsRe
                 break;
             case 1:
                 layout = R.layout.grid_item_user;
-                height = new Double(parent.getMeasuredHeight() / 2.5);
+                height = new Double(parent.getMeasuredHeight() / 2.25);
                  width = parent.getMeasuredWidth() / 2;
                 break;
         }

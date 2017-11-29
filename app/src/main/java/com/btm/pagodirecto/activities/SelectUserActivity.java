@@ -100,12 +100,13 @@ public class SelectUserActivity extends BeaconScanner {
             // Get extra data included in the Intent
 
             String action = intent.getAction();
-            String usr = intent.getStringExtra("user");
-            Gson gson = new Gson();
-            User user = gson.fromJson(usr, User.class);
 
             if(action.equalsIgnoreCase(Constants.ADD_USER)){
                 //ADD USER IN LIST
+                String usr = intent.getStringExtra("user");
+                Gson gson = new Gson();
+                final User user = gson.fromJson(usr, User.class);
+
                 if (!ifExists(user)){
                     users.add(users.size()-(users.size()>0?1:0),user);
                     usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
@@ -113,9 +114,9 @@ public class SelectUserActivity extends BeaconScanner {
                             Log.d("BEACON_FLAG", "onItemClick:: ");
 
                             Gson g = new Gson();
-                            Util.saveInSharedPreferences("USER_SELL_NAME",mPendings.get(i).getName());
+                            Util.saveInSharedPreferences("USER_SELL_NAME",users.get(i).getName());
                             Intent intent = new Intent(Util.getActivity(), SellActivity.class);
-                            intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(mPendings.get(i)));
+                            intent.putExtra(Constants.TAG_USER_OBJECT,g.toJson(users.get(i)));
                             intent.putExtra("CART_MODE","SELL");
                             Util.getActivity().startActivity(intent);
                             Util.getActivity().overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
@@ -131,6 +132,10 @@ public class SelectUserActivity extends BeaconScanner {
 
             if (action.equalsIgnoreCase(Constants.REMOVE_USER)){
                 //REMOVE USER IN LIST
+                String usr = intent.getStringExtra("user");
+                Gson gson = new Gson();
+                User user = gson.fromJson(usr, User.class);
+
                 if (users.size() > 0) {
                     users.remove(this.getIndexFromUser(user));
                     usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),users,new UsersRecyclerViewAdapter.OnItemClickListener() {
@@ -139,6 +144,12 @@ public class SelectUserActivity extends BeaconScanner {
                         }
                     }));
                 }
+            }
+
+            if (action.equalsIgnoreCase(Constants.NEW_RECEIPT)){
+                //Update list
+                String userId = intent.getStringExtra("user");
+                loadPendingUsers();
             }
 
         }
@@ -183,6 +194,8 @@ public class SelectUserActivity extends BeaconScanner {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.ADD_USER);
         filter.addAction(Constants.REMOVE_USER);
+        filter.addAction(Constants.NEW_RECEIPT);
+
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 filter);
 

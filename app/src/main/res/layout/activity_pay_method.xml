@@ -261,7 +261,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="80"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="04 / 17"
+                        android:text="** / **"
                         android:textSize="@dimen/xxmedium"
                         android:textColor="@color/black"/>
 
@@ -293,7 +293,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="80"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="526"
+                        android:text="**6"
                         android:textSize="@dimen/xxmedium"
                         android:textColor="@color/black"/>
 

@@ -10,12 +10,16 @@ import com.btm.pagodirecto.R;
 import com.btm.pagodirecto.activities.baseActivities.BaseActivity;
 import com.btm.pagodirecto.custom.CustomResponse;
 import com.btm.pagodirecto.custom.CustomRetrofitCallback;
+import com.btm.pagodirecto.custom.SocketHandle;
 import com.btm.pagodirecto.dto.Receipt;
 import com.btm.pagodirecto.services.ApiService;
 import com.btm.pagodirecto.services.ServiceGenerator;
 import com.btm.pagodirecto.util.Constants;
 import com.btm.pagodirecto.util.Util;
 import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -126,6 +130,12 @@ public class CvvActivity extends BaseActivity {
 
                 @Override
                 public void handleSuccess(Object response) {
+                    try {
+                        emitNewReceipt(mReceiptSelected.get_user_id());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     Util.goToActivitySlide(
                             Util.getActivity(),
                             PayAcceptedActivity.class);
@@ -218,5 +228,15 @@ public class CvvActivity extends BaseActivity {
     @OnClick(R.id.btn_back)
     public void goToBack(){
         this.finish();
+    }
+
+    public void emitNewReceipt(String userId) throws JSONException {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("user",userId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        SocketHandle.emitEvent(Constants.NEW_RECEIPT, json);
     }
 }

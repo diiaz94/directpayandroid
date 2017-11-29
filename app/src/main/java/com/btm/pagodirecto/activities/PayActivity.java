@@ -5,11 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,9 +28,15 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PayActivity extends BaseActivity {
@@ -50,6 +59,9 @@ public class PayActivity extends BaseActivity {
     @Bind(R.id.debit_account)
     TextView debitAccount;
 
+    @Bind(R.id.amount_edit_text)
+    EditText ammountEditText;
+
 
     final Context context = this;
     private String mImageUrl;
@@ -67,6 +79,33 @@ public class PayActivity extends BaseActivity {
         mUserSelected = gson.fromJson(getIntent().getStringExtra(Constants.TAG_USER_OBJECT), User.class);
         setUserAttributes();
         hideSoftKeyboard();
+
+        ammountEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //ammountEditText.setText("00");
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+            public String formatAmount(int num)
+            {
+                DecimalFormat decimalFormat = new DecimalFormat();
+                DecimalFormatSymbols decimalFormateSymbol = new DecimalFormatSymbols();
+                decimalFormateSymbol.setGroupingSeparator(',');
+                decimalFormat.setDecimalFormatSymbols(decimalFormateSymbol);
+                return decimalFormat.format(num);
+            }
+        });
+
     }
 
     @Override
@@ -74,6 +113,8 @@ public class PayActivity extends BaseActivity {
         super.onResume();
         Util.setActivity(this);
     }
+
+
 
     private void setUserAttributes() {
         userName.setText(mUserSelected.getName());
@@ -151,5 +192,6 @@ public class PayActivity extends BaseActivity {
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
     }
+
 }
 

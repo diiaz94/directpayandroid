@@ -1,9 +1,14 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -66,12 +71,36 @@ public class PayUsersActivity extends BeaconScanner {
 
     private ArrayList<User> mUsers = new ArrayList<User>();
     private ArrayList<Receipt> mPendings = new ArrayList<Receipt>();
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public  void onReceive(Context context, final Intent intent) {
+            // Get extra data included in the Intent
+
+            String action = intent.getAction();
+
+            if (action.equalsIgnoreCase(Constants.NEW_RECEIPT)){
+                //Update list
+                String userId = intent.getStringExtra("user");
+                loadPendings();
+            }
+
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_users);
         ButterKnife.bind(this);
         Util.setActivity(this);
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.NEW_RECEIPT);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                filter);
 
         usersGrid.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         pendingList.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
