@@ -1,5 +1,6 @@
 package com.btm.pagodirecto.activities;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,15 +44,24 @@ public class PayAcceptedActivity extends BaseActivity {
         super.onResume();
         Util.setActivity(this);
 
-        if (Util.getFromSharedPreferences("FROM").equals("SEND_PAY")){
-            notificacionTitle.setText("Notificacion de envio");
-            notificationDescription.setText("Se ha enviado su pedido al comercio");
-            terms.setVisibility(View.GONE);
-        }else{
-            notificacionTitle.setText("Notificación de Pago");
-            notificationDescription.setText("Un recibo digital ha sido enviado a su correo");
-            terms.setVisibility(View.VISIBLE);
+        switch (Util.getFromSharedPreferences("FROM")){
+            case "SEND_PAY":
+                notificacionTitle.setText("Notificacion de envio");
+                notificationDescription.setText("Se ha enviado su pedido al comercio");
+                terms.setVisibility(View.GONE);
+                break;
+            case "SEND_COMMERCE_PAY":
+                notificacionTitle.setText("Notificacion de envio");
+                notificationDescription.setText("Se ha enviado su cobro al usuario");
+                terms.setVisibility(View.GONE);
+                break;
+            default:
+                notificacionTitle.setText("Notificación de Pago");
+                notificationDescription.setText("Un recibo digital ha sido enviado a su correo");
+                terms.setVisibility(View.VISIBLE);
+                break;
         }
+
         Util.saveInSharedPreferences("FROM","");
 
     }

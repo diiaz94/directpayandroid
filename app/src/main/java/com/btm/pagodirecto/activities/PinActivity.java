@@ -94,7 +94,7 @@ public class PinActivity extends BaseActivity {
     public void addNumber(String n){
         if(mPin.length()<4){
             mPin = mPin+ n;
-            Util.showMessage(mPin);
+            //Util.showMessage(mPin);
 
             switch (mPin.length()){
                 case 1:
@@ -153,7 +153,7 @@ public class PinActivity extends BaseActivity {
     public void deleteNumber(){
         if(mPin.length()>0){
             mPin = mPin.substring(0,mPin.length()-1);
-            Util.showMessage(mPin);
+            //Util.showMessage(mPin);
             switch (mPin.length()){
                 case 0:
                     mPin1.setVisibility(View.INVISIBLE);

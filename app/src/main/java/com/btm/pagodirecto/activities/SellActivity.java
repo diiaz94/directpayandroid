@@ -476,7 +476,7 @@ public class SellActivity extends BaseActivity implements CalculatorFragment.OnF
                             e.printStackTrace();
                         }
 
-                        Util.saveInSharedPreferences("FROM","SEND_PAY");
+                        Util.saveInSharedPreferences("FROM","SEND_COMMERCE_PAY");
                         Util.goToActivitySlide(
                                 Util.getActivity(),
                                 PayAcceptedActivity.class);
