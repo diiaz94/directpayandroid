@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -78,6 +79,8 @@ public class PayUsersActivity extends BeaconScanner {
     private static ArrayList<String> USERS = new ArrayList<String>();
     private static ArrayList<String> PENDINGS = new ArrayList<String>();
 
+    public UsersRecyclerViewAdapter mAdapter;
+
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public  void onReceive(Context context, final Intent intent) {
@@ -117,7 +120,6 @@ public class PayUsersActivity extends BeaconScanner {
 
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -138,9 +140,8 @@ public class PayUsersActivity extends BeaconScanner {
                     public void handleSuccess(Object response) {
                         ResponseUsers responseUsers = (ResponseUsers) response;
                         mUsers = responseUsers.getUsers();
-                        fillUsersList();
-
-                        usersGrid.setAdapter(new UsersRecyclerViewAdapter(getApplicationContext(),mUsers,new UsersRecyclerViewAdapter.OnItemClickListener() {
+                        //fillUsersList();
+                        mAdapter = new UsersRecyclerViewAdapter(getApplicationContext(),mUsers,new UsersRecyclerViewAdapter.OnItemClickListener() {
                             @Override public synchronized void onItemClick(int i,int type) {
                                 switch (type){
                                     case 0:
@@ -152,7 +153,8 @@ public class PayUsersActivity extends BeaconScanner {
                                         break;
                                 }
                             }
-                        }));
+                        });
+                        usersGrid.setAdapter(mAdapter);
                     }
 
                     @Override
@@ -218,9 +220,9 @@ public class PayUsersActivity extends BeaconScanner {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, USERS);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.users_list);
-        textView.setAdapter(adapter);
+        //AutoCompleteTextView textView = (AutoCompleteTextView)
+        //        findViewById(R.id.users_list);
+        //textView.setAdapter(adapter);
 
     }
 
@@ -232,9 +234,9 @@ public class PayUsersActivity extends BeaconScanner {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, PENDINGS);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.users_list);
-        textView.setAdapter(adapter);
+        //AutoCompleteTextView textView = (AutoCompleteTextView)
+        //        findViewById(R.id.users_list);
+        //textView.setAdapter(adapter);
 
     }
 
@@ -264,7 +266,27 @@ public class PayUsersActivity extends BeaconScanner {
         }
         usersGrid.setVisibility(View.GONE);
         pendingList.setVisibility(View.VISIBLE);
-        fillPendingList();
+        //fillPendingList();
+    }
+
+    @OnTextChanged(R.id.users_list)
+    public void onTextChangeUserList(){
+        //Get text and filter recycler - build new list from text
+        EditText source = (EditText) findViewById(R.id.users_list);
+        String Source = source.getText().toString();
+        if(Source.isEmpty()){
+            //Call adapter with mUsers
+            loadUsers();
+        }else{
+            ArrayList<User> filterUsers = new ArrayList<User>();
+            for(int i = 0; i < mUsers.size(); i++){
+                if(mUsers.get(i).getName().contains(Source)){
+                    filterUsers.add(i,mUsers.get(i));
+                }
+            }
+            mAdapter.animateTo(filterUsers);
+            usersGrid.scrollToPosition(0);
+        }
     }
 
     public void hideSoftKeyboard() {
@@ -273,11 +295,6 @@ public class PayUsersActivity extends BeaconScanner {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
-    }
-
-    @OnTextChanged(R.id.users_list)
-    public void onTextChangeUserList(){
-
     }
 
     @OnClick(R.id.btn_back)

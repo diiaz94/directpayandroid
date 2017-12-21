@@ -24,6 +24,7 @@ import com.bumptech.glide.load.model.LazyHeaders;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -98,6 +99,58 @@ private final UsersRecyclerViewAdapter.OnItemClickListener listener;
     public interface OnItemClickListener {
         void onItemClick(int i,int action);
     }
+
+    public void animateTo(ArrayList<User> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+
+    private void applyAndAnimateRemovals(ArrayList<User> newModels) {
+        for (int i = items.size() - 1; i >= 0; i--) {
+            final User model = items.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+
+    private void applyAndAnimateAdditions(ArrayList<User> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final User model = newModels.get(i);
+            if (!items.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+
+    private void applyAndAnimateMovedItems(ArrayList<User> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final User model = newModels.get(toPosition);
+            final int fromPosition = items.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
+    }
+
+    public User removeItem(int position) {
+        final User model = items.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+
+    public void addItem(int position, User model) {
+        items.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final User model = items.remove(fromPosition);
+        items.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
 
     @Override
     public int getItemCount() {
